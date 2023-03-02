@@ -1,0 +1,7 @@
+/.vscode/
+/build/
+/dist/
+/algpy.egg-info/
+/_alg/
+/dev/
+/test/
