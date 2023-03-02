@@ -1,8 +1,8 @@
 /.vscode/
 /build/
 /dist/
-/algpy.egg-info/
+/leetcode_alg.egg-info/
 /_alg/
 /dev/
-/test/
-/leetcode/_dirty/
+/_test/
+/leetcode_alg/_dirty/

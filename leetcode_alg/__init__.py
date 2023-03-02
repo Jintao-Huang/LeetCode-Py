@@ -9,6 +9,7 @@ from typing import (
     Literal, List, Tuple, Dict, Set, Callable, Optional, Union, Any,
     Deque, Sequence, Mapping, Iterable, Iterator, DefaultDict
 )
+from enum import Enum
 from sortedcontainers import SortedList, SortedDict, SortedSet
 #
 from ._alg import *

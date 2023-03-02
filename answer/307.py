@@ -1,4 +1,4 @@
-from algpy import *
+from leetcode_alg import *
 
 
 class NumArray:

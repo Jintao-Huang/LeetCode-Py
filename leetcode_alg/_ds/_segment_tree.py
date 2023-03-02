@@ -1,4 +1,4 @@
-from typing import List, Union, Literal, Optional
+from typing import List, Literal, Optional
 import math
 from operator import add
 
@@ -94,7 +94,7 @@ class SegmentTree(STBase):
 
 class SegmentTree2(STBase):
     """ref: https://oi-wiki.org/ds/seg/#%E7%BA%BF%E6%AE%B5%E6%A0%91%E7%9A%84%E5%8C%BA%E9%97%B4%E4%BF%AE%E6%94%B9%E4%B8%8E%E6%87%92%E6%83%B0%E6%A0%87%E8%AE%B0
-    for update_range, query_range"""
+    新增功能: update_range"""
 
     def __init__(self, nums: List[int], build_tree: bool = True,
                  update_func: Literal["add", "replace"] = "add",

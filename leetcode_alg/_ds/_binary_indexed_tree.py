@@ -1,13 +1,15 @@
-from typing import List, Callable, Literal, Dict
+from typing import List, Dict
 
 
 class BITBase:
+    """update_func=add"""
     @staticmethod
     def lowbit(idx: int) -> int:
         return idx & -idx
 
     @classmethod
     def _build_tree(cls, tree: List[int]) -> None:
+        # 也可以通过先计算prefix_sum辅助数组, 使复杂度为O(n)
         n = len(tree)
         for i in range(n):
             p = i + cls.lowbit(i+1)
@@ -90,7 +92,7 @@ def diff(nums: List[int]) -> List[int]:
 class BinaryIndexedTree2(BITBase):
     """ref: https://books.halfrost.com/leetcode/ChapterThree/Binary_Indexed_Tree/
             https://oi-wiki.org/ds/fenwick/#%E5%8C%BA%E9%97%B4%E5%8A%A0%E5%8C%BA%E9%97%B4%E5%92%8C
-    for update_range, query_range"""
+    新增功能: update_range"""
 
     def __init__(self, nums: List[int], build_tree: bool = True) -> None:
         """
@@ -125,7 +127,6 @@ class BinaryIndexedTree2(BITBase):
         super()._add(self.tree_D, idx, idx*val)
 
     def update_range(self, lo: int, hi: int, val: int) -> None:
-        """update_func=add"""
         assert 0 <= lo <= hi < len(self.tree_C)
         self._add(lo, val)
         self._add(hi+1, -val)

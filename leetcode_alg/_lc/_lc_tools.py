@@ -1,5 +1,5 @@
 
-from typing import *
+from typing import List, Any, Dict
 from inspect import getmembers, isfunction, ismethod
 from ._lc_ds import *
 
