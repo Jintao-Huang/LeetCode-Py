@@ -4,7 +4,7 @@ from algpy import *
 class NumArray:
     def __init__(self, nums: List[int]):
         self.nums = nums
-        self.st = SegmentTree(nums, True, lambda x, y: y)
+        self.st = SegmentTree(nums, True, "replace")
 
     def update(self, index: int, val: int) -> None:
         self.st.update(index, val)
@@ -32,7 +32,7 @@ class NumArray2:
     def update(self, index: int, val: int) -> None:
         diff_val = val-self.nums[index]
         self.nums[index] = val
-        self.bit.update(index, diff_val)
+        self.bit.add(index, diff_val)
 
     def sumRange(self, left: int, right: int) -> int:
         return self.bit.query_range(left, right)
