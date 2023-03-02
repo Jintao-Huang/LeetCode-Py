@@ -1,3 +1,4 @@
+__pycache__/
 /.vscode/
 /build/
 /dist/
@@ -5,3 +6,4 @@
 /dev/
 /_test/
 /answer/_dirty/
+/.pytest_cache/

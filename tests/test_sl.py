@@ -1,12 +1,26 @@
 from leetcode_alg import *
+import unittest as ut
+
+
+class TestSL(ut.TestCase):
+    def test_sl(self):
+        x = [1, 3, 3, 6, 7, 1]
+        res = []
+        for sl in [SimpleSortedList(x.copy()), SimpleSortedList2(x.copy(), lambda x: -x)]:
+            sl.add(0)
+            sl.add(100)
+            sl.remove(6)
+            res.append(sl.bisect_left(3))
+            res.append(sl.bisect_right(3))
+            res.append(sl.pop())
+            res.append(sl.ssl)
+        self.assertTrue(
+            res == [
+                3, 5, 100, [0, 1, 1, 3, 3, 7],
+                2, 4, 0, [(-100, 100), (-7, 7), (-3, 3), (-3, 3), (-1, 1), (-1, 1)]
+            ]
+        )
+
 
 if __name__ == "__main__":
-    x = [1, 3, 3, 6, 7, 1]
-    for sl in [SimpleSortedList(x.copy()), SimpleSortedList2(x.copy(), lambda x: -x)]:
-        sl.add(0)
-        sl.add(100)
-        sl.remove(6)
-        print(sl.bisect_left(3))
-        print(sl.bisect_right(3))
-        print(sl.pop())
-        print(sl.ssl)
+    ut.main()
