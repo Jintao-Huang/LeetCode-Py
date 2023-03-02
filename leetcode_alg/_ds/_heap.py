@@ -191,6 +191,10 @@ class Heap2:
         self._siftdown(0)
         return x
 
+    def top(self) -> Tuple[int, int]:
+        """O(1)"""
+        return self.heap[0]
+
     def __len__(self) -> int:
         return len(self.heap)
 
@@ -203,15 +207,19 @@ class Heap2:
         """O(logn)"""
         self.push((id, val))
 
-    def __delitem__(self, id: int) -> None:
+    def remove(self, id: int) -> int:
         """O(logn)"""
         heap, id2pos = self.heap, self._id2pos
         pos = id2pos.pop(id)
         n = len(self.heap)
         heap[pos], heap[n-1] = heap[n-1], heap[pos]
         id2pos[heap[pos][0]] = pos
-        heap.pop()
+        res = heap.pop()
         self._siftdown(pos)
+        return res[1]
+
+    def __delitem__(self, id: int) -> None:
+        self.remove(id)
 
     def __contains__(self, id: int) -> bool:
         """O(1)"""
