@@ -1,17 +1,22 @@
 # LeetCode-Py
 
+[![Python Version](https://img.shields.io/pypi/pyversions/leetcode-alg)](https://pypi.org/project/leetcode-alg/)
+[![PyPI Status](https://badge.fury.io/py/leetcode-alg.svg)](https://badge.fury.io/py/leetcode-alg)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Jintao-Huang/LeetCode-Py/blob/main/LICENSE)
+
+
 ## 介绍
-1. LeetCode-Py仓库中包含2大内容. 
+1. `LeetCode-Py`仓库中包含2大内容. 
    1. 包含大量leetcode(python)题目的解答(将会收集**1k题**以上, 目前处于开发中). 
    2. 算法库: `leetcode-alg`. 
-2. LeetCode-Py的**习题解答的风格**是在最优复杂度的前提下, 写出最简洁的代码(**不做过多细节的优化**: 因为不同于c/c++, python容易反向优化). 旨在将最优雅的python代码放入`answer`文件夹内. 
+2. `LeetCode-Py`的**习题解答的风格**是在最优复杂度的前提下, 写出最简洁的代码(**不做过多细节的优化**: 因为不同于c/c++, python容易反向优化). 旨在将最优雅的python代码放入`answer`文件夹内. 
 3. `leetcode-alg`是针对leetcode解题的数据结构和算法库, 其**设计准则**是: 以通用性为核心, 并以最大可能进行性能优化. 
 
 
 ## 安装和使用
 1. 安装: 
     ```bash
-    # 将此仓库下载的本地, 进入setup.py所在目录, 输入以下命令
+    # (推荐)将此仓库下载的本地, 进入setup.py所在目录, 输入以下命令
     pip install .
     # or 从pypi下载
     pip install leetcode-alg -U
@@ -43,6 +48,7 @@
       1. with dijkstra, prim: always
 9. union find
    1. with离散化: always
+
 
 ### 算法
 1. 分治法: 
@@ -89,6 +95,7 @@
 
 ### 数学
 1. gcd: 2183
+
 
 ### 未分类 
 1. 暴力: 2180

@@ -10,7 +10,7 @@ try:
 except AttributeError:
     def heapify_max(heap: List[int]) -> None:
         n = len(heap)
-        for i in reversed(range(n//2)):
+        for i in reversed(range(n>>1)):
             heapq._siftup_max(heap, i)  # 下滤
 
 try:
@@ -140,7 +140,7 @@ class Heap2:
 
     def _heapify(self) -> None:
         n = len(self.heap)
-        for i in reversed(range(n//2)):
+        for i in reversed(range(n>>1)):
             self._siftdown(i)
 
     def push(self, x: Tuple[int, int]) -> None:

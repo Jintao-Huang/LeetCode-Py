@@ -47,7 +47,7 @@ class STBase:
             self.tree[tree_idx] = nums[lo]
             return
         #
-        mid, lc = (lo + hi) // 2, (tree_idx << 1) + 1
+        mid, lc = (lo + hi) >> 1, (tree_idx << 1) + 1
         self._build_tree(nums, lc, lo, mid)
         self._build_tree(nums, lc+1, mid+1, hi)
         self.tree[tree_idx] = self._merge_func(self.tree[lc], self.tree[lc+1])
@@ -64,7 +64,7 @@ class SegmentTree(STBase):
         if lo == q_lo and hi == q_hi:
             return self.tree[tree_idx]
         # 分类讨论
-        mid, lc = (lo + hi) // 2, (tree_idx << 1) + 1
+        mid, lc = (lo + hi) >> 1, (tree_idx << 1) + 1
         if q_hi <= mid:
             return self._query_range(lc, lo, mid, q_lo, q_hi)
         elif q_lo >= mid + 1:
@@ -80,7 +80,7 @@ class SegmentTree(STBase):
         if lo == hi:
             self.tree[tree_idx] = self._update_func(self.tree[tree_idx], u_val)
             return
-        mid, lc = (lo + hi) // 2, (tree_idx << 1) + 1
+        mid, lc = (lo + hi) >> 1, (tree_idx << 1) + 1
         if u_idx <= mid:
             self._update(lc, lo, mid, u_idx, u_val)
         else:
@@ -112,7 +112,7 @@ class SegmentTree2(STBase):
         self.lazy_tag = [lazyt_init_val] * lazyt_len
 
     def _update_lazy_tag(self, tree_idx: int, lo: int, hi: int) -> None:
-        mid, lc = (lo + hi) // 2, (tree_idx << 1) + 1
+        mid, lc = (lo + hi) >> 1, (tree_idx << 1) + 1
         lazyt = self.lazy_tag[tree_idx]
         #
         if lazyt != self._lazyt_init_val:
@@ -134,7 +134,7 @@ class SegmentTree2(STBase):
             return self.tree[tree_idx]
         self._update_lazy_tag(tree_idx, lo, hi)
         # 分类讨论
-        mid, lc = (lo + hi) // 2, (tree_idx << 1) + 1
+        mid, lc = (lo + hi) >> 1, (tree_idx << 1) + 1
         if q_hi <= mid:
             return self._query_range(lc, lo, mid, q_lo, q_hi)
         elif q_lo >= mid + 1:
@@ -157,7 +157,7 @@ class SegmentTree2(STBase):
             return
         # 分类讨论
         self._update_lazy_tag(tree_idx, lo, hi)
-        mid, lc = (lo + hi) // 2, (tree_idx << 1) + 1
+        mid, lc = (lo + hi) >> 1, (tree_idx << 1) + 1
         if u_hi <= mid:
             self._update_range(lc, lo, mid, u_lo, u_hi, u_val)
         elif u_lo >= mid+1:
