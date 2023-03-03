@@ -10,39 +10,39 @@ class Solution:
         # n <= m
         n_left = (n + m) >> 1
 
-        def cond(mid: int) -> bool:
+        def cond(i: int) -> bool:
             """
-            nums1[0..mid], | nums1[mid+1..n-1]
-            nums2[0..mid2], | nums2[mid2+1..m-1]
+            nums1[0..i], | nums1[i+1..n-1]
+            nums2[0..i2], | nums2[i2+1..m-1]
             如果是n+m为奇数, |右边多1个元素. 
             """
-            mid2 = n_left - mid - 2
-            if mid+1 >= n or mid2 < 0:
+            i2 = n_left - i - 2
+            if i+1 >= n or i2 < 0:
                 return True
             else:
-                return nums1[mid+1] > nums2[mid2]
+                return nums1[i+1] > nums2[i2]
         #
-        mid = lower_bound(-1, n-1, cond)
-        mid2 = n_left - mid - 2
+        i = lower_bound(-1, n-1, cond)
+        i2 = n_left - i - 2
         # 分类讨论
         # mid_right: |右边2个元素的最小值
         # mid_left: |左边2个元素的最大值
-        if mid+1 >= n:
-            mid_right = nums2[mid2+1]
-        elif mid2+1 >= m:
-            mid_right = nums1[mid+1]
+        if i+1 >= n:
+            mid_right = nums2[i2+1]
+        elif i2+1 >= m:
+            mid_right = nums1[i+1]
         else:
-            mid_right = min(nums1[mid+1], nums2[mid2+1])
+            mid_right = min(nums1[i+1], nums2[i2+1])
         #
         if (n+m) % 2 == 1:
             return mid_right
         #
-        if mid < 0:
-            mid_left = nums2[mid2]
-        elif mid2 < 0:
-            mid_left = nums1[mid]
+        if i < 0:
+            mid_left = nums2[i2]
+        elif i2 < 0:
+            mid_left = nums1[i]
         else:
-            mid_left = max(nums1[mid], nums2[mid2])
+            mid_left = max(nums1[i], nums2[i2])
         return (mid_right + mid_left) / 2
 
 

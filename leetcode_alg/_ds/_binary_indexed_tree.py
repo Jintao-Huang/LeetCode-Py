@@ -1,3 +1,7 @@
+# Author: Jintao Huang
+# Email: huangjintao@mail.ustc.edu.cn
+# Date:
+
 from .._types import *
 from .._alg._array import unique, diff
 

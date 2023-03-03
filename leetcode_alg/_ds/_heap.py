@@ -1,15 +1,17 @@
+# Author: Jintao Huang
+# Email: huangjintao@mail.ustc.edu.cn
+# Date:
 
 from .._types import *
-from heapq import (
-    heapify, heappop, heappush, heappushpop, heapreplace,
-)
+import heapq
+
 
 try:
     heapify_max = heapq._heapify_max  # C
 except AttributeError:
     def heapify_max(heap: List[int]) -> None:
         n = len(heap)
-        for i in reversed(range(n>>1)):
+        for i in reversed(range(n >> 1)):
             heapq._siftup_max(heap, i)  # 下滤
 
 try:
@@ -105,13 +107,11 @@ class Heap2:
             self._heapify()
 
     def _siftup(self, i: int) -> None:
-        """上滤"""
+        """上滤. (命名与python的heapq库相反)"""
         heap, id2pos = self.heap, self._id2pos
         x0 = heap[i]
-        while True:
+        while i > 0:  # 即pi >= 0
             pi = (i-1) >> 1
-            if pi < 0:
-                break
             px = heap[pi]
             if not self._keys_func(x0, px):
                 break
@@ -139,7 +139,7 @@ class Heap2:
 
     def _heapify(self) -> None:
         n = len(self.heap)
-        for i in reversed(range(n>>1)):
+        for i in reversed(range(n >> 1)):
             self._siftdown(i)
 
     def push(self, x: Tuple[int, int]) -> None:

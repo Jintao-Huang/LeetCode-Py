@@ -1,7 +1,7 @@
 from leetcode_alg import *
 import unittest as ut
 
-class TestBS(ut.TestCase):
+class TestSearch(ut.TestCase):
     def test_bs(self):
         nums = [2, 2, 2]
         res = []

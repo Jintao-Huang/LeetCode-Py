@@ -6,4 +6,4 @@ from ._sorted_list import *
 from ._string_hasher import *
 from ._trie import *
 from ._union_find import *
-from ._extension import *
+# from ._extension import *

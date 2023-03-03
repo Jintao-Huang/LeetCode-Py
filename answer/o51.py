@@ -2,6 +2,7 @@ from leetcode_alg import *
 
 
 class Solution:
+    """recommended"""
     def reversePairs(self, nums: List[int]) -> int:
         res = 0
         mapper = discretize(nums)

@@ -2,6 +2,8 @@ from leetcode_alg import *
 
 
 class Solution:
+    """recommended"""
+
     def getDirections(self, root: TreeNode,
                       startValue: int, destValue: int) -> str:
         root = find_common_ancestor(root, {startValue, destValue})
@@ -9,8 +11,11 @@ class Solution:
         path2d = bytearray()
         find_path(root, startValue, path2s)
         find_path(root, destValue, path2d)
-        path2d = path2d.decode()
-        return "U" * len(path2s) + path2d
+        #
+        res = bytearray(b"U")
+        res *= len(path2s)
+        res += path2d
+        return res.decode()
 
 
 class Solution2:
@@ -22,8 +27,10 @@ class Solution2:
         find_path(root, destValue, path2d)
         idx = find_prefix(path2s, path2d)
         #
-        path2d = path2d[idx:].decode()
-        return "U" * len(path2s[idx:]) + path2d
+        res = bytearray(b"U")
+        res *= len(path2s) - idx
+        res += path2d[idx:]
+        return res.decode()
 
 
 if __name__ == "__main__":

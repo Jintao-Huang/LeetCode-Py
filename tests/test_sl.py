@@ -3,7 +3,7 @@ import unittest as ut
 
 
 class TestSL(ut.TestCase):
-    def test_sl(self):
+    def test_sl_sl2(self):
         x = [1, 3, 3, 6, 7, 1]
         res = []
         for sl in [SimpleSortedList(x.copy()), SimpleSortedList2(x.copy(), lambda x: -x)]:

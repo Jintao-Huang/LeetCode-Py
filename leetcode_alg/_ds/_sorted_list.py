@@ -1,6 +1,8 @@
-from typing import List, Callable, Optional
-from bisect import bisect_left as _bisect_left, bisect_right as _bisect_right
-from sortedcontainers import SortedList, SortedListWithKey
+# Author: Jintao Huang
+# Email: huangjintao@mail.ustc.edu.cn
+# Date:
+
+from .._types import *
 
 
 class SimpleSortedList:
@@ -12,17 +14,16 @@ class SimpleSortedList:
             self.ssl.sort()
 
     def add(self, val: int) -> None:
-        idx = self.bisect_right(val)
-        self.ssl.insert(idx, val)
+        insort_right(self.ssl, val)
 
     def pop(self, i: int = -1) -> int:
         return self.ssl.pop(i)
 
     def bisect_left(self, val: int) -> int:
-        return _bisect_left(self.ssl, val)
+        return bisect_left(self.ssl, val)
 
     def bisect_right(self, val: int) -> int:
-        return _bisect_right(self.ssl, val)
+        return bisect_right(self.ssl, val)
 
     def remove(self, val: int) -> None:
         """删除最后一个出现的(faster than 删除第一个出现的)"""
@@ -50,20 +51,18 @@ class SimpleSortedList2:
             self.ssl.sort()
 
     def add(self, val: int) -> None:
-        idx = self.bisect_right(val)
-        self.ssl.insert(idx, (self._keys(val), val))
+        insort_right(self.ssl, (self._keys(val), val))
 
     def pop(self, i: int = -1) -> int:
         return self.ssl.pop(i)[1]
 
     def bisect_left(self, val: int) -> int:
-        return _bisect_left(self.ssl, (self._keys(val), val))
+        return bisect_left(self.ssl, (self._keys(val), val))
 
     def bisect_right(self, val: int) -> int:
-        return _bisect_right(self.ssl, (self._keys(val), val))
+        return bisect_right(self.ssl, (self._keys(val), val))
 
     def remove(self, val: int) -> None:
-        """删除最后一个出现的(faster than 删除第一个出现的)"""
         idx = self.bisect_right(val) - 1
         assert self.ssl[idx][1] == val
         self.ssl.pop(idx)

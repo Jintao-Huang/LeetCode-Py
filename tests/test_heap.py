@@ -2,7 +2,7 @@ from leetcode_alg import *
 import unittest as ut
 
 
-class TestHeap2(ut.TestCase):
+class TestHeap(ut.TestCase):
     def test_heap2(self):
         mpq = Heap2([])
         mpq.push((1, 5))

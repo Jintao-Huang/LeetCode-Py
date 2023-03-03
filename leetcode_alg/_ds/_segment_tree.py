@@ -1,3 +1,7 @@
+# Author: Jintao Huang
+# Email: huangjintao@mail.ustc.edu.cn
+# Date:
+
 from .._types import *
 from operator import add
 
@@ -37,7 +41,7 @@ class STBase:
             self._build_tree(nums, 0, 0, self.nums_len - 1)
 
     def _cal_tree_height(self, nums_len: int) -> int:
-        return math.ceil(math.log2(nums_len) + 1)
+        return ceil(log2(nums_len) + 1)
 
     def _build_tree(self, nums: List[int], tree_idx: int, lo: int, hi: int) -> None:
         """[lo..hi]: nums的idx"""
