@@ -47,7 +47,7 @@
    1. 可动态修改的堆: 
       1. with dijkstra, prim: always
 9. union find
-   1. with离散化: always
+   1. with kruskal: always
 
 
 ### 算法
