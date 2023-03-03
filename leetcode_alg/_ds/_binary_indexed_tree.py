@@ -1,4 +1,4 @@
-from typing import List, Dict
+from .._types import *
 from .._alg._array import unique, diff
 
 

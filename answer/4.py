@@ -8,7 +8,6 @@ class Solution:
         if n > m:
             return self.findMedianSortedArrays(nums2, nums1)
         # n <= m
-        lo, hi = -1, n-1
         n_left = (n + m) >> 1
 
         def cond(mid: int) -> bool:
@@ -23,7 +22,7 @@ class Solution:
             else:
                 return nums1[mid+1] > nums2[mid2]
         #
-        mid = lower_bound(lo, hi, cond)
+        mid = lower_bound(-1, n-1, cond)
         mid2 = n_left - mid - 2
         # 分类讨论
         # mid_right: |右边2个元素的最小值

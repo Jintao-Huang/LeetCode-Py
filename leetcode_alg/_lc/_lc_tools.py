@@ -1,8 +1,8 @@
 
-from typing import List, Any, Dict
-from inspect import getmembers, isfunction, ismethod
+from .._types import *
 from ._lc_ds import *
-
+from inspect import getmembers, isfunction, ismethod
+import json
 
 def to_linkedlist(l: List[int]) -> Optional[ListNode]:
     head = ListNode()
@@ -19,6 +19,65 @@ def from_linkedlist(ll: Optional[ListNode]) -> List[int]:
         res.append(ll.val)
         ll = ll.next
     return res
+
+
+def to_tree(l_s: str) -> Optional[TreeNode]:
+    tn_l: List[Optional[int]] = json.loads(l_s)
+    n = len(tn_l)
+    if n == 0:
+        return None
+    #
+    root = TreeNode(tn_l[0])
+    dq = Deque[TreeNode]([root])
+    idx = 1
+    while len(dq) > 0:
+        if idx >= n:
+            break
+        tn_p = dq.popleft()
+        lc = tn_l[idx]
+        if lc is not None:
+            dq.append(TreeNode(lc))
+            tn_p.left = dq[-1]
+        idx += 1
+        #
+        if idx >= n:
+            break
+        rc = tn_l[idx]
+        if rc is not None:
+            dq.append(TreeNode(rc))
+            tn_p.right = dq[-1]
+        idx += 1
+    return root
+
+
+def from_tree(root: Optional[TreeNode]) -> List[Optional[int]]:
+    if root is None:
+        return []
+    dq = Deque[TreeNode]([root])
+    res: List[Optional[int]] = [root.val]
+    while len(dq) > 0:
+        tn = dq.popleft()
+        lc, rc = tn.left, tn.right
+        if lc is None:
+            res.append(None)
+        else:
+            res.append(lc.val)
+            dq.append(lc)
+        if rc is None:
+            res.append(None)
+        else:
+            res.append(rc.val)
+            dq.append(rc)
+    #
+    while res[-1] is None:  # res[0]一定不是None
+        res.pop()
+    return res
+
+
+if __name__ == "__main__":
+    root = "[5,1,2,3,null,6,4]"
+    tree = to_tree(root)
+    print(from_tree(tree))
 
 
 def call_callable_list(

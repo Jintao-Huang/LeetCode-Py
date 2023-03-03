@@ -1,7 +1,5 @@
-from typing import List, Literal, Optional
-import math
+from .._types import *
 from operator import add
-
 
 _func_mapper = {
     "add": add,

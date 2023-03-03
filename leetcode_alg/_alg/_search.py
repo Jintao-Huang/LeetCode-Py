@@ -1,4 +1,4 @@
-from typing import Callable
+from .._types import *
 
 
 def lower_bound(lo: int, hi: int, cond: Callable[[int], bool]) -> int:

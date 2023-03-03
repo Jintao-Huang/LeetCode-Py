@@ -1,4 +1,5 @@
-from typing import List
+from .._types import *
+
 
 def unique(nums: List[int]) -> None:
     n = len(nums)
@@ -13,11 +14,23 @@ def unique(nums: List[int]) -> None:
 
 
 def diff(nums: List[int]) -> List[int]:
-    """C0=A0, C1=A1-A0, ..."""
-    if len(nums) == 0:
+    """C0=A0, C1=A1-A0, ...
+    nums: const
+    """
+    n = len(nums)
+    if n == 0:
         return []
     res = [nums[0]]
-    n = len(nums)
     for i in range(1, n):
         res.append(nums[i] - nums[i-1])
+    return res
+
+
+def find_prefix(it1: Iterable, it2: Iterable) -> int:
+    """it1: str, bytes, bytearray, list"""
+    res = 0
+    for c, c2 in zip(it1, it2):
+        if c != c2:
+            break
+        res += 1
     return res

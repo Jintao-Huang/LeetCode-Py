@@ -1,6 +1,5 @@
 
-import heapq
-from typing import List, Tuple, Dict, Callable, Optional
+from .._types import *
 from heapq import (
     heapify, heappop, heappush, heappushpop, heapreplace,
 )
