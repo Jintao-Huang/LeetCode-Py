@@ -3,10 +3,9 @@
 # Date:
 
 from .._types import *
-from operator import add
 
 _func_mapper = {
-    "add": add,
+    "add": operator.add,
     "replace": lambda x, y: y,
     "min": min,
     "max": max

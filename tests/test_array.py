@@ -44,6 +44,7 @@ class TestArray(ut.TestCase):
         nums = np.arange(n).tolist() + np.arange(n).tolist()
         print("merge")
         ml.test_time(lambda: merge(nums.copy(), 0, n-1, 2*n-1), 10, 1)
+        ml.test_time(lambda: list(merge_heapq(nums[:n], nums[n+1:])), 10, 1)
         ml.test_time(lambda: merge2(nums.copy(), 0, n-1, 2*n-1), 10, 1)
         #
         nums = np.arange(2*n).tolist()
@@ -58,15 +59,6 @@ class TestArray(ut.TestCase):
         x = np.random.permutation(10).tolist()
         a = randint(0, 9)
         self.assertTrue(find_kth_smallest(x, a) == a)
-
-    def test_prefix_sum(self):
-        nums = [1, 2, 3, 4, 5, 6]
-        res = []
-        prefix_sum(nums, res)
-        self.assertTrue(res == [1, 3, 6, 10, 15, 21])
-        res = [1]
-        prefix_sum(nums, res)
-        self.assertTrue(res == [1, 2, 4, 7, 11, 16, 22])
 
 
 if __name__ == "__main__":

@@ -6,14 +6,14 @@ from ..._types import *
 from .._array import merge, partition
 
 
-def merge_sort(nums: List[int], lo: int, hi: int, inf: int = int(1e9)) -> None:
+def merge_sort(nums: List[int], lo: int, hi: int) -> None:
     """[lo..hi]"""
     if lo == hi:
         return
     mid = (lo + hi) >> 1
     merge_sort(nums, lo, mid)
     merge_sort(nums, mid+1, hi)
-    merge(nums, lo, mid, hi, inf)
+    merge(nums, lo, mid, hi)
 
 
 def quick_sort(nums: List[int], lo: int, hi: int) -> None:

@@ -41,22 +41,6 @@ def find_prefix(it1: Iterable, it2: Iterable) -> int:
     return res
 
 
-def euclidean_dist(x1: int, y1: int, x2: int, y2: int,
-                   square: bool = False) -> float:
-    d1, d2 = x2 - x1, y2 - y1
-    res = d1*d1 + d2*d2
-    if square:
-        return res
-    #
-    res = sqrt(res)
-    return res
-
-
-def manhattan_dist(x1: int, y1: int, x2: int, y2: int) -> float:
-    d1, d2 = x2 - x1, y2 - y1
-    return abs(d1) + abs(d2)
-
-
 def partition(nums: List[int], lo: int, hi: int) -> int:
     """将nums[lo]作为pivot. 将nums中<pivot放其左边, >pivot放其右边(==pivot随意)
     (算法逻辑更简单). ref: 算法导论"""
@@ -92,14 +76,14 @@ def partition2(nums: List[int], lo: int, hi: int) -> int:
     return lo
 
 
-def merge(nums: List[int], lo: int, mid: int, hi: int, inf: int = int(1e9)) -> None:
+def merge(nums: List[int], lo: int, mid: int, hi: int) -> None:
     """nums: [lo..mid], [mid+1..hi], 分别有序, 合并成一个有序的nums. (inplace)
     (算法逻辑更简单). ref: 算法导论"""
     assert 0 <= lo <= mid < hi < len(nums)
     A = nums[lo:mid+1].copy()
     B = nums[mid+1:hi+1].copy()
-    A.append(inf)
-    B.append(inf)
+    A.append(INF)
+    B.append(INF)
     i, j = 0, 0
     for k in range(lo, hi+1):
         if A[i] <= B[j]:
@@ -144,16 +128,3 @@ def find_kth_smallest(nums: List[int], k: int) -> int:
             lo = pivot + 1
         else:
             hi = pivot - 1
-
-
-def prefix_sum(nums: List[int], res: List[int]) -> None:
-    """前缀和. 若输入时, len(res)==0, res[0]=nums[0], res[1]=nums[0]+nums[1], res[2]=sum(nums[0..2])"""
-    n = len(nums)
-    if n == 0:
-        return
-    _start = 0
-    if len(res) == 0:
-        res.append(nums[0])
-        _start = 1
-    for i in range(_start, n):
-        res.append(res[-1]+nums[i])
