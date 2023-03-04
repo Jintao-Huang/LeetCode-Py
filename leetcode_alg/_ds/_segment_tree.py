@@ -12,7 +12,7 @@ _func_mapper = {
 }
 
 
-class STBase:
+class _STBase:
     def __init__(self, nums: List[int], build_tree: bool = True,
                  update_func: Literal["add", "replace"] = "add",
                  merge_func: Literal["add", "min", "max"] = "add") -> None:
@@ -59,7 +59,7 @@ class STBase:
         return self._query_range(0, 0, self.nums_len - 1, q_lo, q_hi)
 
 
-class SegmentTree(STBase):
+class SegmentTree(_STBase):
     def _query_range(self, tree_idx: int, lo: int, hi: int, q_lo: int, q_hi: int) -> int:
         """[lo..hi], [q_lo..q_hi]"""
         if lo == q_lo and hi == q_hi:
@@ -93,7 +93,7 @@ class SegmentTree(STBase):
         self._update(0, 0, self.nums_len-1, idx, val)
 
 
-class SegmentTree2(STBase):
+class SegmentTree2(_STBase):
     """ref: https://oi-wiki.org/ds/seg/#%E7%BA%BF%E6%AE%B5%E6%A0%91%E7%9A%84%E5%8C%BA%E9%97%B4%E4%BF%AE%E6%94%B9%E4%B8%8E%E6%87%92%E6%83%B0%E6%A0%87%E8%AE%B0
     新增功能: update_range"""
 

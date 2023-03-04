@@ -2,6 +2,8 @@ from leetcode_alg import *
 
 
 class Solution:
+    """recommended"""
+
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
         n = len(points)
         graph = [{} for _ in range(n)]
@@ -25,6 +27,7 @@ class Solution2:
                 edges.append((i, j, dist))
         return kruskal(n, edges)
 
+
 class Solution3:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
         n = len(points)
@@ -36,6 +39,7 @@ class Solution3:
                 graph[i][j] = dist
                 graph[j][i] = dist
         return prim2(graph)
+
 
 if __name__ == "__main__":
     x = [[0, 0], [2, 2], [3, 10], [5, 2], [7, 0]]

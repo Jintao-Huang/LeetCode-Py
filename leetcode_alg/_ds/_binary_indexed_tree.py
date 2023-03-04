@@ -6,7 +6,7 @@ from .._types import *
 from .._alg._array import unique, diff
 
 
-class BITBase:
+class _BITBase:
     """update_func=add"""
     @staticmethod
     def lowbit(idx: int) -> int:
@@ -38,7 +38,7 @@ class BITBase:
             idx += cls.lowbit(idx)
 
 
-class BinaryIndexedTree(BITBase):
+class BinaryIndexedTree(_BITBase):
     def __init__(self, nums: List[int], build_tree: bool = True) -> None:
         """nums: const
         build_tree: 如果已知nums是全0数组(这很常见), 可以令build_tree=False
@@ -74,7 +74,7 @@ def discretize(nums: List[int]) -> Dict[int, int]:
     return {x: i for i, x in enumerate(nums)}
 
 
-class BinaryIndexedTree2(BITBase):
+class BinaryIndexedTree2(_BITBase):
     """ref: https://books.halfrost.com/leetcode/ChapterThree/Binary_Indexed_Tree/
             https://oi-wiki.org/ds/fenwick/#%E5%8C%BA%E9%97%B4%E5%8A%A0%E5%8C%BA%E9%97%B4%E5%92%8C
     新增功能: update_range"""

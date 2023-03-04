@@ -3,6 +3,7 @@ from leetcode_alg import *
 
 
 class Solution:
+    """recommended"""
     def minimumWeight(self, n: int, edges: List[List[int]], src1: int, src2: int, dest: int) -> int:
         graph: List[Dict[int, int]] = [{} for _ in range(n)]
         graph_r: List[Dict[int, int]] = [{} for _ in range(n)]

@@ -1,5 +1,4 @@
 # LeetCode-Py
-
 [![Python Version](https://img.shields.io/pypi/pyversions/leetcode-alg)](https://pypi.org/project/leetcode-alg/)
 [![PyPI Status](https://badge.fury.io/py/leetcode-alg.svg)](https://badge.fury.io/py/leetcode-alg)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Jintao-Huang/LeetCode-Py/blob/main/LICENSE)
@@ -22,13 +21,33 @@
     pip install leetcode-alg -U
     ```
 2. 使用: `from leetcode_alg import *`
+3. 已有的功能(持续更新中)
+   1. 算法: 
+      1. array: unique, partition, partition2, merge, merge2, diff, find_kth_smallest
+      2. graph: dijkstra, dijkstra2, kruskal, prim, prim2
+      3. search: lower_bound, upper_bound
+      4. tree: find_path, find_common_ancestor
+      5. unimportant: 
+         1. array: reverse, euclidean_dist, manhattan_dist, prefix_sum
+         2. bisect: bisect_left, bisect_right, binary_search
+         3. math: gcd, lcm
+         4. random: randperm
+         5. sort: quick_sort, merge_sort, heap_sort, heap_sort2
+   2. 数据结构:
+      1. binary_indexed_tree: BinaryIndexedTree, BinaryIndexedTree2
+      2. heap: Heap, Heap2
+      3. segment_tree: SegmentTree, SegmentTree2
+      4. sorted_list: SimpleSortedList
+      5. union_find: UnionFind
+   3. LeetCode Tools:
+      1. 数据结构: ListNode, TreeNode
+      2. tools: to_linkedlist, from_linkedlist, to_tree, from_tree, call_callable_list
 
 
 
 
 ## 索引
 ### 数据结构
-
 1. 线段树: 307
    1. lazy: 
    2. 离散化: o51
@@ -86,7 +105,6 @@
 
 
 #### 其他 
-
 1. 中心法: 5, 2171, 2203
 2. 去重: 
    1. N数: 15, 16, 18

@@ -4,6 +4,7 @@ from ._lc_ds import *
 from inspect import getmembers, isfunction, ismethod
 import json
 
+
 def to_linkedlist(l: List[int]) -> Optional[ListNode]:
     head = ListNode()
     cur = head
@@ -72,12 +73,6 @@ def from_tree(root: Optional[TreeNode]) -> List[Optional[int]]:
     while res[-1] is None:  # res[0]一定不是None
         res.pop()
     return res
-
-
-if __name__ == "__main__":
-    root = "[5,1,2,3,null,6,4]"
-    tree = to_tree(root)
-    print(from_tree(tree))
 
 
 def call_callable_list(

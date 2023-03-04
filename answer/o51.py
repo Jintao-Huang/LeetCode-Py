@@ -6,6 +6,17 @@ class Solution:
 
     def reversePairs(self, nums: List[int]) -> int:
         res = 0
+        sl = SortedList()
+        for x0 in reversed(nums):
+            res += sl.bisect_left(x0)
+            sl.add(x0)
+        return res
+
+
+class Solution2:
+
+    def reversePairs(self, nums: List[int]) -> int:
+        res = 0
         mapper = discretize(nums)
         n = len(mapper)
         bit = BinaryIndexedTree([0] * n, False)
@@ -17,7 +28,7 @@ class Solution:
         return res
 
 
-class Solution2:
+class Solution3:
     def reversePairs(self, nums: List[int]) -> int:
         res = 0
         mapper = discretize(nums)
@@ -31,7 +42,7 @@ class Solution2:
         return res
 
 
-class Solution3:
+class Solution4:
     def reversePairs(self, nums: List[int]) -> int:
         res = 0
         mapper = discretize(nums)
@@ -45,7 +56,7 @@ class Solution3:
         return res
 
 
-class Solution4:
+class Solution5:
     def reversePairs(self, nums: List[int]) -> int:
         res = 0
         mapper = discretize(nums)
@@ -59,15 +70,6 @@ class Solution4:
         return res
 
 
-class Solution5:
-    def reversePairs(self, nums: List[int]) -> int:
-        res = 0
-        sl = SortedList()
-        for x0 in reversed(nums):
-            res += sl.bisect_left(x0)
-            sl.add(x0)
-        return res
-    
 class Solution6:
     def reversePairs(self, nums: List[int]) -> int:
         res = 0
@@ -77,14 +79,16 @@ class Solution6:
             sl.add(x0)
         return res
 
+
 class Solution7:
     def reversePairs(self, nums: List[int]) -> int:
         res = 0
         sl = SimpleSortedList(key=neg)
-        for x0 in nums: 
+        for x0 in nums:
             res += sl.bisect_left(x0)
             sl.add(x0)
         return res
+
 
 if __name__ == "__main__":
     nums = [7, 5, 6, 4]

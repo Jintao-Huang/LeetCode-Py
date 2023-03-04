@@ -7,16 +7,6 @@ from .._array import merge, partition
 from ..._ds._heap import *
 
 
-def merge_sort(nums: List[int], lo: int, hi: int) -> None:
-    """[lo..hi]"""
-    if lo == hi:
-        return
-    mid = (lo + hi) >> 1
-    merge_sort(nums, lo, mid)
-    merge_sort(nums, mid+1, hi)
-    merge(nums, lo, mid, hi)
-
-
 def quick_sort(nums: List[int], lo: int, hi: int) -> None:
     """[lo..hi]"""
     if lo >= hi:
@@ -26,6 +16,16 @@ def quick_sort(nums: List[int], lo: int, hi: int) -> None:
     pivot = partition(nums, lo, hi)
     quick_sort(nums, lo, pivot - 1)
     quick_sort(nums, pivot+1, hi)
+
+
+def merge_sort(nums: List[int], lo: int, hi: int) -> None:
+    """[lo..hi]"""
+    if lo == hi:
+        return
+    mid = (lo + hi) >> 1
+    merge_sort(nums, lo, mid)
+    merge_sort(nums, mid+1, hi)
+    merge(nums, lo, mid, hi)
 
 
 def _siftdown_max(heap: List[int], i: int, hi: int) -> None:
