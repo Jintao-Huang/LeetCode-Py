@@ -9,8 +9,8 @@ class TestArray(ut.TestCase):
 
     def test_partition(self):
         x = [5, 3, 6, 1, 2, 5, 7, 3, 4, 6]
-        self.assertTrue(partition(x, 0, len(x) - 1) == 6)
-        self.assertTrue(x == [3, 1, 2, 5, 3, 4, 5, 6, 6, 7])
+        self.assertTrue(partition(x, 0, len(x) - 1) == 5)
+        self.assertTrue(x == [3, 1, 2, 3, 4, 5, 7, 6, 6, 5])
         x = [5, 0, 2, 1, 4, 3, 6, 8, 9, 7]
         self.assertTrue(partition(x, 0, 5) == 5)
         #

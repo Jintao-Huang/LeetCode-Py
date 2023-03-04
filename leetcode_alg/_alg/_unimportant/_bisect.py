@@ -11,7 +11,6 @@ def bisect_left(nums: List[int], x: int, lo: int = 0, hi: Optional[int] = None) 
     n = len(nums)
     if hi is None:
         hi = len(nums)
-    assert 0 <= lo < hi <= n
     return lower_bound(lo, hi, lambda mid: nums[mid] >= x)
 
 
@@ -20,7 +19,6 @@ def bisect_right(nums: List[int], x: int, lo: int = 0, hi: Optional[int] = None)
     n = len(nums)
     if hi is None:
         hi = len(nums)
-    assert 0 <= lo < hi <= n
     return lower_bound(lo, hi, lambda mid: nums[mid] > x)
 
 
@@ -29,7 +27,6 @@ def binary_search(nums: List[int], x: int, lo: int = 0, hi: Optional[int] = None
     n = len(nums)
     if hi is None:
         hi = n
-    assert 0 <= lo < hi <= n
     # 
     hi -= 1
     while lo <= hi:

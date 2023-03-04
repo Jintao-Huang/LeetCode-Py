@@ -47,7 +47,7 @@ def partition(nums: List[int], lo: int, hi: int) -> int:
     nums[lo], nums[hi] = nums[hi], nums[lo]
     pivot = nums[hi]
     for i in range(lo, hi):
-        if nums[i] <= pivot:
+        if nums[i] < pivot:
             nums[lo], nums[i] = nums[i], nums[lo]
             lo += 1
     nums[lo], nums[hi] = nums[hi], nums[lo]
@@ -55,7 +55,7 @@ def partition(nums: List[int], lo: int, hi: int) -> int:
 
 
 def partition2(nums: List[int], lo: int, hi: int) -> int:
-    assert 0 <= lo <= hi < len(nums)
+    """[lo..hi]"""
     pivot = nums[lo]
     while lo < hi:
         while True:
@@ -79,7 +79,6 @@ def partition2(nums: List[int], lo: int, hi: int) -> int:
 def merge(nums: List[int], lo: int, mid: int, hi: int) -> None:
     """nums: [lo..mid], [mid+1..hi], 分别有序, 合并成一个有序的nums. (inplace)
     (算法逻辑更简单). ref: 算法导论"""
-    assert 0 <= lo <= mid < hi < len(nums)
     A = nums[lo:mid+1].copy()
     B = nums[mid+1:hi+1].copy()
     A.append(INF)
@@ -95,7 +94,7 @@ def merge(nums: List[int], lo: int, mid: int, hi: int) -> None:
 
 
 def merge2(nums: List[int], lo: int, mid: int, hi: int) -> None:
-    assert 0 <= lo <= mid < hi < len(nums)
+    """[lo..mid], [mid+1,hi]"""
     helper = nums[lo:mid+1].copy()
     msl = mid-lo  # mid sub lo
     i, j, k = mid+1, 0, lo
@@ -117,7 +116,6 @@ def merge2(nums: List[int], lo: int, mid: int, hi: int) -> None:
 def find_kth_smallest(nums: List[int], k: int) -> int:
     """nums无序, 查找第k小的数(即sort后索引是k, 从0数). 平均复杂度O(n)"""
     lo, hi = 0, len(nums) - 1
-    assert lo <= k <= hi
     while True:
         rand_idx = randint(lo, hi)  # [lo..hi]
         nums[lo], nums[rand_idx] = nums[rand_idx], nums[lo]

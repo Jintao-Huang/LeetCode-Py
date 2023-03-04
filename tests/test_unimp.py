@@ -39,5 +39,16 @@ class TestUnimp(ut.TestCase):
         self.assertTrue(y == y2)
 
 
+    def test_heap_sort(self):
+        nums = [1, 4, 6, 3, 2, 5, 0, 8, 9, 7]
+        heap_sort(nums)
+        self.assertTrue(nums == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+        nums = [1, 4, 6, 3, 2, 5, 0, 8, 9, 7]
+        res = heap_sort2(nums)
+        self.assertTrue(res == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+        self.assertTrue(nums == [])
+        heap_sort([])
+        heap_sort2([])
+
 if __name__ == "__main__":
     ut.main()

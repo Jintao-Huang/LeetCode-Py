@@ -43,7 +43,7 @@
 6. 前缀树(Trie): 
    1. -(易混淆): 14
 7. 栈: 20
-8. 堆: 23
+8. 堆: 23, 215
    1. 可动态修改的堆: 
       1. with dijkstra, prim: always
 9. union find
@@ -91,7 +91,8 @@
    5. 分类讨论
       1. 次大/小: 2170, 2182
          1. 不以0开头: 7, 8, 2165
-      2. 其他: 线段树的query_range, 4, find_common_ancestor(2096), 
+      2. 其他: 线段树的query_range, 4, find_common_ancestor(2096)
+   6. 随机算法: 215, quick_sort
 
 
 ### 数学
