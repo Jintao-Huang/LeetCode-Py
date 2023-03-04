@@ -100,8 +100,8 @@ class Heap2:
         self._id2pos: Dict[int, int] = {}  # id->pos
 
         if key is None:
-            key = operator.lt
-            # max_heap: operator.gt
+            key = lt
+            # max_heap: gt
         self._key_func = key
 
     def _siftup(self, i: int) -> None:

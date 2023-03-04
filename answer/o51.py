@@ -80,7 +80,7 @@ class Solution6:
 class Solution7:
     def reversePairs(self, nums: List[int]) -> int:
         res = 0
-        sl = SimpleSortedList(key=operator.neg)
+        sl = SimpleSortedList(key=neg)
         for x0 in nums: 
             res += sl.bisect_left(x0)
             sl.add(x0)

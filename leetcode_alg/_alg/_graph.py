@@ -53,7 +53,7 @@ def dijkstra2(graph: List[Dict[int, int]], s: int) -> List[int]:
 
 def kruskal(n: int, edges: List[Tuple[int, int, int]]) -> int:
     """edge: (gn, gn2, dist). 无向图存一条边"""
-    edges.sort(key=operator.itemgetter(2))
+    edges.sort(key=itemgetter(2))
     uf = UnionFind(n)
     res = 0
     for gn, gn2, dist in edges:

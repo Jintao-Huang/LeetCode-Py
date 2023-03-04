@@ -6,7 +6,7 @@ class TestSL(ut.TestCase):
     def test_sl_sl2(self):
         x = [1, 3, 3, 6, 7, 1]
         res = []
-        for sl in [SimpleSortedList(x.copy()), SimpleSortedList(x.copy(), operator.neg)]:
+        for sl in [SimpleSortedList(x.copy()), SimpleSortedList(x.copy(), neg)]:
             sl.add(0)
             sl.add(100)
             sl.remove(6)

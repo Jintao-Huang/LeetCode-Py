@@ -1,4 +1,4 @@
-import operator
+from operator import add, mul, lt, gt, neg, itemgetter
 from heapq import (
     heapify, heappop, heappush, heappushpop, heapreplace,  # C
     merge as merge_heapq, nlargest, nsmallest  # py

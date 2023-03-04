@@ -5,7 +5,7 @@
 from .._types import *
 
 _func_mapper = {
-    "add": operator.add,
+    "add": add,
     "replace": lambda x, y: y,
     "min": min,
     "max": max
