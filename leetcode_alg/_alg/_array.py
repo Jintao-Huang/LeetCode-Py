@@ -18,14 +18,21 @@ def unique(nums: List[int]) -> None:
         nums.pop()
 
 
-def diff(nums: List[int]) -> List[int]:
+def diff(nums: List[int], initial: Optional[int] = None) -> List[int]:
     """res[0]=nums[0], res[1]=nums[1]-nums[0], res[2]=nums[2]-nums[1]
     nums: const
     """
+    res = []
+    if initial is not None:
+        res.append(initial)
+    # 
     n = len(nums)
     if n == 0:
-        return []
-    res = [nums[0]]
+        return res
+    if len(res) == 1:
+        res.append(nums[0] - res[0])
+    else:
+        res.append(nums[0])
     for i in range(1, n):
         res.append(nums[i] - nums[i-1])
     return res

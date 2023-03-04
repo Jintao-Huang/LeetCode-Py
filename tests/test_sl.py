@@ -6,7 +6,7 @@ class TestSL(ut.TestCase):
     def test_sl_sl2(self):
         x = [1, 3, 3, 6, 7, 1]
         res = []
-        for sl in [SimpleSortedList(x.copy()), SimpleSortedList2(x.copy(), lambda x: -x)]:
+        for sl in [SimpleSortedList(x.copy()), SimpleSortedList(x.copy(), operator.neg)]:
             sl.add(0)
             sl.add(100)
             sl.remove(6)
@@ -17,7 +17,7 @@ class TestSL(ut.TestCase):
         self.assertTrue(
             res == [
                 3, 5, 100, [0, 1, 1, 3, 3, 7],
-                2, 4, 0, [(-100, 100), (-7, 7), (-3, 3), (-3, 3), (-1, 1), (-1, 1)]
+                2, 4, 0, [100, 7, 3, 3, 1, 1]
             ]
         )
 

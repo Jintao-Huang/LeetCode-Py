@@ -3,15 +3,26 @@
 # Date:
 
 from .._types import *
-
+# sortedcontainers.SortedList is faster
 
 class SimpleSortedList:
     """由于使用的python, 自己设计的BBST, RBT不一定有较好的性能"""
 
-    def __init__(self, nums: List[int], need_sort: bool = True) -> None:
+    def __init__(self, nums: Optional[List[int]] = None,
+                 key: Optional[Callable[[int], int]] = None, need_sort: bool = True) -> None:
+        """nums: not const"""
+        if nums is None:
+            nums = []
         self.ssl = nums
-        if need_sort:
+        if len(nums) > 1 and need_sort:
             self.ssl.sort()
+
+    def __new__(cls, nums=None, key=None, need_sort=True) -> Union["SimpleSortedList", "_SimpleSortedListWithKey"]:
+        if key is None:
+            obj = object.__new__(cls)
+        else:
+            obj = object.__new__(_SimpleSortedListWithKey)
+        return obj
 
     def add(self, val: int) -> None:
         insort_right(self.ssl, val)
@@ -27,7 +38,7 @@ class SimpleSortedList:
 
     def remove(self, val: int) -> None:
         """删除最后一个出现的(faster than 删除第一个出现的)"""
-        idx = self.bisect_right(val) - 1
+        idx = bisect_right(self.ssl, val) - 1
         assert self.ssl[idx] == val
         self.ssl.pop(idx)
 
@@ -38,37 +49,41 @@ class SimpleSortedList:
         return self.ssl[idx]
 
 
-class SimpleSortedList2:
-    """新增的功能: keys"""
+class _SimpleSortedListWithKey(SimpleSortedList):
+    """新增的功能: key"""
 
-    def __init__(self, nums: List[int], keys: Callable[[int], int],
+    def __init__(self, nums: Optional[List[int]] = None, key: Optional[Callable[[int], int]] = None,
                  need_sort: bool = True) -> None:
-        """nums: const"""
-        # 若未知x为int, 则需(keys(x), i, x)
-        self._keys = keys
-        self.ssl = [(keys(x), x) for x in nums]
-        if need_sort:
-            self.ssl.sort()
+        """nums: not const"""
+        assert key is not None
+        if nums is None:
+            nums = []
+        self.key = key
+        self.ssl = nums
+        if len(nums) > 1 and need_sort:
+            self.ssl.sort(key=key)
+        self._keys = [key(x) for x in nums]
 
     def add(self, val: int) -> None:
-        insort_right(self.ssl, (self._keys(val), val))
+        k = self.key(val)
+        idx = bisect_right(self._keys, k)
+        self.ssl.insert(idx, val)
+        self._keys.insert(idx, k)
 
     def pop(self, i: int = -1) -> int:
-        return self.ssl.pop(i)[1]
+        res = self.ssl.pop(i)
+        self._keys.pop(i)
+        return res
 
     def bisect_left(self, val: int) -> int:
-        return bisect_left(self.ssl, (self._keys(val), val))
+        return bisect_left(self._keys, self.key(val))
 
     def bisect_right(self, val: int) -> int:
-        return bisect_right(self.ssl, (self._keys(val), val))
+        return bisect_right(self._keys, self.key(val))
 
     def remove(self, val: int) -> None:
-        idx = self.bisect_right(val) - 1
-        assert self.ssl[idx][1] == val
+        k = self.key(val)
+        idx = bisect_right(self._keys, k) - 1
+        assert self._keys[idx] == k
         self.ssl.pop(idx)
-
-    def __len__(self) -> int:
-        return len(self.ssl)
-
-    def __getitem__(self, idx: int) -> int:
-        return self.ssl[idx][1]
+        self._keys.pop(idx)

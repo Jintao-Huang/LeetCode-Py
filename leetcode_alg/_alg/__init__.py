@@ -12,5 +12,6 @@ from ._string_op import *
 from ._string import *
 from ._tree import *
 from ._utils import *
+from ._unimportant import manhattan_dist
 # from ._extension import *
 # from ._unimportant import *

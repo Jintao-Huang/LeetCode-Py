@@ -6,7 +6,7 @@ from heapq import (
 from bisect import bisect_left, bisect_right, insort_left, insort_right  # C
 from math import (  # C
     sqrt, log2, floor, trunc, ceil, gcd, lcm, factorial, comb, perm, prod,
-    isclose, dist, hypot, 
+    isclose, dist as dist_math, hypot, 
 )
 from random import randint
 from functools import partial, cache, lru_cache, cmp_to_key, reduce  # C

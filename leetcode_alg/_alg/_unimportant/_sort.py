@@ -58,7 +58,7 @@ def heap_sort(nums: List[int]) -> None:
 
 
 def heap_sort2(nums: List[int]) -> List[int]:
-    """只用python的heapq库(C)"""
+    """nums: not const. 用python的heapq库(C)"""
     res = []
     n = len(nums)
     heapify(nums)

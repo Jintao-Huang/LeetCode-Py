@@ -3,6 +3,7 @@ from leetcode_alg import *
 
 class Solution:
     """recommended"""
+
     def reversePairs(self, nums: List[int]) -> int:
         res = 0
         mapper = discretize(nums)
@@ -22,7 +23,7 @@ class Solution2:
         mapper = discretize(nums)
         n = len(mapper)
         st = SegmentTree([0] * n, False)
-        for x0 in nums:
+        for x0 in nums:  # 也可以改成reversed的版本
             x = mapper[x0]  # 0..n-1
             if x+1 < n:
                 res += st.query_range(x+1, n-1)
@@ -31,23 +32,20 @@ class Solution2:
 
 
 class Solution3:
-    """just for test"""
-
     def reversePairs(self, nums: List[int]) -> int:
         res = 0
         mapper = discretize(nums)
         n = len(mapper)
-        st = BinaryIndexedTree2([0] * n, False)
-        for x0 in nums:
+        bit = BinaryIndexedTree2([0] * n, False)
+        for x0 in reversed(nums):
             x = mapper[x0]  # 0..n-1
-            if x+1 < n:
-                res += st.query_range(x+1, n-1)
-            st.update_range(x, x, 1)
+            if x-1 >= 0:
+                res += bit.prefix_sum(x-1)
+            bit.update_range(x, x, 1)
         return res
 
-class Solution4:
-    """just for test"""
 
+class Solution4:
     def reversePairs(self, nums: List[int]) -> int:
         res = 0
         mapper = discretize(nums)
@@ -60,9 +58,40 @@ class Solution4:
             st.update_range(x, x, 1)
         return res
 
+
+class Solution5:
+    def reversePairs(self, nums: List[int]) -> int:
+        res = 0
+        sl = SortedList()
+        for x0 in reversed(nums):
+            res += sl.bisect_left(x0)
+            sl.add(x0)
+        return res
+    
+class Solution6:
+    def reversePairs(self, nums: List[int]) -> int:
+        res = 0
+        sl = SimpleSortedList()
+        for x0 in reversed(nums):
+            res += sl.bisect_left(x0)
+            sl.add(x0)
+        return res
+
+class Solution7:
+    def reversePairs(self, nums: List[int]) -> int:
+        res = 0
+        sl = SimpleSortedList(key=operator.neg)
+        for x0 in nums: 
+            res += sl.bisect_left(x0)
+            sl.add(x0)
+        return res
+
 if __name__ == "__main__":
     nums = [7, 5, 6, 4]
     print(Solution().reversePairs(nums))
     print(Solution2().reversePairs(nums))
     print(Solution3().reversePairs(nums))
     print(Solution4().reversePairs(nums))
+    print(Solution5().reversePairs(nums))
+    print(Solution6().reversePairs(nums))
+    print(Solution7().reversePairs(nums))

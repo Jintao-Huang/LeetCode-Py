@@ -53,6 +53,7 @@ def heappushpop_max(heap: List[int], x: int) -> int:
 class Heap:
     def __init__(self, nums: List[int], max_heap: bool = False, need_heapify: bool = True) -> None:
         """
+        nums: not const
         need_heapify: 如果nums已有序, 可以令need_heapify=False
         """
         if max_heap:
@@ -69,7 +70,7 @@ class Heap:
             self._heappushpop = heappushpop
         #
         self.heap = nums
-        if need_heapify:
+        if len(nums) > 1 and need_heapify:
             self._heapify(self.heap)
 
     def push(self, x: int) -> None:
@@ -94,17 +95,14 @@ class Heap:
 class Heap2:
     """增加的功能: 可以通过id, 动态的调整val; 可以通过id, 动态的删除"""
 
-    def __init__(self, nums: List[Tuple[int, int]], max_heap: bool = False, need_heapify: bool = True) -> None:
-        """nums: id, val"""
-        self.heap: List[Tuple[int, int]] = nums  # id, val
-        self._id2pos: Dict[int, int] = {x[0]: i for i, x in enumerate(nums)}  # id->pos
+    def __init__(self, key: Optional[Callable[[int, int], int]] = None) -> None:
+        self.heap: List[Tuple[int, int]] = []  # val, id
+        self._id2pos: Dict[int, int] = {}  # id->pos
 
-        if max_heap:
-            self._keys_func = lambda x, y: x[1] > y[1]
-        else:
-            self._keys_func = lambda x, y: x[1] < y[1]
-        if need_heapify:
-            self._heapify()
+        if key is None:
+            key = operator.lt
+            # max_heap: operator.gt
+        self._key_func = key
 
     def _siftup(self, i: int) -> None:
         """上滤. (命名与python的heapq库相反)"""
@@ -113,11 +111,11 @@ class Heap2:
         while i > 0:  # 即pi >= 0
             pi = (i-1) >> 1
             px = heap[pi]
-            if not self._keys_func(x0, px):
+            if not self._key_func(x0, px):
                 break
-            heap[i], id2pos[px[0]] = px, i
+            heap[i], id2pos[px[1]] = px, i
             i = pi
-        heap[i], id2pos[x0[0]] = x0, i
+        heap[i], id2pos[x0[1]] = x0, i
 
     def _siftdown(self, i: int) -> None:
         """下滤"""
@@ -128,14 +126,14 @@ class Heap2:
             ci = (i << 1)+1
             if ci >= n:
                 break
-            if ci+1 < n and self._keys_func(heap[ci+1], heap[ci]):
+            if ci+1 < n and self._key_func(heap[ci+1], heap[ci]):
                 ci += 1
             cx = heap[ci]
-            if not self._keys_func(cx, x0):
+            if not self._key_func(cx, x0):
                 break
-            heap[i], id2pos[cx[0]] = cx, i
+            heap[i], id2pos[cx[1]] = cx, i
             i = ci
-        heap[i], id2pos[x0[0]] = x0, i
+        heap[i], id2pos[x0[1]] = x0, i
 
     def _heapify(self) -> None:
         n = len(self.heap)
@@ -143,30 +141,43 @@ class Heap2:
             self._siftdown(i)
 
     def push(self, x: Tuple[int, int]) -> None:
+        """x: val, id"""
         heap, id2pos = self.heap, self._id2pos
-        if x[0] in id2pos:  # 修改
+        if x[1] in id2pos:  # 修改
             heap, id2pos = self.heap, self._id2pos
-            pos = id2pos[x[0]]
+            pos = id2pos[x[1]]
             z = heap[pos]
             heap[pos] = x
-            if self._keys_func(z, x):
+            if self._key_func(z, x):
                 self._siftdown(pos)
             else:
                 self._siftup(pos)
         else:  # 添加
             n = len(heap)
             heap.append(x)
-            id2pos[x[0]] = n
+            id2pos[x[1]] = n
             self._siftup(n)
 
+    def remove(self, id: int) -> int:
+        """O(logn)"""
+        heap, id2pos = self.heap, self._id2pos
+        pos = id2pos.pop(id)
+        n = len(self.heap)
+        heap[pos], heap[n-1] = heap[n-1], heap[pos]
+        id2pos[heap[pos][1]] = pos
+        res = heap.pop()
+        self._siftdown(pos)
+        return res[1]
+
     def pop(self) -> Tuple[int, int]:
+        """return: val, id"""
         heap, id2pos = self.heap, self._id2pos
         res = heap.pop()
         if len(heap) == 0:
             return res
         #
         res, heap[0] = heap[0], res
-        id2pos.pop(res[0])
+        id2pos.pop(res[1])
         self._siftdown(0)
         return res
 
@@ -174,24 +185,24 @@ class Heap2:
         heap, id2pos = self.heap, self._id2pos
         assert len(heap) > 0
         res = heap[0]
-        id2pos.pop(res[0])
-        heap[0], id2pos[x[0]] = x, 0
+        id2pos.pop(res[1])
+        heap[0], id2pos[x[1]] = x, 0
         self._siftdown(0)
         return res
 
     def pushpop(self, x: Tuple[int, int]) -> Tuple[int, int]:
         heap, id2pos = self.heap, self._id2pos
-        if len(heap) == 0 or self._keys_func(x, heap[0]):
+        if len(heap) == 0 or self._key_func(x, heap[0]):
             return x
         #
         res = heap[0]
-        id2pos.pop(res[0])
-        heap[0], id2pos[x[0]] = x, 0
+        id2pos.pop(res[1])
+        heap[0], id2pos[x[1]] = x, 0
         self._siftdown(0)
         return x
 
     def top(self) -> Tuple[int, int]:
-        """O(1)"""
+        """O(1). return: val, id"""
         return self.heap[0]
 
     def __len__(self) -> int:
@@ -200,22 +211,11 @@ class Heap2:
     def __getitem__(self, id: int) -> int:
         """O(1)"""
         pos = self._id2pos[id]
-        return self.heap[pos][1]
+        return self.heap[pos][0]
 
     def __setitem__(self, id: int, val: int) -> None:
         """O(logn)"""
-        self.push((id, val))
-
-    def remove(self, id: int) -> int:
-        """O(logn)"""
-        heap, id2pos = self.heap, self._id2pos
-        pos = id2pos.pop(id)
-        n = len(self.heap)
-        heap[pos], heap[n-1] = heap[n-1], heap[pos]
-        id2pos[heap[pos][0]] = pos
-        res = heap.pop()
-        self._siftdown(pos)
-        return res[1]
+        self.push((val, id))
 
     def __delitem__(self, id: int) -> None:
         self.remove(id)

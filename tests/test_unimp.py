@@ -2,6 +2,7 @@ from leetcode_alg._alg._unimportant import *
 import unittest as ut
 import numpy as np
 import mini_lightning as ml
+import math
 
 
 class TestUnimp(ut.TestCase):
@@ -38,7 +39,6 @@ class TestUnimp(ut.TestCase):
         y = ml.test_time(lambda: list(accumulate(x, initial=1)), 10)
         self.assertTrue(y == y2)
 
-
     def test_heap_sort(self):
         nums = [1, 4, 6, 3, 2, 5, 0, 8, 9, 7]
         heap_sort(nums)
@@ -49,6 +49,13 @@ class TestUnimp(ut.TestCase):
         self.assertTrue(nums == [])
         heap_sort([])
         heap_sort2([])
+
+    def test_gcd_lcm(self):
+        x, y = 20, 25
+
+        self.assertTrue(gcd(x, y) == math.gcd(x, y))
+        self.assertTrue(lcm(x, y) == math.lcm(x, y))
+
 
 if __name__ == "__main__":
     ut.main()
