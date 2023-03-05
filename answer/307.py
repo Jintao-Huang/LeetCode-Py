@@ -30,16 +30,11 @@ class NumArray2:
 
 
 if __name__ == "__main__":
-    res = call_callable_list(
-        ["NumArray", "update", "update", "update", "sumRange", "update",
-            "sumRange", "update", "sumRange", "sumRange", "update"],
-        [[[7, 2, 7, 2, 0]], [4, 6], [0, 2], [0, 9], [4, 4], [3, 8], [0, 4], [4, 1], [0, 3], [0, 4], [0, 4]],
-        globals())
-    print(res)
-    #
-    res = call_callable_list(
-        ["NumArray2", "update", "update", "update", "sumRange", "update",
-            "sumRange", "update", "sumRange", "sumRange", "update"],
-        [[[7, 2, 7, 2, 0]], [4, 6], [0, 2], [0, 9], [4, 4], [3, 8], [0, 4], [4, 1], [0, 3], [0, 4], [0, 4]],
-        globals())
-    print(res)
+
+    callable_list = ["NumArray", "update", "update", "update", "sumRange", "update",
+            "sumRange", "update", "sumRange", "sumRange", "update"]
+    args_list = [[[7, 2, 7, 2, 0]], [4, 6], [0, 2], [0, 9], [4, 4], [3, 8], [0, 4], [4, 1], [0, 3], [0, 4], [0, 4]]
+    print(call_callable_list(callable_list, args_list, globals()))
+    callable_list[0] = "NumArray2"
+    print(call_callable_list(callable_list, args_list, globals()))
+

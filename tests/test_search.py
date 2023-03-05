@@ -11,5 +11,8 @@ class TestSearch(ut.TestCase):
         res.append(lower_bound(-1, 2, lambda i: nums[i] <=2))
         self.assertTrue(res, [0, 3, -1, 2])
 
+    def test_n_queens(self):
+        self.assertTrue(n_queens(4) == [[1, 3, 0, 2], [2, 0, 3, 1]])
+
 if __name__ == "__main__":
     ut.main()

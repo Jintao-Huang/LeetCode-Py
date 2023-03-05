@@ -15,7 +15,7 @@ from itertools import accumulate  # C
 from copy import copy, deepcopy  # C
 from typing import (
     Literal, List, Tuple, Dict, Set, Callable, Optional, Union, Any,
-    Deque, NamedTuple, DefaultDict, Counter,  # C
+    Deque, NamedTuple, DefaultDict, Counter, OrderedDict,   # C
     Sequence, Mapping, Iterable, Iterator, TypeVar, Generic
 )
 from enum import Enum

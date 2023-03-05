@@ -19,7 +19,7 @@ def dijkstra(graph: List[Dict[int, int]], s: int) -> List[int]:
     pq.push((0, s))
     while len(pq) > 0:
         d, gn = pq.pop()  # graph node
-        if visited[gn] == True:
+        if visited[gn]:
             continue
         visited[gn] = False
         for to, d2 in graph[gn].items():
@@ -105,4 +105,30 @@ def prim2(graph: List[Dict[int, int]]) -> int:
                 continue
             cost[to] = d2
             pq.push((d2, to))
+    return res
+
+
+def topo_sort(graph: List[List[int]]) -> List[int]:
+    """graph: 邻接表实现"""
+    n = len(graph)
+    res = []
+    in_degree = [0] * n  # 入度
+    for gn_list in graph:  # graph node
+        for gn in gn_list:
+            in_degree[gn] += 1
+    # 
+    for i, in_d in enumerate(in_degree):
+        if in_d == 0:
+            res.append(i)
+    # 
+    i = 0
+    while i < len(res):
+        gn = res[i]
+        i += 1
+        for gn2 in graph[gn]:
+            in_degree[gn2] -= 1
+            if in_degree[gn2] == 0:
+                res.append(gn2)
+    if len(res) != n:
+        res = []
     return res

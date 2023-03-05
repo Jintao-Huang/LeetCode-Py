@@ -5,10 +5,10 @@ from inspect import getmembers, isfunction, ismethod
 import json
 
 
-def to_linkedlist(l: List[int]) -> Optional[ListNode]:
+def to_linkedlist(_list: List[int]) -> Optional[ListNode]:
     head = ListNode()
     cur = head
-    for x in l:
+    for x in _list:
         cur.next = ListNode(x)
         cur = cur.next
     return head.next
