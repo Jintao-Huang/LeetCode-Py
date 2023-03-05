@@ -4,12 +4,12 @@
 
 from .._types import *
 import heapq
-
+_T = TypeVar("_T")
 
 try:
     heapify_max = heapq._heapify_max  # C
 except AttributeError:
-    def heapify_max(heap: List[int]) -> None:
+    def heapify_max(heap: List[Any]) -> None:
         n = len(heap)
         for i in reversed(range(n >> 1)):
             heapq._siftup_max(heap, i)  # 下滤
@@ -17,7 +17,7 @@ except AttributeError:
 try:
     heapreplace_max = heapq._heapreplace_max
 except AttributeError:
-    def heapreplace_max(heap: List[int], x: int) -> int:
+    def heapreplace_max(heap: List[_T], x: _T) -> _T:
         assert len(heap) > 0
         x, heap[0] = heap[0], x
         heapq._siftup_max(heap, 0)
@@ -25,7 +25,7 @@ except AttributeError:
 try:
     heappop_max = heapq._heappop_max
 except AttributeError:
-    def heappop_max(heap: List[int]) -> int:
+    def heappop_max(heap: List[_T]) -> _T:
         res = heap.pop()
         if len(heap) == 0:
             return res
@@ -35,12 +35,12 @@ except AttributeError:
         return res
 
 
-def heappush_max(heap: List[int], x: int) -> None:
+def heappush_max(heap: List[_T], x: _T) -> None:
     heap.append(x)
     heapq._siftdown_max(heap, 0, len(heap)-1)  # 上滤
 
 
-def heappushpop_max(heap: List[int], x: int) -> int:
+def heappushpop_max(heap: List[_T], x: _T) -> _T:
     if len(heap) == 0 or x >= heap[0]:
         return x
     #
@@ -50,8 +50,8 @@ def heappushpop_max(heap: List[int], x: int) -> int:
 #
 
 
-class Heap:
-    def __init__(self, nums: List[int], max_heap: bool = False, need_heapify: bool = True) -> None:
+class Heap(Generic[_T]):
+    def __init__(self, nums: List[_T], max_heap: bool = False, need_heapify: bool = True) -> None:
         """
         nums: not const
         need_heapify: 如果nums已有序, 可以令need_heapify=False
@@ -73,35 +73,33 @@ class Heap:
         if len(nums) > 1 and need_heapify:
             self._heapify(self.heap)
 
-    def push(self, x: int) -> None:
+    def push(self, x: _T) -> None:
         self._heappush(self.heap, x)
 
-    def pop(self) -> int:
+    def pop(self) -> _T:
         return self._heappop(self.heap)
 
-    def replace(self, x: int) -> int:
+    def replace(self, x: _T) -> _T:
         return self._heapreplace(self.heap, x)
 
-    def pushpop(self, x: int) -> int:
+    def pushpop(self, x: _T) -> _T:
         return self._heappushpop(self.heap, x)
 
-    def top(self) -> int:
+    def top(self) -> _T:
         return self.heap[0]
 
     def __len__(self) -> int:
         return len(self.heap)
 
 
-class Heap2:
+class Heap2(Generic[_T]):
     """增加的功能: 可以通过id, 动态的调整val; 可以通过id, 动态的删除"""
 
-    def __init__(self, key: Optional[Callable[[int, int], int]] = None) -> None:
-        self.heap: List[Tuple[int, int]] = []  # val, id
+    def __init__(self, key: Callable[[_T, _T], bool] = lt) -> None:
+        self.heap: List[Tuple[_T, int]] = []  # val, id
         self._id2pos: Dict[int, int] = {}  # id->pos
 
-        if key is None:
-            key = lt
-            # max_heap: gt
+        # max_heap: gt
         self._key_func = key
 
     def _siftup(self, i: int) -> None:
@@ -111,7 +109,7 @@ class Heap2:
         while i > 0:  # 即pi >= 0
             pi = (i-1) >> 1
             px = heap[pi]
-            if not self._key_func(x0, px):
+            if not self._key_func(x0[0], px[0]):
                 break
             heap[i], id2pos[px[1]] = px, i
             i = pi
@@ -126,10 +124,10 @@ class Heap2:
             ci = (i << 1)+1
             if ci >= n:
                 break
-            if ci+1 < n and self._key_func(heap[ci+1], heap[ci]):
+            if ci+1 < n and self._key_func(heap[ci+1][0], heap[ci][0]):
                 ci += 1
             cx = heap[ci]
-            if not self._key_func(cx, x0):
+            if not self._key_func(cx[0], x0[0]):
                 break
             heap[i], id2pos[cx[1]] = cx, i
             i = ci
@@ -140,7 +138,7 @@ class Heap2:
         for i in reversed(range(n >> 1)):
             self._siftdown(i)
 
-    def push(self, x: Tuple[int, int]) -> None:
+    def push(self, x: Tuple[_T, int]) -> None:
         """x: val, id"""
         heap, id2pos = self.heap, self._id2pos
         if x[1] in id2pos:  # 修改
@@ -148,7 +146,7 @@ class Heap2:
             pos = id2pos[x[1]]
             z = heap[pos]
             heap[pos] = x
-            if self._key_func(z, x):
+            if self._key_func(z[0], x[0]):
                 self._siftdown(pos)
             else:
                 self._siftup(pos)
@@ -158,7 +156,7 @@ class Heap2:
             id2pos[x[1]] = n
             self._siftup(n)
 
-    def remove(self, id: int) -> int:
+    def remove(self, id: int) -> _T:
         """O(logn)"""
         heap, id2pos = self.heap, self._id2pos
         pos = id2pos.pop(id)
@@ -167,9 +165,9 @@ class Heap2:
         id2pos[heap[pos][1]] = pos
         res = heap.pop()
         self._siftdown(pos)
-        return res[1]
+        return res[0]
 
-    def pop(self) -> Tuple[int, int]:
+    def pop(self) -> Tuple[_T, int]:
         """return: val, id"""
         heap, id2pos = self.heap, self._id2pos
         res = heap.pop()
@@ -181,7 +179,7 @@ class Heap2:
         self._siftdown(0)
         return res
 
-    def replace(self, x: Tuple[int, int]) -> Tuple[int, int]:
+    def replace(self, x: Tuple[_T, int]) -> Tuple[_T, int]:
         heap, id2pos = self.heap, self._id2pos
         assert len(heap) > 0
         res = heap[0]
@@ -190,9 +188,9 @@ class Heap2:
         self._siftdown(0)
         return res
 
-    def pushpop(self, x: Tuple[int, int]) -> Tuple[int, int]:
+    def pushpop(self, x: Tuple[_T, int]) -> Tuple[_T, int]:
         heap, id2pos = self.heap, self._id2pos
-        if len(heap) == 0 or self._key_func(x, heap[0]):
+        if len(heap) == 0 or self._key_func(x[0], heap[0][0]):
             return x
         #
         res = heap[0]
@@ -201,19 +199,19 @@ class Heap2:
         self._siftdown(0)
         return x
 
-    def top(self) -> Tuple[int, int]:
+    def top(self) -> Tuple[_T, int]:
         """O(1). return: val, id"""
         return self.heap[0]
 
     def __len__(self) -> int:
         return len(self.heap)
 
-    def __getitem__(self, id: int) -> int:
+    def __getitem__(self, id: int) -> _T:
         """O(1)"""
         pos = self._id2pos[id]
         return self.heap[pos][0]
 
-    def __setitem__(self, id: int, val: int) -> None:
+    def __setitem__(self, id: int, val: _T) -> None:
         """O(logn)"""
         self.push((val, id))
 

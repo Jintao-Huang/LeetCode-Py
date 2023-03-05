@@ -15,7 +15,7 @@ def dijkstra(graph: List[Dict[int, int]], s: int) -> List[int]:
     dist[s] = 0
     visited = bytearray(n)
     # 每次探索距离`s点`最近的节点
-    pq = Heap([])
+    pq = Heap[Tuple[int, int]]([])
     pq.push((0, s))
     while len(pq) > 0:
         d, gn = pq.pop()  # graph node
@@ -37,7 +37,7 @@ def dijkstra2(graph: List[Dict[int, int]], s: int) -> List[int]:
     n = len(graph)
     dist = [INF] * n
     dist[s] = 0
-    pq = Heap2()
+    pq = Heap2[int]()
     pq.push((0, s))
     # visited数组可以省略
     while len(pq) > 0:
@@ -71,9 +71,9 @@ def prim(graph: List[Dict[int, int]]) -> int:
     res = 0
     cost = [INF] * n
     # 每次探索距离`已探索点集合`最近的节点
-    pq = Heap([])
+    pq = Heap[Tuple[int, int]]([])
     pq.push((0, 0))
-    # visited数组可以省略, 与cost数组合一.
+    # visited数组可以省略, 使用cost. 
     while len(pq) > 0:
         d, gn = pq.pop()  # graph node
         if cost[gn] == 0:
@@ -94,7 +94,7 @@ def prim2(graph: List[Dict[int, int]]) -> int:
     n = len(graph)
     res = 0
     cost = [INF] * n
-    pq = Heap2()
+    pq = Heap2[int]()
     pq.push((0, 0))
     while len(pq) > 0:
         d, gn = pq.pop()
