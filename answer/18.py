@@ -7,24 +7,26 @@ class Solution:
         nums.sort()
         n = len(nums)
         for i in range(n-3):
-            if nums[i] + nums[i+1]+nums[i+2] + nums[i+3] > target:
+            x = nums[i]
+            if x + nums[i+1]+nums[i+2] + nums[i+3] > target:
                 break
-            if nums[i] + nums[n-3] + nums[n-2] + nums[n-1] < target:
+            if x + nums[n-3] + nums[n-2] + nums[n-1] < target:
                 continue
             #
-            if i > 0 and nums[i-1] == nums[i]:
+            if i > 0 and nums[i-1] == x:
                 continue
             for j in range(i+1, n-2):
-                if nums[i] + nums[j]+nums[j+1] + nums[j+2] > target:
+                y = nums[j]
+                if x+y+nums[j+1] + nums[j+2] > target:
                     break
-                if nums[i] + nums[j] + nums[n-2] + nums[n-1] < target:
+                if x+y+nums[n-2] + nums[n-1] < target:
                     continue
                 #
-                if j > i+1 and nums[j-1] == nums[j]:
+                if j > i+1 and nums[j-1] == y:
                     continue
                 lo, hi = j+1, n-1
-                t = target-nums[i]-nums[j]
-                two_sum(nums, lo, hi, t, res, (nums[i], nums[j]))
+                t = target-x-y
+                two_sum(nums, lo, hi, t, res, (x, y))
         return res
 
 

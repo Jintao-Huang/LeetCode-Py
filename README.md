@@ -5,7 +5,7 @@
 
 
 ## 介绍
-1. `LeetCode-Py`仓库中包含2大内容. 
+1. `LeetCode-Py`仓库中包含2大内容. (**持续更新中**)
    1. 包含大量leetcode(python)题目的解答(将会收集**1k题**以上, 目前处于开发中). 
    2. 算法库: `leetcode-alg`. 
 2. `LeetCode-Py`的**习题解答的风格**是在最优复杂度的前提下, 写出最简洁的代码(**不做过多细节的优化**: 因为不同于c/c++, python容易反向优化). 旨在将最优雅的python代码放入`answer`文件夹内. 
@@ -13,13 +13,13 @@
 
 
 ## 性能和功能
-1. `answer`中time击败: (不使用trick)
+1. `answer`中**time击败**: (不使用trick)
    1. 100%: 1, 16, 18, 146, 167, 2096 
    2. 95%：51, 52, 207, 210, o51
    3. 85%: 4, 15, 208, 307, 1584, 2203
    4. 60%: 
    5. 其他: 
-2. 已有的功能(持续更新中)
+2. 已有的功能: (持续更新中)
    1. 算法: 
       1. array: unique, partition, partition2, merge, merge2, diff, find_kth_smallest, two_sum
       2. graph: dijkstra, dijkstra2, kruskal, prim, prim2, topo_sort
@@ -87,7 +87,7 @@
    1. 变体: 
    2. 离散化: o51
 3. sorted list: o51
-4. 哈希表: 1, 2183
+4. 哈希表: 1, 15, 2183
 5. 链表: 
    1. 前向链表: 2, 19, 21, 23, 24, 25, 2181
    2. 双向循环链表: with OrderedDict

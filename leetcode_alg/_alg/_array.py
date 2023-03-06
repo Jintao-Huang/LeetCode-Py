@@ -25,7 +25,7 @@ def diff(nums: List[int], initial: Optional[int] = None) -> List[int]:
     res = []
     if initial is not None:
         res.append(initial)
-    # 
+    #
     n = len(nums)
     if n == 0:
         return res
