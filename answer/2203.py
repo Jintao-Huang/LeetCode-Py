@@ -21,8 +21,8 @@ class Solution:
         res1 = dijkstra(graph, src1)
         res2 = dijkstra(graph, src2)
         res = INF
-        for i in range(n):
-            res = min(res, res1[i] + res2[i] + res3[i])
+        for r123 in zip(res1, res2, res3):
+            res = min(res, sum(r123))
         return res
 
 
@@ -44,8 +44,8 @@ class Solution2:
         res1 = dijkstra2(graph, src1)
         res2 = dijkstra2(graph, src2)
         res = INF
-        for i in range(n):
-            res = min(res, res1[i] + res2[i] + res3[i])
+        for r123 in zip(res1, res2, res3):
+            res = min(res, sum(r123))
         return res
 
 

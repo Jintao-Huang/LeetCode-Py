@@ -11,6 +11,7 @@ class SimpleSortedList:
     def __init__(self, nums: Optional[List[int]] = None,
                  key: Optional[Callable[[int], int]] = None, need_sort: bool = True) -> None:
         """nums: not const"""
+        assert key is None
         if nums is None:
             nums = []
         self.ssl = nums

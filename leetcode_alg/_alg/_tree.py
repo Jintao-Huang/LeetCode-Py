@@ -9,10 +9,10 @@ from .._lc._lc_ds import TreeNode
 def _find_path(root: TreeNode, dst: int, path: bytearray) -> bool:
     if root.val == dst:
         return True
-    if root.left is not None and _find_path(root.left, dst, path):
+    if root.left and _find_path(root.left, dst, path):
         path.append(ord("L"))
         return True
-    if root.right is not None and _find_path(root.right, dst, path):
+    if root.right and _find_path(root.right, dst, path):
         path.append(ord("R"))
         return True
     return False

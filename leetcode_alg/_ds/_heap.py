@@ -96,10 +96,9 @@ class Heap2(Generic[_T]):
     """增加的功能: 可以通过id, 动态的调整val; 可以通过id, 动态的删除"""
 
     def __init__(self, key: Callable[[_T, _T], bool] = lt) -> None:
+        # max_heap: gt
         self.heap: List[Tuple[_T, int]] = []  # val, id
         self._id2pos: Dict[int, int] = {}  # id->pos
-
-        # max_heap: gt
         self._key_func = key
 
     def _siftup(self, i: int) -> None:

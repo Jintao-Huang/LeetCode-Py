@@ -9,9 +9,9 @@ def unique(nums: List[int]) -> None:
     """nums已有序: inplace"""
     n = len(nums)
     lo = 1  # 将被赋值, 但未被赋值. ignore 0
-    for hi in range(1, n):
-        if nums[hi] != nums[hi-1]:
-            nums[lo] = nums[hi]
+    for hi, x in enumerate(nums[1:n], 1):
+        if x != nums[hi-1]:
+            nums[lo] = x
             lo += 1
     #
     for _ in range(lo, n):

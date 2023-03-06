@@ -6,17 +6,17 @@ class Solution:
         res = INF
         nums.sort()
         n = len(nums)
-        for i in range(n-2):
-            min_x = nums[i] + nums[i+1] + nums[i+2]
+        for i, x in enumerate(nums[:n-2]):
+            min_x = x + nums[i+1] + nums[i+2]
             if min_x >= target and abs(min_x - target) < abs(res - target):
                 res = min_x
                 break
-            max_x = nums[i] + nums[n-2] + nums[n-1]
+            max_x = x + nums[n-2] + nums[n-1]
             if max_x <= target and abs(max_x - target) < abs(res - target):
                 res = max_x
                 continue
             #
-            if i > 0 and nums[i-1] == nums[i]:
+            if i > 0 and nums[i-1] == x:
                 continue
             lo, hi = i+1, n-1
             while lo < hi:
@@ -26,16 +26,16 @@ class Solution:
                 # if hi < n-1 and nums[hi+1] == nums[hi]:
                 #     hi -= 1
                 #     continue
-                x = nums[i] + nums[lo] + nums[hi]
-                if x == target:
-                    return x
+                z = x + nums[lo] + nums[hi]
+                if z == target:
+                    return z
                 #
-                if x < target:
+                if z < target:
                     lo += 1
                 else:
                     hi -= 1
-                if abs(x - target) < abs(res - target):
-                    res = x
+                if abs(z - target) < abs(res - target):
+                    res = z
         return res
 
 

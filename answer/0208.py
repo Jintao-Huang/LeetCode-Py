@@ -11,11 +11,11 @@ class Trie:
 
     def search(self, word: str) -> bool:
         tn = self.trie.search(word)
-        return tn is not None and tn.finish
+        return bool(tn and tn.finish)
 
     def startsWith(self, prefix: str) -> bool:
         tn = self.trie.search(prefix)
-        return tn is not None
+        return bool(tn)
 
 
 if __name__ == "__main__":

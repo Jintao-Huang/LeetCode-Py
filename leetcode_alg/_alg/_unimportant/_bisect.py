@@ -28,10 +28,10 @@ def binary_search(nums: List[int], x: int, lo: int = 0, hi: Optional[int] = None
     hi -= 1
     while lo <= hi:
         mid = (lo+hi) >> 1
-        if nums[mid] == x:
-            return mid
+        if nums[mid] > x:
+            hi = mid - 1
         elif nums[mid] < x:
             lo = mid + 1
         else:
-            hi = mid - 1
+            return mid
     return -1

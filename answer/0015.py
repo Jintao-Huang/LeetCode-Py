@@ -5,12 +5,13 @@ class Solution:
     """recommended"""
 
     def threeSum(self, nums: List[int]) -> List[List[int]]:
+        if len(nums) < 3:
+            return []
         res = []
         nums.sort()
         n = len(nums)
-        for i in range(n-2):
-            x = nums[i]
-            if x + nums[i+1]+nums[i+2] > 0:
+        for i, x in enumerate(nums[:n-2]):
+            if x + nums[i+1] + nums[i+2] > 0:
                 break
             if x + nums[n-2] + nums[n-1] < 0:
                 continue
@@ -30,17 +31,15 @@ class Solution2:
         nums.sort()
         unique(nums)
         n = len(nums)
-        for i in range(n):
-            x = nums[i]
+        for i, x in enumerate(nums):
             if x > 0:
                 break
-            if x + nums[n-1]*2 < 0:
+            if x + 2*nums[n-1] < 0:
                 continue
             if cnt[x] >= 3 and x == 0:
                 res.append([x, x, x])
             #
-            for j in range(i+1, n):
-                y = nums[j]
+            for y in nums[i+1:n]:
                 if cnt[x] >= 2 and 2*x+y == 0:
                     res.append([x, x, y])
                     continue
