@@ -14,14 +14,14 @@
 
 ## 性能和功能
 1. `answer`中time击败: (不使用trick)
-   1. 100%: 146, 2096 
+   1. 100%: 1, 16, 18, 146, 167, 2096 
    2. 95%：51, 52, 207, 210, o51
-   3. 85%: 4, 208, 307, 1584, 2203
+   3. 85%: 4, 15, 208, 307, 1584, 2203
    4. 60%: 
    5. 其他: 
 2. 已有的功能(持续更新中)
    1. 算法: 
-      1. array: unique, partition, partition2, merge, merge2, diff, find_kth_smallest
+      1. array: unique, partition, partition2, merge, merge2, diff, find_kth_smallest, two_sum
       2. graph: dijkstra, dijkstra2, kruskal, prim, prim2, topo_sort
       3. search: lower_bound, upper_bound, n_queens
       4. tree: find_path, find_common_ancestor
@@ -73,7 +73,7 @@
     pip install leetcode-alg -U
     ```
     
-2. 使用: `from leetcode_alg import *`
+2. 使用: `from leetcode_alg import *`, 例子可以查看`answer`文件夹内的解答. 
 
 
 
@@ -131,7 +131,7 @@
    1. \[i..j\]dp: 5
    2. 双向dp: 2167
 8. 双指针: 11
-   1. N数: 15, 16, 18
+   1. N数: 15, 16, 18, 167
 9. 贪心: 11, 12, 2037, 2038, 2182
 10. 位运算: 2166, 
 

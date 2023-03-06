@@ -133,3 +133,21 @@ def find_kth_smallest(nums: List[int], k: int) -> int:
             lo = pivot + 1
         else:
             hi = pivot - 1
+
+
+def two_sum(nums: List[int], lo: int, hi: int, target: int, res: List[List[int]],
+            res_prefix: Tuple[int, ...]):
+    while lo < hi:
+        x = nums[lo] + nums[hi]
+        if x == target:
+            res.append([*res_prefix, nums[lo], nums[hi]])
+            lo += 1
+            hi -= 1
+            while lo < hi and nums[lo-1] == nums[lo]:
+                lo += 1
+            while lo < hi and nums[hi+1] == nums[hi]:
+                hi -= 1
+        elif x < target:
+            lo += 1
+        else:
+            hi -= 1

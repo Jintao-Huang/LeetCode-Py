@@ -6,6 +6,7 @@ __pycache__/
 /dev/
 /_test/
 /answer/_dirty/
+/answer/_slow/
 /.pytest_cache/
 /todo
 /_full/

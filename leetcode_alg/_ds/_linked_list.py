@@ -24,13 +24,15 @@ class LinkedList(Generic[_T]):
                 lln = LinkedListNode(val)
                 self.insert_between(self.tail.prev, lln, self.tail)
 
-    def insert_between(self, node: LinkedListNode[_T], new_node: LinkedListNode[_T],
+    @staticmethod
+    def insert_between(node: LinkedListNode[_T], new_node: LinkedListNode[_T],
                        node_next: LinkedListNode[_T]) -> None:
         """node <-> node_next"""
         node.next, new_node.next = new_node, node_next
         node_next.prev, new_node.prev = new_node, node
 
-    def remove(self, node: LinkedListNode[_T]) -> None:
+    @staticmethod
+    def remove(node: LinkedListNode[_T]) -> None:
         node_prev, node_next = node.prev, node.next
         node_prev.next, node_next.prev = node_next, node_prev
 

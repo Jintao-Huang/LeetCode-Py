@@ -10,20 +10,20 @@ class LRUCache:
         self.od = OrderedDict[int, int]()
 
     def get(self, key: int) -> int:
-        v = -1
         if key in self.od:
             v = self.od[key]
             self.od.move_to_end(key)
-        return v
+            return v
+        return -1
 
     def put(self, key: int, value: int) -> None:
         if key in self.od:
             self.od[key] = value
             self.od.move_to_end(key)
-        else:
-            if len(self.od) == self.capacity:
-                self.od.popitem(last=False)
-            self.od[key] = value
+            return
+        self.od[key] = value
+        if len(self.od) > self.capacity:
+            self.od.popitem(last=False)
 
 
 class LRUCache2:
@@ -32,20 +32,21 @@ class LRUCache2:
         self.od = _OrderedDict[int, int]()
 
     def get(self, key: int) -> int:
-        v = -1
         if key in self.od.dict:
             v = self.od.getitem(key)
             self.od.move_to_end(key)
-        return v
+            return v
+        return -1
 
     def put(self, key: int, value: int) -> None:
         if key in self.od.dict:
             self.od.setitem(key, value)
             self.od.move_to_end(key)
-        else:
-            if len(self.od.dict) == self.capacity:
-                self.od.popitem(last=False)
-            self.od.setitem(key, value)
+            return
+        self.od.setitem(key, value)
+        if len(self.od.dict) > self.capacity:
+            self.od.popitem(last=False)
+
 
 if __name__ == "__main__":
     callable_list = ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
