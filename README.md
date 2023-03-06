@@ -8,12 +8,12 @@
 1. `LeetCode-Py`仓库中包含2大内容. (**持续更新中**)
    1. 包含大量leetcode(python)题目的解答(将会收集**1k题**以上, 目前处于开发中). 
    2. 算法库: `leetcode-alg`. 
-2. `LeetCode-Py`的**习题解答的风格**是在最优复杂度的前提下, 写出最简洁的代码(**不做过多细节的优化**: 因为不同于c/c++, python容易反向优化). 旨在将最优雅的python代码放入`answer`文件夹内. 
+2. `LeetCode-Py`的**习题解答的风格**是在最优复杂度的前提下, 写出最简洁的代码(**不做过多细节的优化**: 因为不同于c/c++, python容易反向优化). 旨在将最优雅的python代码放入`answer/`文件夹内. 
 3. `leetcode-alg`是针对leetcode解题的数据结构和算法库, 其**设计准则**是: 以通用性为核心, 并以最大可能进行性能优化. 
 
 
 ## 性能和功能
-1. `answer`中**time击败**: (不使用trick)
+1. `answer/`中**time击败**: (不使用trick)
    1. 100%: 1, 16, 18, 146, 167, 2096 
    2. 95%：51, 52, 207, 210, o51
    3. 85%: 4, 15, 208, 215, 307, 1584, 2203, o40
@@ -73,7 +73,7 @@
     pip install leetcode-alg -U
     ```
     
-2. 使用: `from leetcode_alg import *`, 例子可以查看`answer`文件夹内的解答. 
+2. 使用: `from leetcode_alg import *`, 例子可以查看`answer/`
 
 
 

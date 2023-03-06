@@ -14,8 +14,7 @@ def reverse(nums: Union[List[int], bytearray]) -> None:
         hi -= 1
 
 
-def euclidean_dist(x: int, y: int, x2: int, y2: int,
-                   square: bool = False) -> float:
+def euclidean_dist(x: int, y: int, x2: int, y2: int, square: bool = False) -> float:
     # 使用math.dist
     d, d2 = x2 - x, y2 - y
     res = d*d + d2*d2

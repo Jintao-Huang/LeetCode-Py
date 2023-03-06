@@ -16,7 +16,7 @@ class Solution:
 
 
 class Solution2:
-    """recommended. 解法同`1.py`"""
+    """faster. 解法同`1.py`"""
 
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         mapper: Dict[int, int] = {}

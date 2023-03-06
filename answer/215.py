@@ -8,7 +8,7 @@ class Solution:
 
 
 class Solution2:
-    """recommended"""
+    """faster"""
 
     def findKthLargest(self, nums: List[int], k: int) -> int:
         n = len(nums)

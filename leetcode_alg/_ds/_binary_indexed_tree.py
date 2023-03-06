@@ -62,7 +62,6 @@ class BinaryIndexedTree(_BITBase):
         return res
 
     def add(self, idx: int, val: int) -> None:
-        """update_func=add"""
         assert 0 <= idx < self.nums_len
         self._add(self.tree, idx+1, val)
 

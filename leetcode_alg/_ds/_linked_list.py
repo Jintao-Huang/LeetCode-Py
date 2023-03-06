@@ -36,11 +36,14 @@ class LinkedList(Generic[_T]):
         node_prev, node_next = node.prev, node.next
         node_prev.next, node_next.prev = node_next, node_prev
 
-    def __repr__(self) -> str:
+    def tolist(self) -> List[_T]:
         res = []
         lln = self.head.next
         tail = self.tail
         while lln is not tail:
             res.append(lln.val)
             lln = lln.next
-        return f"{self.__class__.__name__}({res!r})"
+        return res
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({self.tolist()!r})"

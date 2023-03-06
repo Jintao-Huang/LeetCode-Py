@@ -14,7 +14,6 @@ class Solution:
 
 
 class Solution2:
-
     def reversePairs(self, nums: List[int]) -> int:
         res = 0
         mapper = discretize(nums)

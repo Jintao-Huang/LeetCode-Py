@@ -49,7 +49,7 @@ def find_prefix(it1: Iterable, it2: Iterable) -> int:
 
 
 def partition(nums: List[int], lo: int, hi: int) -> int:
-    """将nums[lo]作为pivot. 将nums中<pivot放其左边, >pivot放其右边(==pivot随意)
+    """将nums[lo]作为pivot. 将nums中<pivot放其左边, >pivot放其右边(==pivot放其右边)
     (算法逻辑更简单). ref: 算法导论"""
     nums[lo], nums[hi] = nums[hi], nums[lo]
     pivot = nums[hi]
@@ -62,7 +62,7 @@ def partition(nums: List[int], lo: int, hi: int) -> int:
 
 
 def partition2(nums: List[int], lo: int, hi: int) -> int:
-    """[lo..hi]"""
+    """[lo..hi]. (==pivot随意)"""
     pivot = nums[lo]
     while lo < hi:
         while True:

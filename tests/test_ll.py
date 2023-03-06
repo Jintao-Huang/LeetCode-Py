@@ -6,17 +6,14 @@ class TestLL(ut.TestCase):
     def test_ll(self):
         res = []
         l = LinkedList([1, 2, 3])
-        l.append(4)
-        l.pop_left()
+        head, tail = l.head, l.tail
+        l.insert_between(tail.prev, LinkedListNode(4), tail)
+        l.remove(head.next)
         res.append(l.tolist())
-        res.append(l[0].val)
-        res.append(l[-1].val)
-        res.append(len(l))
-        l.clear()
-        res.append(l.tolist())
-        res.append(len(l))
+        res.append(head.next.val)
+        res.append(tail.prev.val)
         self.assertTrue(res == [
-            [2, 3, 4], 2, 4, 3, [], 0
+            [2, 3, 4], 2, 4
         ])
 
 

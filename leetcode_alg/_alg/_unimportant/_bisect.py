@@ -21,7 +21,7 @@ def bisect_right(nums: List[int], x: int, lo: int = 0, hi: Optional[int] = None)
 
 
 def binary_search(nums: List[int], x: int, lo: int = 0, hi: Optional[int] = None) -> int:
-    """[lo..hi). 返回的索引是[0..hi-1], 或-1(未找到). 若nums中存在多个x, 则返回任意一个x的索引"""
+    """[lo..hi). 返回的索引是[0..hi-1], 或-1(未找到). 若nums中存在多个x, 则返回任意一个==x的索引"""
     if hi is None:
         hi = len(nums)
     # 

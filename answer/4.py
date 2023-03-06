@@ -2,6 +2,8 @@ from leetcode_alg import *
 
 
 class Solution:
+    """recommended"""
+
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         n = len(nums1)
         m = len(nums2)
@@ -46,12 +48,26 @@ class Solution:
         return (mid_right + mid_left) / 2
 
 
+class Solution2:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        nums1 += nums2
+        nums1.sort()
+        n = len(nums1)
+        mid = n//2
+        if n % 2 == 0:
+            return (nums1[mid-1]+nums1[mid])/2
+        else:
+            return nums1[mid]
+
+
 if __name__ == "__main__":
     nums1 = [1, 2]
     nums2 = [3, 4]
     print(Solution().findMedianSortedArrays(nums1, nums2))
+    print(Solution2().findMedianSortedArrays(nums1, nums2))
 
 if __name__ == "__main__":
     nums1 = [2]
     nums2 = [1, 3]
     print(Solution().findMedianSortedArrays(nums1, nums2))
+    print(Solution2().findMedianSortedArrays(nums1, nums2))

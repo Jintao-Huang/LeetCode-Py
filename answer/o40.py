@@ -17,7 +17,7 @@ class Solution2:
 
 
 class Solution3:
-    """recommended"""
+    """faster"""
     def getLeastNumbers(self, arr: List[int], k: int) -> List[int]:
         arr.sort()
         return arr[:k]
