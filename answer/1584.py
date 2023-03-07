@@ -1,4 +1,5 @@
 from leetcode_alg import *
+from leetcode_alg.ext import manhattan_dist
 
 
 class Solution:

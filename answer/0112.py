@@ -29,15 +29,15 @@ class Solution2:
             return False
         stack = [(root, targetSum)]
         while len(stack) > 0:
-            r, t = stack.pop()
-            t -= r.val
-            if r.left is None and r.right is None and t == 0:
+            tn, t = stack.pop()
+            t -= tn.val
+            if tn.left is None and tn.right is None and t == 0:
                 return True
             #
-            if r.right:
-                stack.append((r.right, t))
-            if r.left:
-                stack.append((r.left, t))
+            if tn.right:
+                stack.append((tn.right, t))
+            if tn.left:
+                stack.append((tn.left, t))
         return False
 
 

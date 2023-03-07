@@ -1,5 +1,5 @@
 from leetcode_alg import *
-from leetcode_alg._ds._unimportant import OrderedDict as _OrderedDict
+from leetcode_alg.ext import OrderedDict as _OrderedDict
 
 
 class LRUCache:

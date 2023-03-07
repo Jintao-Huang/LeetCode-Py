@@ -16,6 +16,10 @@ class TestLL(ut.TestCase):
             [2, 3, 4], 2, 4
         ])
 
+    def test_ll_alg(self):
+        ll = to_linkedlist([1, 2, 3, 4, 5])
+        self.assertTrue(from_linkedlist(reverse_list(ll, None)) == [5, 4, 3, 2, 1])
+
 
 if __name__ == "__main__":
     ut.main()

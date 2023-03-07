@@ -18,7 +18,7 @@ class Solution2:
                 return j
             if j == 0:
                 return i
-            im, jm = i-1, j-1
+            im, jm = i-1, j-1  # minus
             if s1[im] == s2[jm]:
                 return dfs(im, jm)
             #

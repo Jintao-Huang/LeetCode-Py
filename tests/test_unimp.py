@@ -1,4 +1,4 @@
-from leetcode_alg._alg._unimportant import *
+from leetcode_alg.ext import *
 import unittest as ut
 import numpy as np
 import mini_lightning as ml

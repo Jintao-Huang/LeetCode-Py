@@ -5,9 +5,6 @@ __pycache__/
 /leetcode_alg.egg-info/
 /dev/
 /_test/
-/answer/_dirty/
-/answer/_slow/
-/answer/_todo/
 /.pytest_cache/
 /todo
 /_full/

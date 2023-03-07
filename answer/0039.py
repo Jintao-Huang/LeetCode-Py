@@ -40,7 +40,7 @@ class Solution2:
                 if len(dp[c2]) == 0:
                     continue
                 for r in dp[c2]:
-                    rc = r.copy()  # r copy
+                    rc = r.copy()  # res copy
                     rc.append(c)
                     dp[capa].append(rc)
         return dp[target]

@@ -1,6 +1,6 @@
 
 from .._types import *
-from ._lc_ds import *
+from ._lc_ds import ListNode, TreeNode
 from inspect import getmembers, isfunction, ismethod
 import json
 
@@ -16,7 +16,7 @@ def to_linkedlist(_list: List[int]) -> Optional[ListNode]:
 
 def from_linkedlist(ll: Optional[ListNode]) -> List[int]:
     res = []
-    while ll is not None:
+    while ll:
         res.append(ll.val)
         ll = ll.next
     return res
@@ -84,7 +84,7 @@ def call_callable_list(
     mapper = mapper.copy()
     for callable_str, args in zip(callable_list, args_list):
         callable_fc = mapper[callable_str]  # callable function/class
-        r = callable_fc(*args)
+        r = callable_fc(*args)  # res
         if isinstance(callable_fc, type):  # class
             mapper.update(getmembers(r, predicate=lambda obj:
                                      ismethod(obj) or isfunction(obj)))

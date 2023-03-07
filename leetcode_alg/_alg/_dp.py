@@ -32,7 +32,7 @@ def LCS(s1: str, s2: str) -> int:
     n, m = len(s1), len(s2)
     dp = [[0] * (m+1) for _ in range(n+1)]
     for i in range(1, n+1):
-        im = i-1
+        im = i-1  # minus
         for j in range(1, m+1):
             jm = j-1
             if s1[im] == s2[jm]:
@@ -62,7 +62,6 @@ def _decode_LCS2(s1: str, helper: List[List[int]]) -> str:
 def LCS2(s1: str, s2: str) -> Tuple[int, str]:
     """新增功能: 输出LCS. 
     ref: 算法导论"""
-    # -:
     n, m = len(s1), len(s2)
     dp = [[0] * (m+1) for _ in range(n+1)]
     helper = [[0] * (m+1) for _ in range(n+1)]  # 0,1,2
@@ -98,3 +97,48 @@ def edit_distance(s1: str, s2: str) -> int:
             else:
                 dp[i][j] = min(dp[im][j], dp[im][jm], dp[i][jm])+1
     return dp[n][m]
+
+
+def matrix_chain(nums: List[int]) -> int:
+    n = len(nums)
+    dp = [[0] * n for _ in range(n)]
+    for hml in range(2, n):  # hi minus lo
+        for lo in range(n-hml):
+            hi = lo+hml
+            dp[lo][hi] = INF
+            for mid in range(lo+1, hi):
+                dp[lo][hi] = min(dp[lo][hi], dp[lo][mid]+dp[mid][hi]+nums[lo]*nums[mid]*nums[hi])
+    return dp[0][n-1]
+
+
+def _decode_matrix_chain(helper: List[List[int]], lo: int, hi: int, res: bytearray) -> None:
+    if hi-lo == 1:
+        res += f"A{lo}".encode()
+        return
+    #
+    res.append(ord("("))
+    mid = helper[lo][hi]
+    _decode_matrix_chain(helper, lo, mid, res)
+    _decode_matrix_chain(helper, mid, hi, res)
+    res.append(ord(")"))
+
+
+def matrix_chain2(nums: List[int]) -> Tuple[int, str]:
+    """新增功能: 输出chain结合的方式. 
+    ref: 算法导论"""
+    n = len(nums)
+    dp = [[0] * n for _ in range(n)]
+    helper = [[0] * n for _ in range(n)]  # mid: [1..n-2], 和0不冲突.
+    for hml in range(2, n):  # hi minus lo
+        for lo in range(n-hml):
+            hi = lo+hml
+            dp[lo][hi] = INF
+            for mid in range(lo+1, hi):
+                r = dp[lo][mid]+dp[mid][hi]+nums[lo]*nums[mid]*nums[hi]  # res
+                if r < dp[lo][hi]:
+                    dp[lo][hi] = r
+                    helper[lo][hi] = mid
+    res = bytearray()
+    _decode_matrix_chain(helper, 0, n-1, res)
+    return dp[0][n-1], res.decode()
+

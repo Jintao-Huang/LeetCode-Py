@@ -1,6 +1,6 @@
 
 from leetcode_alg import *
-from leetcode_alg._alg._unimportant import binary_search
+from leetcode_alg.ext import binary_search
 
 
 class Solution:

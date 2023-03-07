@@ -3,7 +3,8 @@ from leetcode_alg import *
 
 
 class Solution:
-    """recommended"""
+    """recommended. 标准做法"""
+
     def minimumWeight(self, n: int, edges: List[List[int]], src1: int, src2: int, dest: int) -> int:
         graph: List[Dict[int, int]] = [{} for _ in range(n)]
         graph_r: List[Dict[int, int]] = [{} for _ in range(n)]
@@ -27,6 +28,31 @@ class Solution:
 
 
 class Solution2:
+    """faster. 稀疏图优化"""
+
+    def minimumWeight(self, n: int, edges: List[List[int]], src1: int, src2: int, dest: int) -> int:
+        graph: List[Dict[int, int]] = [{} for _ in range(n)]
+        graph_r: List[Dict[int, int]] = [{} for _ in range(n)]
+        for e in edges:
+            gn, to, val = e
+            if to in graph[gn]:
+                graph[gn][to] = min(graph[gn][to], val)  # 重边
+                graph_r[to][gn] = min(graph_r[to][gn], val)
+            else:
+                graph[gn][to] = val
+                graph_r[to][gn] = val
+        res3 = dijkstra3(graph_r, dest)
+        if res3[src1] == INF or res3[src2] == INF:
+            return -1
+        res1 = dijkstra3(graph, src1)
+        res2 = dijkstra3(graph, src2)
+        res = INF
+        for r123 in zip(res1, res2, res3):
+            res = min(res, sum(r123))
+        return res
+
+
+class Solution3:
     def minimumWeight(self, n: int, edges: List[List[int]], src1: int, src2: int, dest: int) -> int:
         graph: List[Dict[int, int]] = [{} for _ in range(n)]
         graph_r: List[Dict[int, int]] = [{} for _ in range(n)]
@@ -57,3 +83,4 @@ if __name__ == "__main__":
     dest = 5
     print(Solution().minimumWeight(n, edges, src1, src2, dest))
     print(Solution2().minimumWeight(n, edges, src1, src2, dest))
+    print(Solution3().minimumWeight(n, edges, src1, src2, dest))

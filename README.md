@@ -14,20 +14,22 @@
 
 ## 性能和功能
 1. `answer/`中**time击败**: (不使用trick)
-   1. 100%: 1, 16, 18, 39, 72, 146, 167, 300, 354, 416, 1143, 2096 
-   2. 95%：2, 51, 52, 112, 113, 124, 153, 207, 210, 322, 454, 704, 875, o51
-   3. 85%: 4, 15, 208, 215, 307, 1584, 2203, o40
+   1. 100%: 1, 16, 18, 39, 72, 146, 167, 300, 354, 416, 518, 1143, 2096, 2203
+   2. 95%: 2, 51, 52, 112, 113, 124, 153, 204, 207, 210, 322, 454, 704, 875, o51
+   3. 85%: 4, 15, 19, 92, 208, 215, 307, 876, 1584, o40
    4. 60%: 
    5. 其他: 
 2. 已有的功能: (持续更新中)
    1. 算法: 
       1. array: unique, partition, partition2, merge, merge2, diff, find_kth_smallest, two_sum
-      2. dp: LIS, LIS2, LCS, LCS2, edit_distance
-      3. graph: dijkstra, dijkstra2, kruskal, prim, prim2, topo_sort
+      2. dp: LIS, LIS2, LCS, LCS2, edit_distance, matrix_chain, matrix_chain2
+      3. graph: dijkstra, dijkstra2, dijkstra3, kruskal, prim, prim2, topo_sort
       4. knapsack: knapsack, knapsackV, knapsack_C, knapsackV_C
-      5. search: lower_bound, upper_bound, n_queens
-      6. tree: find_path, find_common_ancestor
-      7. unimportant: 
+      5. linkedlist: reverse_list, find_mid_node, find_last_kth_node
+      6. math: fast_pow, is_prime, find_primes
+      7. search: lower_bound, upper_bound, n_queens
+      8. tree: find_path, find_common_ancestor
+      9. unimportant: 
          1. array: reverse, euclidean_dist, manhattan_dist, prefix_sum
          2. bisect: bisect_left, bisect_right, binary_search
          3. math: gcd, lcm
@@ -49,16 +51,12 @@
    
 3. todo
    1. 算法: 
-      1. dp: matrix_chain, matrix_chain2
-      2. graph: Dinic, dinic, hungarian
-      3. knapsack: kC_full_cnt
-      4. linkedlist: find_mid_node, reverse_list, find_last_nth_node
-      5. math: fast_pow, find_prime_nums
-      6. monotone_deque: next_k_max, prev_k_max, next_k_min, next_ge_k_len, prev_le_k_len
-      7. monotone_stack: next_gt, prev_gt, next_lt, prev_lt, next_ge, next_gt2, next_ge_prev_gt, next_ge_min, largest_rect
-      8. string_op: string_add, string_mul
-      9. string: kmp, kmp2, is_palindromic
-      10. tree: bst_min, bst_max, preorder_traversal, inorder_traversal, postorder_traversal
+      1. graph: Dinic, dinic, hungarian
+      2. monotone_deque: next_k_max, prev_k_max, next_k_min, next_ge_k_len, prev_le_k_len
+      3. monotone_stack: next_gt, prev_gt, next_lt, prev_lt, next_ge, next_gt2, next_ge_prev_gt, next_ge_min, largest_rect
+      4. string_op: string_add, string_mul
+      5. string: kmp, kmp2, 
+      6. tree: bst_min, bst_max
    2. 数据结构: 
       1. string_hasher: StringHasher
       2. extension: BBST, Huffman, RBTree
@@ -92,7 +90,7 @@
 4. 哈希表: 1143, 2183, 416
    1. N数: 1, 15, 454
 5. 链表: 
-   1. 前向链表: 2, 19, 21, 23, 24, 25, 2181
+   1. 前向链表: 2, 19, 21, 23, 24, 25, 92, 876, 2181
    2. 双向循环链表: OrderedDict
 6. 单调栈/队列
    1. 单调栈: 
@@ -144,7 +142,7 @@
    2. nums\[..i\]: 300
    3. s\[..i\], s\[..j\]: 72, 1143
    4. 双dp: 2167
-   5. 背包: 39, 322, 416
+   5. 背包: 39, 322, 416, 518
 7. 双指针: 11
    1. N数: 15, 16, 18, 167
 8. 贪心: 11, 12, 2037, 2038, 2182
@@ -171,7 +169,7 @@
 6. 随机算法: 215, o40, quick_sort
 7. 数学: 
    1. gcd: 2183
-   2. 质数: 
+   2. 质数: 204
 8. 日期: 
 
 

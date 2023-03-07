@@ -12,7 +12,7 @@ def decode_n_queens(res_raw: List[List[int]]) -> List[List[str]]:
     res = []
     #
     for rr in res_raw:
-        r = []
+        r = []  # res
         for i in rr:
             line[i] = ord_Q
             r.append(line.decode())

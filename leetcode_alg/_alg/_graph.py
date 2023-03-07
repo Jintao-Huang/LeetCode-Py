@@ -33,7 +33,7 @@ def dijkstra(graph: List[Dict[int, int]], s: int) -> List[int]:
 
 def dijkstra2(graph: List[Dict[int, int]], s: int) -> List[int]:
     """use heap2. 令heap2中不存在冗余的gn(heap2是py实现, 不是C实现). 
-    优点: C++实现时速度更快."""
+    优点: C++实现时, 密集图时速度更快, 节约内存."""
     n = len(graph)
     dist = [INF] * n
     dist[s] = 0
@@ -48,6 +48,31 @@ def dijkstra2(graph: List[Dict[int, int]], s: int) -> List[int]:
                 continue
             dist[to] = new_d
             pq.push((new_d, to))
+    return dist
+
+
+def dijkstra3(graph: List[Dict[int, int]], s: int) -> List[int]:
+    """类似于bfs实现, 优点: 在稀疏图时(|E|≈|V|)跑的很快
+    不同于标准bfs. visited的位置在dq.popleft后, 而不是在dq.append前. 
+    """
+    n = len(graph)
+    dist = [INF] * n
+    dist[s] = 0
+    visited = bytearray(n)
+    dq = Deque[int]([s])
+    #
+    while len(dq) > 0:
+        gn = dq.popleft()
+        if visited[gn]:
+            continue
+        visited[gn] = False
+        d = dist[gn]
+        for to, d2 in graph[gn].items():
+            new_d = d + d2
+            if dist[to] <= new_d:
+                continue
+            dist[to] = new_d
+            dq.append(to)
     return dist
 
 
@@ -73,7 +98,7 @@ def prim(graph: List[Dict[int, int]]) -> int:
     # 每次探索距离`已探索点集合`最近的节点
     pq = Heap[Tuple[int, int]]([])
     pq.push((0, 0))
-    # visited数组可以省略, 使用cost. 
+    # visited数组可以省略, 使用cost.
     while len(pq) > 0:
         d, gn = pq.pop()  # graph node
         if cost[gn] == 0:
@@ -90,7 +115,7 @@ def prim(graph: List[Dict[int, int]]) -> int:
 
 def prim2(graph: List[Dict[int, int]]) -> int:
     """use heap2. 令heap2中不存在冗余的gn(heap2是py实现, 不是C实现). 
-    优点: C++实现时速度更快."""
+    优点: C++实现时, 密集图时速度更快, 节约内存."""
     n = len(graph)
     res = 0
     cost = [INF] * n
@@ -116,11 +141,11 @@ def topo_sort(graph: List[List[int]]) -> List[int]:
     for gn_list in graph:  # graph node
         for gn in gn_list:
             in_degree[gn] += 1
-    # 
+    #
     for i, in_d in enumerate(in_degree):
         if in_d == 0:
             res.append(i)
-    # 
+    #
     i = 0
     while i < len(res):
         gn = res[i]

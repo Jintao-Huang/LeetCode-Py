@@ -41,7 +41,6 @@ class Solution3:
     """recommended"""
 
     def canPartition(self, nums: List[int]) -> bool:
-        n = len(nums)
         s = sum(nums)
         if s % 2 == 1:
             return False
