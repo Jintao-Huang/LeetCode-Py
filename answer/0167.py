@@ -21,9 +21,9 @@ class Solution2:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         mapper: Dict[int, int] = {}
         for i, x in enumerate(numbers):
-            tsx = target - x  # target sub x
-            if tsx in mapper:
-                return [mapper[tsx]+1, i+1]
+            tmx = target - x  # target minus x
+            if tmx in mapper:
+                return [mapper[tmx]+1, i+1]
             mapper[x] = i
         #
         return []

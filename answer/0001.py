@@ -4,9 +4,9 @@ class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         mapper: Dict[int, int] = {}
         for i, x in enumerate(nums):
-            tsx = target - x  # target sub x
-            if tsx in mapper:
-                return [mapper[tsx], i]
+            tmx = target - x  # target minus x
+            if tmx in mapper:
+                return [mapper[tmx], i]
             mapper[x] = i
         # 
         return []

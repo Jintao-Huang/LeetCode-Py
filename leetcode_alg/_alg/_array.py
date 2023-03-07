@@ -103,9 +103,9 @@ def merge(nums: List[int], lo: int, mid: int, hi: int) -> None:
 def merge2(nums: List[int], lo: int, mid: int, hi: int) -> None:
     """[lo..mid], [mid+1,hi]"""
     helper = nums[lo:mid+1].copy()
-    msl = mid-lo  # mid sub lo
+    mml = mid-lo  # mid minus lo
     i, j, k = mid+1, 0, lo
-    while i <= hi and j <= msl:
+    while i <= hi and j <= mml:
         if nums[i] <= helper[j]:
             nums[k] = nums[i]
             i += 1
@@ -114,7 +114,7 @@ def merge2(nums: List[int], lo: int, mid: int, hi: int) -> None:
             j += 1
         k += 1
     #
-    while j <= msl:
+    while j <= mml:
         nums[k] = helper[j]
         j += 1
         k += 1
