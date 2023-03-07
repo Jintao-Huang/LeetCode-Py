@@ -10,7 +10,7 @@ from math import (  # C
 )
 from random import randint
 from functools import partial, cache, lru_cache, cmp_to_key, reduce  # C
-from itertools import accumulate  # C
+from itertools import accumulate, chain  # C
 # from collections import deque, namedtuple, defaultdict, Counter  # use typing
 from copy import copy, deepcopy  # C
 from typing import (

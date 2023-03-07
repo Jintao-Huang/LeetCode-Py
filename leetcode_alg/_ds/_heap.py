@@ -119,10 +119,7 @@ class Heap2(Generic[_T]):
         heap, id2pos = self.heap, self._id2pos
         n = len(heap)
         x0 = heap[i]
-        while True:
-            ci = (i << 1)+1
-            if ci >= n:
-                break
+        while (ci := (i << 1)+1)<n:
             if ci+1 < n and self._key_func(heap[ci+1][0], heap[ci][0]):
                 ci += 1
             cx = heap[ci]

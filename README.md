@@ -14,18 +14,20 @@
 
 ## 性能和功能
 1. `answer/`中**time击败**: (不使用trick)
-   1. 100%: 1, 16, 18, 146, 167, 2096 
-   2. 95%：2, 51, 52, 112, 113, 124, 153, 207, 210, 454, 704, 875, o51
+   1. 100%: 1, 16, 18, 39, 72, 146, 167, 300, 354, 416, 1143, 2096 
+   2. 95%：2, 51, 52, 112, 113, 124, 153, 207, 210, 322, 454, 704, 875, o51
    3. 85%: 4, 15, 208, 215, 307, 1584, 2203, o40
    4. 60%: 
    5. 其他: 
 2. 已有的功能: (持续更新中)
    1. 算法: 
       1. array: unique, partition, partition2, merge, merge2, diff, find_kth_smallest, two_sum
-      2. graph: dijkstra, dijkstra2, kruskal, prim, prim2, topo_sort
-      3. search: lower_bound, upper_bound, n_queens
-      4. tree: find_path, find_common_ancestor
-      5. unimportant: 
+      2. dp: LIS, LIS2, LCS, LCS2, edit_distance
+      3. graph: dijkstra, dijkstra2, kruskal, prim, prim2, topo_sort
+      4. knapsack: knapsack, knapsackV, knapsack_C, knapsackV_C
+      5. search: lower_bound, upper_bound, n_queens
+      6. tree: find_path, find_common_ancestor
+      7. unimportant: 
          1. array: reverse, euclidean_dist, manhattan_dist, prefix_sum
          2. bisect: bisect_left, bisect_right, binary_search
          3. math: gcd, lcm
@@ -47,9 +49,9 @@
    
 3. todo
    1. 算法: 
-      1. dp: LIS, LIS2, LCS, LCS2, edit_distance, matrix_chain, matrix_chain2
+      1. dp: matrix_chain, matrix_chain2
       2. graph: Dinic, dinic, hungarian
-      3. knapsack: k01, k01_full_max, k01_full_min, kC, kC_full_max, kC_full_min, kC2, kC_full_max2, kC_full_min2, kC_full_cnt
+      3. knapsack: kC_full_cnt
       4. linkedlist: find_mid_node, reverse_list, find_last_nth_node
       5. math: fast_pow, find_prime_nums
       6. monotone_deque: next_k_max, prev_k_max, next_k_min, next_ge_k_len, prev_le_k_len
@@ -87,7 +89,7 @@
    1. 变体: 
    2. 离散化: o51
 3. sorted list: o51
-4. 哈希表: 2183
+4. 哈希表: 1143, 2183, 416
    1. N数: 1, 15, 454
 5. 链表: 
    1. 前向链表: 2, 19, 21, 23, 24, 25, 2181
@@ -111,32 +113,42 @@
 ### 算法
 1. 分治法: 
    1. 2路: 常见2路递归(merge sort, quick_sort, 树的dfs等), 23
-2. 二分查找: 4, 153, 704, 875
+2. 二分查找: 
+   1. 自己设计cond: 
+      1. lower_bound: 4, 153, 875
+      2. upper_bound: 
+   2. 直接调用bisect: 704
+   3. LIS(最长递增子串): 300, 354, 1143
 3. 滑动窗口: 3
-4. 图的搜索:
-   1. 回溯: 17, 22, 51, 52
-   2. dfs:
-   3. bfs: 
-5. 树的搜索
-   1. 回溯: 113
-   2. dfs: 112, 124
-      1. 公共祖先: 2096
-      2. 递归模式dfs: 112
-   3. bfs: 
-6. 图算法: 
+4. 搜索:
+   1. 链: 
+      1. 回溯: 17, 22, 39, 51, 52
+   2. 树
+      1. 回溯: 113
+      2. dfs: 112, 124
+         1. 公共祖先: 2096
+         2. 递归模式dfs: 112
+      3. bfs: 
+   3. 图: 
+      1. dfs:
+      2. bfs: 
+5. 图算法: 
    1. dijkstra: 2203(重边的处理)
    2. kruskal(稀疏图): 1584
    3. prim(稠密图): 1584
    4. dinic: 
    5. 匈牙利算法: 
    6. 拓扑排序: 207, 210
-7. DP
-   1. \[i..j\]dp: 5
-   2. 双向dp: 2167
-8. 双指针: 11
+6. DP(or memo-dfs)
+   1. nums\[i..j\]dp: 5
+   2. nums\[..i\]dp: 300
+   3. s\[..i\], s\[..j\]: 72, 1143
+   4. 双向对撞dp: 2167
+   5. 背包: 39, 322, 416
+7. 双指针: 11
    1. N数: 15, 16, 18, 167
-9. 贪心: 11, 12, 2037, 2038, 2182
-10. 位运算: 2166, 
+8. 贪心: 11, 12, 2037, 2038, 2182
+9. 位运算: 2166, 
 
 
 

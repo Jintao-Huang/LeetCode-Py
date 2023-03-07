@@ -4,7 +4,7 @@ from leetcode_alg._alg._unimportant import binary_search
 
 
 class Solution:
-    """recommended"""
+    """faster"""
 
     def search(self, nums: List[int], target: int) -> int:
         idx = bisect_left(nums, target)

@@ -31,10 +31,7 @@ def merge_sort(nums: List[int], lo: int, hi: int) -> None:
 def _siftdown_max(heap: List[int], i: int, hi: int) -> None:
     """下滤. 增加了hi参数[0..i..hi]"""
     x0 = heap[i]
-    while True:
-        ci = (i << 1)+1
-        if ci > hi:
-            break
+    while (ci:=(i<<1)+1)<= hi:
         if ci+1 <= hi and heap[ci+1] > heap[ci]:
             ci += 1
         cx = heap[ci]
