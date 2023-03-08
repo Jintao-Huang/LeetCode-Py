@@ -167,7 +167,7 @@ class Dinic:
         en = len(self.edges)
         self.rg[from_].append(en)
         self.rg[to].append(en+1)
-        self.edges += [(to, val), (from_, val)]
+        self.edges += [(to, val), (from_, 0)]
 
     def _bfs(self, s: int, t: int) -> List[int]:
         # start, target
@@ -208,6 +208,8 @@ class Dinic:
             idxs[s] += 1
             to, val = self.edges[e_idx]
             if to - s == 0:  # 一定满足 >= 0
+                continue
+            if val == 0:
                 continue
             f = self._dfs(to, t, min(val, flow), level, idxs)
             if f == 0:
