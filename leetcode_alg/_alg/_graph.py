@@ -53,19 +53,15 @@ def dijkstra2(graph: List[Dict[int, int]], s: int) -> List[int]:
 
 def dijkstra3(graph: List[Dict[int, int]], s: int) -> List[int]:
     """类似于bfs实现, 优点: 在稀疏图时(|E|≈|V|)跑的很快
-    不同于标准bfs. visited的位置在dq.popleft后, 而不是在dq.append前. 
+    不同于标准bfs. 这里不能设计visited数组. 使用dist数组充当weak visited的功能
     """
     n = len(graph)
     dist = [INF] * n
     dist[s] = 0
-    visited = bytearray(n)
     dq = Deque[int]([s])
-    #
+    # 
     while len(dq) > 0:
         gn = dq.popleft()
-        if visited[gn]:
-            continue
-        visited[gn] = False
         d = dist[gn]
         for to, d2 in graph[gn].items():
             new_d = d + d2

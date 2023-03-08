@@ -73,7 +73,12 @@
     pip install leetcode-alg -U
     ```
     
-2. 使用: `from leetcode_alg import *`, 例子可以查看`answer/`
+2. 使用: 例子可以查看`answer/`
+   ```python
+   from leetcode_alg import *
+   # if you want to import additional features
+   from leetcode_alg.ext import *
+   ```
 
 
 

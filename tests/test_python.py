@@ -1,5 +1,6 @@
 
-from libs import *
+from leetcode_alg import *
+import mini_lightning as ml
 
 
 def func(l: List[int]) -> None:

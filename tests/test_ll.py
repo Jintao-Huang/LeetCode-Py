@@ -7,7 +7,7 @@ class TestLL(ut.TestCase):
         res = []
         l = LinkedList([1, 2, 3])
         head, tail = l.head, l.tail
-        l.insert_between(tail.prev, LinkedListNode(4), tail)
+        l.replace_between(tail.prev, LinkedListNode(4), tail)
         l.remove(head.next)
         res.append(l.tolist())
         res.append(head.next.val)

@@ -22,14 +22,14 @@ class LinkedList(Generic[_T]):
         if nums is not None:
             for val in nums:
                 lln = LinkedListNode(val)
-                self.insert_between(self.tail.prev, lln, self.tail)
+                self.replace_between(self.tail.prev, lln, self.tail)
 
     @staticmethod
-    def insert_between(node: LinkedListNode[_T], new_node: LinkedListNode[_T],
-                       node_next: LinkedListNode[_T]) -> None:
-        """node <-> node_next"""
-        node.next, new_node.next = new_node, node_next
-        node_next.prev, new_node.prev = new_node, node
+    def replace_between(node: LinkedListNode[_T], new_node: LinkedListNode[_T],
+                       node2: LinkedListNode[_T]) -> None:
+        """node <-...-> node2"""
+        node.next, new_node.next = new_node, node2
+        node2.prev, new_node.prev = new_node, node
 
     @staticmethod
     def remove(node: LinkedListNode[_T]) -> None:

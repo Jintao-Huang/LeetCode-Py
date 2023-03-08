@@ -33,7 +33,7 @@ class OrderedDict(Generic[_K, _V]):
         else:
             n1 = self.ll.head
             n2 = n1.next
-        self.ll.insert_between(n1, lln, n2)
+        self.ll.replace_between(n1, lln, n2)
 
     def popitem(self, last: bool = True):
         if last:
@@ -56,7 +56,7 @@ class OrderedDict(Generic[_K, _V]):
         else:
             lln = LinkedListNode((k, v))
             tail = self.ll.tail
-            self.ll.insert_between(tail.prev, lln, tail)
+            self.ll.replace_between(tail.prev, lln, tail)
             self.dict[k] = lln
 
     def __repr__(self) -> str:
