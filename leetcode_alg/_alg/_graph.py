@@ -8,7 +8,7 @@ from .._ds._union_find import UnionFind
 
 
 def dijkstra(graph: List[Dict[int, int]], s: int) -> List[int]:
-    """graph结合了邻接矩阵和邻接表的优点. graph[from_][to]->distant. O(1)
+    """graph结合了邻接矩阵和邻接表的优点. graph[from_][to]->两节点的距离. O(1)
     无向图存两条边"""
     n = len(graph)
     dist = [INF] * n
@@ -59,7 +59,7 @@ def dijkstra3(graph: List[Dict[int, int]], s: int) -> List[int]:
     dist = [INF] * n
     dist[s] = 0
     dq = Deque[int]([s])
-    # 
+    #
     while len(dq) > 0:
         gn = dq.popleft()
         d = dist[gn]
@@ -130,7 +130,7 @@ def prim2(graph: List[Dict[int, int]]) -> int:
 
 
 def topo_sort(graph: List[List[int]]) -> List[int]:
-    """graph: 邻接表实现"""
+    """graph: 邻接表实现. 有向图"""
     n = len(graph)
     res = []
     in_degree = [0] * n  # 入度
@@ -152,4 +152,108 @@ def topo_sort(graph: List[List[int]]) -> List[int]:
                 res.append(gn2)
     if len(res) != n:
         res = []
+    return res
+
+
+class Dinic:
+    """最大流"""
+
+    def __init__(self, n: int) -> None:
+        # 存正反边. 取反边: i^1.
+        self.edges: List[Tuple[int, int]] = []  # [to, val]
+        self.rg = [[] for _ in range(n)]  # residual graph. 存edge的索引
+
+    def add_edge(self, from_: int, to: int, val: int) -> None:
+        en = len(self.edges)
+        self.rg[from_].append(en)
+        self.rg[to].append(en+1)
+        self.edges += [(to, val), (from_, val)]
+
+    def _bfs(self, s: int, t: int) -> List[int]:
+        # start, target
+        n = len(self.rg)
+        level = [-1] * n
+        visited = bytearray(n)
+        visited[s] = True
+        dq = Deque[int]([s])
+        dist = 0  # 距离
+        while len(dq) > 0:
+            dq_len = len(dq)
+            for _ in range(dq_len):
+                gn = dq.popleft()
+                level[gn] = dist
+                if gn == t:
+                    break
+                for idx in self.rg[gn]:
+                    e = self.edges[idx]
+                    to, val = e
+                    if val == 0:  # val一定满足>=0
+                        continue
+                    if visited[to]:
+                        continue
+                    visited[to] = True
+                    dq.append(to)
+            dist += 1
+        return level
+
+    def _dfs(self, s: int, t: int, flow: int, level: List[int], idxs: List[int]) -> int:
+        """
+        idxs: 当前弧优化, 避免回溯. e.g. a->b,c->d
+        """
+        if s == t:
+            return flow
+        flow0 = flow
+        es = self.rg[s]
+        for e_idx in es[idxs[s]:]:
+            idxs[s] += 1
+            to, val = self.edges[e_idx]
+            if to - s == 0:  # 一定满足 >= 0
+                continue
+            f = self._dfs(to, t, min(val, flow), level, idxs)
+            if f == 0:
+                continue
+            #
+            from_, val2 = self.edges[e_idx ^ 1]
+            self.edges[e_idx] = (to, val-f)
+            self.edges[e_idx ^ 1] = (from_, val2+f)
+            flow -= f
+            if flow == 0:
+                break
+        return flow0 - flow
+
+    def run(self, s: int, t: int) -> int:
+        res = 0
+        n = len(self.rg)
+        while True:
+            level = self._bfs(s, t)
+            if level[t] == -1:
+                break
+            idxs = [0] * n
+            res += self._dfs(s, t, INF, level, idxs)
+        return res
+
+
+def _match(graph: List[List[int]], gn: int, visited: bytearray, matching: List[int]) -> bool:
+    """匹配gn节点"""
+    if visited[gn]:
+        return False
+    visited[gn] = True
+    for gn2 in graph[gn]:
+        gn3 = matching[gn2]
+        if gn3 == -1 or _match(graph, gn3, visited, matching):
+            matching[gn2] = gn
+            return True
+    return False
+
+
+def hungarian(graph: List[List[int]]) -> int:
+    """graph: 邻接表实现. 无向图存单边即可(部1->部2)
+    最大匹配=最小点覆盖=n-最大独立集"""
+    n = len(graph)
+    res = 0
+    matching = [-1] * n  # 匹配情况. (只存部2->部1的边)
+    for gn in range(n):
+        visited = bytearray(n)  # (部1的visited)
+        if _match(graph, gn, visited, matching):
+            res += 1
     return res

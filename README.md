@@ -14,7 +14,7 @@
 
 ## 性能和功能
 1. `answer/`中**time击败**: (不使用trick)
-   1. 100%: 1, 16, 18, 39, 72, 146, 167, 300, 354, 416, 518, 1143, 2096, 2203
+   1. 100%: 1, 16, 18, 39, 72, 146, 167, 300, 354, 416, 518, 1143, 1349, 2096, 2203
    2. 95%: 2, 51, 52, 112, 113, 124, 153, 204, 207, 210, 322, 454, 704, 875, o51
    3. 85%: 4, 15, 19, 92, 208, 215, 307, 876, 1584, o40
    4. 60%: 
@@ -23,7 +23,7 @@
    1. 算法: 
       1. array: unique, partition, partition2, merge, merge2, diff, find_kth_smallest, two_sum
       2. dp: LIS, LIS2, LCS, LCS2, edit_distance, matrix_chain, matrix_chain2
-      3. graph: dijkstra, dijkstra2, dijkstra3, kruskal, prim, prim2, topo_sort
+      3. graph: dijkstra, dijkstra2, dijkstra3, kruskal, prim, prim2, topo_sort, Dinic, hungarian
       4. knapsack: knapsack, knapsackV, knapsack_C, knapsackV_C
       5. linkedlist: reverse_list, find_mid_node, find_last_kth_node
       6. math: fast_pow, is_prime, find_primes
@@ -48,15 +48,13 @@
    3. LeetCode Tools:
       1. 数据结构: ListNode, TreeNode
       2. tools: to_linkedlist, from_linkedlist, to_tree, from_tree, call_callable_list
-   
 3. todo
    1. 算法: 
-      1. graph: Dinic, dinic, hungarian
-      2. monotone_deque: next_k_max, prev_k_max, next_k_min, next_ge_k_len, prev_le_k_len
-      3. monotone_stack: next_gt, prev_gt, next_lt, prev_lt, next_ge, next_gt2, next_ge_prev_gt, next_ge_min, largest_rect
-      4. string_op: string_add, string_mul
-      5. string: kmp, kmp2, 
-      6. tree: bst_min, bst_max
+      1. monotone_deque: next_k_max, prev_k_max, next_k_min, next_ge_k_len, prev_le_k_len
+      2. monotone_stack: next_gt, prev_gt, next_lt, prev_lt, next_ge, next_gt2, next_ge_prev_gt, next_ge_min, largest_rect
+      3. string_op: string_add, string_mul
+      4. string: kmp, kmp2, 
+      5. tree: bst_min, bst_max
    2. 数据结构: 
       1. string_hasher: StringHasher
       2. extension: BBST, Huffman, RBTree
@@ -139,8 +137,8 @@
    1. dijkstra: 2203(重边的处理)
    2. kruskal(稀疏图): 1584
    3. prim(稠密图): 1584
-   4. dinic: 
-   5. 匈牙利算法: 
+   4. dinic: 1349
+   5. 匈牙利算法: 1349
    6. 拓扑排序: 207, 210
 6. DP(or memo-dfs)
    1. nums\[i..j\]: 5
