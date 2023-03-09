@@ -28,7 +28,7 @@
       5. linkedlist: reverse_list, find_mid_node, find_last_kth_node
       6. math: fast_pow, is_prime, find_primes
       7. search: lower_bound, upper_bound, n_queens
-      8. string: kmp
+      8. string: build_nextval, kmp
       9. tree: find_path, find_common_ancestor
       10. unimportant: 
           1. array: reverse, euclidean_dist, manhattan_dist, prefix_sum

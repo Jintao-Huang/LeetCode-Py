@@ -10,16 +10,18 @@ def build_nextval(p: str) -> List[int]:
     n = len(p)
     if n == 0:
         return []
-    nextval = [0]
+    nextval = [0]  # 省略-1
     j = 0
     for c in p[1:]:
+        # nextval
+        nv = nextval[-1]
+        if nv > 0 and c == p[nv]:
+            nextval[-1] = nextval[nv-1]
+        # 
         while j > 0 and p[j] != c:
             j = nextval[j-1]
         if p[j] == c:
             j += 1
-        # nextval
-        if c == p[nextval[-1]]:
-            nextval[-1] = nextval[nextval[-1]-1]
         nextval.append(j)
     return nextval
 
