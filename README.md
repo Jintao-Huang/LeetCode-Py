@@ -15,7 +15,7 @@
 ## 性能和功能
 1. `answer/`中**time击败**: (不使用trick)
    1. 100%: 1, 16, 18, 39, 72, 146, 167, 300, 354, 416, 518, 1143, 1349, 2096, 2203
-   2. 95%: 2, 51, 52, 112, 113, 124, 153, 204, 207, 210, 322, 454, 704, 875, o51
+   2. 95%: 2, 28, 51, 52, 112, 113, 124, 153, 204, 207, 210, 322, 454, 704, 875, o51
    3. 85%: 4, 15, 19, 92, 208, 215, 307, 876, 1584, o40
    4. 60%: 
    5. 其他: 
@@ -28,13 +28,14 @@
       5. linkedlist: reverse_list, find_mid_node, find_last_kth_node
       6. math: fast_pow, is_prime, find_primes
       7. search: lower_bound, upper_bound, n_queens
-      8. tree: find_path, find_common_ancestor
-      9. unimportant: 
-         1. array: reverse, euclidean_dist, manhattan_dist, prefix_sum
-         2. bisect: bisect_left, bisect_right, binary_search
-         3. math: gcd, lcm
-         4. random: randperm
-         5. sort: quick_sort, merge_sort, heap_sort, heap_sort2
+      8. string: kmp
+      9. tree: find_path, find_common_ancestor
+      10. unimportant: 
+          1. array: reverse, euclidean_dist, manhattan_dist, prefix_sum
+          2. bisect: bisect_left, bisect_right, binary_search
+          3. math: gcd, lcm
+          4. random: randperm
+          5. sort: quick_sort, merge_sort, heap_sort, heap_sort2
    2. 数据结构:
       1. binary_indexed_tree: BinaryIndexedTree, BinaryIndexedTree2
       2. heap: Heap, Heap2
@@ -53,8 +54,7 @@
       1. monotone_deque: next_k_max, prev_k_max, next_k_min, next_ge_k_len, prev_le_k_len
       2. monotone_stack: next_gt, prev_gt, next_lt, prev_lt, next_ge, next_gt2, next_ge_prev_gt, next_ge_min, largest_rect
       3. string_op: string_add, string_mul
-      4. string: kmp, kmp2, 
-      5. tree: bst_min, bst_max
+      4. tree: bst_min, bst_max
    2. 数据结构: 
       1. string_hasher: StringHasher
       2. extension: BBST, Huffman, RBTree
@@ -124,7 +124,7 @@
 4. 搜索:
    1. 链: 
       1. 回溯: 17, 22, 39, 51, 52
-   2. 树
+   2. 树: 
       1. 回溯: 113
       2. dfs: 112, 124
          1. 公共祖先: 2096
@@ -140,7 +140,7 @@
    4. dinic: 1349
    5. 匈牙利算法: 1349
    6. 拓扑排序: 207, 210
-6. DP(or memo-dfs)
+6. DP(or memo-dfs): 
    1. nums\[i..j\]: 5
    2. nums\[..i\]: 300
    3. s\[..i\], s\[..j\]: 72, 1143
@@ -149,7 +149,8 @@
 7. 双指针: 11
    1. N数: 15, 16, 18, 167
 8. 贪心: 11, 12, 2037, 2038, 2182
-9. 位运算: 2166, 
+9. 位运算: 2166
+10. 字符串: 28
 
 
 
@@ -165,7 +166,7 @@
    4. 离散化, kruskal
    5. 2171
 4. int溢出: 7, 8
-5. 分类讨论
+5. 分类讨论: 
    1. 次大/小: 2170, 2182
       1. 不以0开头: 7, 8, 2165
    2. 其他: 线段树的query_range, 4, find_common_ancestor(2096)
@@ -173,7 +174,7 @@
 7. 数学: 
    1. gcd: 2183
    2. 质数: 204
-8. 日期: 
+8. 日期
 
 
 

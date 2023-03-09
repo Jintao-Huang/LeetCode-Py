@@ -156,7 +156,7 @@ def topo_sort(graph: List[List[int]]) -> List[int]:
 
 
 class Dinic:
-    """最大流"""
+    """最大流/最小割. 也可以解决二部图匹配问题. """
 
     def __init__(self, n: int) -> None:
         # 存正反边. 取反边: i^1.
@@ -164,6 +164,7 @@ class Dinic:
         self.rg = [[] for _ in range(n)]  # residual graph. 存edge的索引
 
     def add_edge(self, from_: int, to: int, val: int) -> None:
+        """val: 边容量"""
         en = len(self.edges)
         self.rg[from_].append(en)
         self.rg[to].append(en+1)

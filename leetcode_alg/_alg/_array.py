@@ -65,20 +65,16 @@ def partition2(nums: List[int], lo: int, hi: int) -> int:
     """[lo..hi]. (==pivot随意)"""
     pivot = nums[lo]
     while lo < hi:
-        while True:
-            if nums[hi] < pivot:
-                nums[lo] = nums[hi]
-                lo += 1
-                break
+        while lo < hi and pivot <= nums[hi]:
             hi -= 1
-            if lo == hi:  # do while
-                break
-        while lo < hi:
-            if nums[lo] > pivot:
-                nums[hi] = nums[lo]
-                hi -= 1
-                break
+        if lo < hi:
+            nums[lo] = nums[hi]
             lo += 1
+        while lo < hi and nums[lo] <= pivot:
+            lo += 1
+        if lo < hi:
+            nums[hi] = nums[lo]
+            hi -= 1
     nums[lo] = pivot
     return lo
 
