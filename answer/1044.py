@@ -18,14 +18,17 @@ class StringHasher2:
         """检查长度为length时, 是否有相等的子串"""
         dp = 0  # hash
         p = pow(self.base, length-1, mod)  # pow
-        for c in self.ba[:length]:
+        for i in range(length):
+            c = self.ba[i]
             dp = (dp * self.base+c) % mod
         visited = {dp}
-        for l, cl in enumerate(self.ba[:-length]):
-            cr = self.ba[l+length]
+        n = len(self.ba)
+        for lo in range(n-length):
+            cl = self.ba[lo]
+            cr = self.ba[lo+length]
             dp = ((dp-p*cl) * self.base+cr) % mod
             if dp in visited:
-                return l+1
+                return lo+1
             visited.add(dp)
         return -1
 
@@ -110,7 +113,7 @@ if __name__ == "__main__":
     print(Solution2().longestDupSubstring(s))
     print(Solution3().longestDupSubstring(s))
 
-# 
+#
 
 # if __name__ == "__main__":
 #     s = int(1e9)

@@ -85,12 +85,6 @@ class Heap(Generic[_T]):
     def pushpop(self, x: _T) -> _T:
         return self._heappushpop(self.heap, x)
 
-    def top(self) -> _T:
-        return self.heap[0]
-
-    def __len__(self) -> int:
-        return len(self.heap)
-
 
 class Heap2(Generic[_T]):
     """增加的功能: 可以通过id, 动态的调整val; 可以通过id, 动态的删除"""
@@ -194,13 +188,6 @@ class Heap2(Generic[_T]):
         heap[0], id2pos[x[1]] = x, 0
         self._siftdown(0)
         return x
-
-    def top(self) -> Tuple[_T, int]:
-        """O(1). return: val, id"""
-        return self.heap[0]
-
-    def __len__(self) -> int:
-        return len(self.heap)
 
     def __getitem__(self, id: int) -> _T:
         """O(1)"""

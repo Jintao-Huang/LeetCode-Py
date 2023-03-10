@@ -31,7 +31,7 @@ def _n_queens(path: List[int], res: List[List[int]],
     """
     idx, n = len(path), len(v)
     if idx == n:
-        res.append(path.copy())
+        res.append(path[:])
         return
 
     for i in range(n):

@@ -46,11 +46,6 @@ class SimpleSortedList(Generic[_T]):
         assert self.ssl[idx] == val
         self.ssl.pop(idx)
 
-    def __len__(self) -> int:
-        return len(self.ssl)
-
-    def __getitem__(self, idx: int) -> _T:
-        return self.ssl[idx]
 
 
 class _SimpleSortedListWithKey(SimpleSortedList[_T]):

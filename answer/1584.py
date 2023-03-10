@@ -9,7 +9,8 @@ class Solution:
         n = len(points)
         graph = [{} for _ in range(n)]
         for i, (x, y) in enumerate(points):
-            for j, (x2, y2) in enumerate(points[i+1:n], i+1):
+            for j in range(i+1, n):
+                x2, y2 = points[j]
                 dist = manhattan_dist(x, y, x2, y2)
                 graph[i][j] = dist
                 graph[j][i] = dist
@@ -21,7 +22,8 @@ class Solution2:
         n = len(points)
         edges = []
         for i, (x, y) in enumerate(points):
-            for j, (x2, y2) in enumerate(points[i+1:n], i+1):
+            for j in range(i+1, n):
+                x2, y2 = points[j]
                 dist = manhattan_dist(x, y, x2, y2)
                 edges.append((i, j, dist))
         return kruskal(n, edges)
@@ -32,7 +34,8 @@ class Solution3:
         n = len(points)
         graph = [{} for _ in range(n)]
         for i, (x, y) in enumerate(points):
-            for j, (x2, y2) in enumerate(points[i+1:n], i+1):
+            for j in range(i+1, n):
+                x2, y2 = points[j]
                 dist = manhattan_dist(x, y, x2, y2)
                 graph[i][j] = dist
                 graph[j][i] = dist

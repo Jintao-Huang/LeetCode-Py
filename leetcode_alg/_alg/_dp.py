@@ -22,7 +22,8 @@ def LIS2(nums: List[int]) -> int:
     n = len(nums)
     dp = [1]*n
     for i, x in enumerate(nums):
-        for j, y in enumerate(nums[:i]):
+        for j in range(i):
+            y = nums[j]
             if x > y:
                 dp[i] = max(dp[i], dp[j]+1)
     return max(dp)

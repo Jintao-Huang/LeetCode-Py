@@ -4,9 +4,11 @@ from leetcode_alg import *
 def dfs(candidates: List[int], idx: int, target: int,
         path: List[int], res: List[List[int]]) -> None:
     if target == 0:
-        res.append(path.copy())
+        res.append(path[:])
         return
-    for i, c in enumerate(candidates[idx:], idx):
+    n = len(candidates)
+    for i in range(idx, n):
+        c = candidates[i]
         if target < c:
             break
         if i > idx and c == candidates[i-1]:

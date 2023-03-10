@@ -5,7 +5,7 @@ def dfs(root: TreeNode, targetSum: int, path: List[int], res: List[List[int]]) -
     targetSum -= root.val
     path.append(root.val)
     if targetSum == 0 and root.left is None and root.right is None:
-        res.append(path.copy())
+        res.append(path[:])
     else:
         if root.left:
             dfs(root.left, targetSum, path, res)
@@ -29,7 +29,7 @@ def dfs2(root: TreeNode, targetSum: int, path: List[int], res: List[List[int]]) 
     targetSum -= root.val
     left, right = root.left, root.right
     if left is None and right is None and targetSum == 0:
-        res.append(path.copy())
+        res.append(path[:])
         return
     if left:
         path.append(left.val)

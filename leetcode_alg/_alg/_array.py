@@ -9,7 +9,8 @@ def unique(nums: List[int]) -> None:
     """nums已有序: inplace"""
     n = len(nums)
     lo = 1  # 将被赋值, 但未被赋值. ignore 0
-    for hi, x in enumerate(nums[1:n], 1):
+    for hi in range(1, n):
+        x = nums[hi]
         if x != nums[hi-1]:
             nums[lo] = x
             lo += 1
@@ -82,8 +83,8 @@ def partition2(nums: List[int], lo: int, hi: int) -> int:
 def merge(nums: List[int], lo: int, mid: int, hi: int) -> None:
     """nums: [lo..mid], [mid+1..hi], 分别有序, 合并成一个有序的nums. (inplace)
     (算法逻辑更简单). ref: 算法导论"""
-    A = nums[lo:mid+1].copy()
-    B = nums[mid+1:hi+1].copy()
+    A = nums[lo:mid+1]  # 浅copy
+    B = nums[mid+1:hi+1]
     A.append(INF)
     B.append(INF)
     i, j = 0, 0
@@ -98,7 +99,7 @@ def merge(nums: List[int], lo: int, mid: int, hi: int) -> None:
 
 def merge2(nums: List[int], lo: int, mid: int, hi: int) -> None:
     """[lo..mid], [mid+1,hi]"""
-    helper = nums[lo:mid+1].copy()
+    helper = nums[lo:mid+1]
     mml = mid-lo  # mid minus lo
     i, j, k = mid+1, 0, lo
     while i <= hi and j <= mml:

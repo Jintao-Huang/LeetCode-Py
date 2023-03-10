@@ -34,7 +34,7 @@ class TestArray(ut.TestCase):
     def test_merge(self):
         x = [1, 2, 5, 7, 8, 0, 3, 4, 6, 9]
         sorted_x = sorted(x)
-        y = x.copy()
+        y = x[:]
         merge(x, 0, 4, 9)
         self.assertTrue(x == sorted_x)
         merge2(y, 0, 4, 9)
@@ -43,17 +43,17 @@ class TestArray(ut.TestCase):
         n = 100000
         nums = np.arange(n).tolist() + np.arange(n).tolist()
         print("merge")
-        ml.test_time(lambda: merge(nums.copy(), 0, n-1, 2*n-1), 10, 1)
+        ml.test_time(lambda: merge(nums[:], 0, n-1, 2*n-1), 10, 1)
         ml.test_time(lambda: list(merge_heapq(nums[:n], nums[n+1:])), 10, 1)
-        ml.test_time(lambda: merge2(nums.copy(), 0, n-1, 2*n-1), 10, 1)
+        ml.test_time(lambda: merge2(nums[:], 0, n-1, 2*n-1), 10, 1)
         #
         nums = np.arange(2*n).tolist()
-        ml.test_time(lambda: merge(nums.copy(), 0, n-1, 2*n-1), 10, 1)
-        ml.test_time(lambda: merge2(nums.copy(), 0, n-1, 2*n-1), 10, 1)
+        ml.test_time(lambda: merge(nums[:], 0, n-1, 2*n-1), 10, 1)
+        ml.test_time(lambda: merge2(nums[:], 0, n-1, 2*n-1), 10, 1)
         #
         nums = np.arange(n, 2 * n).tolist() + np.arange(n//2, n+n//2).tolist()
-        ml.test_time(lambda: merge(nums.copy(), 0, n-1, 2*n-1), 10, 1)
-        ml.test_time(lambda: merge2(nums.copy(), 0, n-1, 2*n-1), 10, 1)
+        ml.test_time(lambda: merge(nums[:], 0, n-1, 2*n-1), 10, 1)
+        ml.test_time(lambda: merge2(nums[:], 0, n-1, 2*n-1), 10, 1)
 
     def test_find_kth_smallest(self):
         x = np.random.permutation(10).tolist()

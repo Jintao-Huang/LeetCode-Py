@@ -38,3 +38,15 @@ if __name__ == "__main__":
     [INFO: mini-lightning] time[number=10]: 0.000159±0.000046, max=0.000189, min=0.000026
     [INFO: mini-lightning] time[number=10]: 0.000002±0.000000, max=0.000003, min=0.000001   
     """
+
+
+if __name__ == "__main__":
+    # 浅copy
+    x = [1, 2, 3, 4, 5]
+    y = x[:]
+    y[0] = 100
+    print(x)
+    # 
+    y = x[:3]
+    y[0] = 100
+    print(x)

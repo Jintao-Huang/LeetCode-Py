@@ -6,7 +6,8 @@ class Solution:
         res = INF
         nums.sort()
         n = len(nums)
-        for i, x in enumerate(nums[:n-2]):
+        for i in range(n-2):
+            x = nums[i]
             min_x = x + nums[i+1] + nums[i+2]
             if min_x >= target and abs(min_x - target) < abs(res - target):
                 res = min_x

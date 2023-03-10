@@ -4,9 +4,11 @@ from leetcode_alg import *
 def dfs(candidates: List[int], idx: int, target: int,
         path: List[int], res: List[List[int]]) -> None:
     if target == 0:
-        res.append(path.copy())
+        res.append(path[:])  # 浅copy
         return
-    for i, c in enumerate(candidates[idx:], idx):
+    n = len(candidates)
+    for i in range(idx, n):
+        c = candidates[i]
         if target < c:
             break
         path.append(c)
@@ -38,7 +40,7 @@ class Solution2:
                 if len(dp[c2]) == 0:
                     continue
                 for r in dp[c2]:
-                    rc = r.copy()  # res copy
+                    rc = r[:]  # res copy
                     rc.append(c)
                     dp[capa].append(rc)
         return dp[target]

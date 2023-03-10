@@ -17,7 +17,7 @@ def dijkstra(graph: List[Dict[int, int]], s: int) -> List[int]:
     # 每次探索距离`s点`最近的节点
     pq = Heap[Tuple[int, int]]([])
     pq.push((0, s))
-    while len(pq) > 0:
+    while len(pq.heap) > 0:
         d, gn = pq.pop()  # graph node
         if visited[gn]:
             continue
@@ -40,7 +40,7 @@ def dijkstra2(graph: List[Dict[int, int]], s: int) -> List[int]:
     pq = Heap2[int]()
     pq.push((0, s))
     # visited数组可以省略
-    while len(pq) > 0:
+    while len(pq.heap) > 0:
         d, gn = pq.pop()
         for to, d2 in graph[gn].items():
             new_d = d + d2
@@ -95,7 +95,7 @@ def prim(graph: List[Dict[int, int]]) -> int:
     pq = Heap[Tuple[int, int]]([])
     pq.push((0, 0))
     # visited数组可以省略, 使用cost.
-    while len(pq) > 0:
+    while len(pq.heap) > 0:
         d, gn = pq.pop()  # graph node
         if cost[gn] == 0:
             continue
@@ -117,7 +117,7 @@ def prim2(graph: List[Dict[int, int]]) -> int:
     cost = [INF] * n
     pq = Heap2[int]()
     pq.push((0, 0))
-    while len(pq) > 0:
+    while len(pq.heap) > 0:
         d, gn = pq.pop()
         cost[gn] = 0
         res += d
@@ -205,7 +205,9 @@ class Dinic:
             return flow
         flow0 = flow
         es = self.rg[s]
-        for e_idx in es[idxs[s]:]:
+        es_len = len(es)
+        for i in range(idxs[s], es_len):
+            e_idx = es[i]
             idxs[s] += 1
             to, val = self.edges[e_idx]
             if to - s == 0:  # 一定满足 >= 0
