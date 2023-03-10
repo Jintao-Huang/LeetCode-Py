@@ -42,7 +42,7 @@
       3. linkedlist: LinkedListNode, LinkedList
       4. segment_tree: SegmentTree, SegmentTree2
       5. sorted_list: SimpleSortedList
-      6. string_hasher: StringHasher
+      6. string_hasher: StringHasher, StringHasher2
       7. trie: TrieTreeNode, Trie
       8. union_find: UnionFind
       9. unimportant: 
@@ -150,8 +150,9 @@
    1. N数: 15, 16, 18, 167
 8. 贪心: 11, 12, 2037, 2038, 2182
 9. 位运算: 2166
-10. 字符串: 28
-    1. 字符串哈希: 1044
+10. 字符串: 
+    1. 字符串哈希: 28, 1044
+    2. kmp: 28
 
 
 

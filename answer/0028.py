@@ -14,8 +14,22 @@ class Solution2:
         return haystack.find(needle)
 
 
+class Solution3:
+    def strStr(self, haystack: str, needle: str) -> int:
+        n, m = len(haystack), len(needle)
+        sh = StringHasher(needle, mod=int(1e9)+7)
+        h = sh.get_hash(0, m-1)
+        sh2 = StringHasher(haystack, mod=int(1e9)+7)
+        for lo in range(n-m+1):
+            hi = lo+m-1
+            if sh2.get_hash(lo, hi) == h:
+                return lo
+        return -1
+
+
 if __name__ == "__main__":
     haystack = "mississippi"
     needle = "issip"
     print(Solution().strStr(haystack, needle))
     print(Solution2().strStr(haystack, needle))
+    print(Solution3().strStr(haystack, needle))

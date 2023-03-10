@@ -6,26 +6,21 @@ from .._types import *
 
 
 class StringHasher:
-    def __init__(self, s: str, min_char: int = ord("a"), base: int = 26) -> None:
-        n = len(s)
-        self.base = base
-        self.ba = bytearray(n)
+    def __init__(self, s: str, min_char: int = ord("a"), base: int = 26, mod: int = int(1e18)+3) -> None:
+        """在c++中, 由于long long越界问题, 可以使用双mod处理. e.g. int(1e9)+7, int(1e9)+9
+        或哈希相等后, 依旧选择字符串中几个字符进行比较"""
+        self.n = len(s)
+        self.mod = mod
         min_char -= 1
-        for i in range(n):
-            self.ba[i] = ord(s[i])-min_char
+        ba = bytearray(self.n)
+        for i in range(self.n):
+            ba[i] = ord(s[i])-min_char
+        self.ps = list(accumulate(ba, lambda x, y: (x * base + y) % mod))
+        self.base = list(accumulate(range(self.n - 1), lambda b, _: ((b * base) % mod), initial=1))
 
-    def check(self, length: int, mod: int = int(1e9)+7) -> int:
-        """检查长度为length时, 是否有相等的子串"""
-        dp = 0
-        p = pow(self.base, length-1, mod)  # pow
-        for c in self.ba[:length]:
-            dp = (dp * self.base+c) % mod
-        visited = {dp}
-        for l, cl in enumerate(self.ba[:-length]):
-            cr = self.ba[l+length]
-            dp = ((dp-p*cl)* self.base+cr) % mod
-            if dp in visited:
-                return l+1
-            visited.add(dp)
-        return -1
-
+    def get_hash(self, lo: int, hi: int) -> int:
+        """[lo..hi]"""
+        res = self.ps[hi]
+        if lo > 0:
+            res -= self.ps[lo-1]*self.base[hi-lo+1]
+        return res % self.mod
