@@ -6,13 +6,11 @@ def dfs(candidates: List[int], idx: int, target: int,
     if target == 0:
         res.append(path.copy())
         return
-    n = len(candidates)
-    for i, c in enumerate(candidates[idx:n], idx):
-        tmc = target - c
-        if tmc < 0:
+    for i, c in enumerate(candidates[idx:], idx):
+        if target < c:
             break
         path.append(c)
-        dfs(candidates, i, tmc, path, res)
+        dfs(candidates, i, target - c, path, res)
         path.pop()
 
 

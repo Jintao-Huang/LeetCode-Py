@@ -33,13 +33,13 @@ class _STBase:
         self.nums_len = len(nums)
         tree_len = 0
         if self.nums_len > 0:
-            h = self._cal_tree_height(self.nums_len)
+            h = self._calc_tree_height(self.nums_len)
             tree_len = (1 << h) - 1
         self.tree = [0] * tree_len  # 堆结构
         if build_tree:
             self._build_tree(nums, 0, 0, self.nums_len - 1)
 
-    def _cal_tree_height(self, nums_len: int) -> int:
+    def _calc_tree_height(self, nums_len: int) -> int:
         return ceil(log2(nums_len) + 1)
 
     def _build_tree(self, nums: List[int], tree_idx: int, lo: int, hi: int) -> None:
@@ -106,7 +106,7 @@ class SegmentTree2(_STBase):
         #
         lazyt_len = 0
         if self.nums_len > 0:
-            h = self._cal_tree_height(self.nums_len)
+            h = self._calc_tree_height(self.nums_len)
             lazyt_len = (1 << (h-1)) - 1
         # lazy_tag[i]: tree[i]已更新, tree[lc], tree[lc+1]未更新.
         #   if update_func is add, 你可以使用0作为lazyt_init_val

@@ -14,8 +14,8 @@
 
 ## 性能和功能
 1. `answer/`中**time击败**: (不使用trick)
-   1. 100%: 1, 16, 18, 39, 72, 146, 167, 300, 354, 416, 518, 1143, 1349, 2096, 2203
-   2. 95%: 2, 28, 51, 52, 112, 113, 124, 153, 204, 207, 210, 322, 454, 704, 875, o51
+   1. 100%: 1, 16, 18, 39, 72, 146, 167, 200, 300, 354, 416, 518, 1143, 1349, 2096, 2203
+   2. 95%: 2, 28, 40, 51, 52, 112, 113, 124, 153, 204, 207, 210, 322, 454, 704, 875, 1044, o51
    3. 85%: 4, 15, 19, 92, 208, 215, 307, 876, 1584, o40
    4. 60%: 
    5. 其他: 
@@ -26,14 +26,14 @@
       3. graph: dijkstra, dijkstra2, dijkstra3, kruskal, prim, prim2, topo_sort, Dinic, hungarian
       4. knapsack: knapsack, knapsackV, knapsack_C, knapsackV_C
       5. linkedlist: reverse_list, find_mid_node, find_last_kth_node
-      6. math: fast_pow, is_prime, find_primes
+      6. math: is_prime, find_primes
       7. search: lower_bound, upper_bound, n_queens
       8. string: build_nextval, kmp
       9. tree: find_path, find_common_ancestor
       10. unimportant: 
           1. array: reverse, euclidean_dist, manhattan_dist, prefix_sum
           2. bisect: bisect_left, bisect_right, binary_search
-          3. math: gcd, lcm
+          3. math: gcd, lcm, fast_pow
           4. random: randperm
           5. sort: quick_sort, merge_sort, heap_sort, heap_sort2
    2. 数据结构:
@@ -42,9 +42,10 @@
       3. linkedlist: LinkedListNode, LinkedList
       4. segment_tree: SegmentTree, SegmentTree2
       5. sorted_list: SimpleSortedList
-      6. trie: TrieTreeNode, Trie
-      7. union_find: UnionFind
-      8. unimportant: 
+      6. string_hasher: StringHasher
+      7. trie: TrieTreeNode, Trie
+      8. union_find: UnionFind
+      9. unimportant: 
          1. ordered_dict: OrderedDict
    3. LeetCode Tools:
       1. 数据结构: ListNode, TreeNode
@@ -56,8 +57,7 @@
       3. string_op: string_add, string_mul
       4. tree: bst_min, bst_max
    2. 数据结构: 
-      1. string_hasher: StringHasher
-      2. extension: BBST, Huffman, RBTree
+      1. extension: BBST, Huffman, RBTree
 
 
 
@@ -104,7 +104,7 @@
 9. 堆: 23, 215, o40
    1. 可动态修改的堆(Heap2): 
       1. dijkstra, prim
-10. UnionFind
+10. UnionFind: 200
     1. kruskal
 11. OrderedDict: 146(LRU)
 
@@ -123,7 +123,7 @@
 3. 滑动窗口: 3
 4. 搜索:
    1. 链: 
-      1. 回溯: 17, 22, 39, 51, 52
+      1. 回溯: 17, 22, 39, 40, 51, 52
    2. 树: 
       1. 回溯: 113
       2. dfs: 112, 124
@@ -131,8 +131,8 @@
          2. 递归模式dfs: 112
       3. bfs: 
    3. 图: 
-      1. dfs:
-      2. bfs: 
+      1. dfs: 200
+      2. bfs: 200
 5. 图算法: 
    1. dijkstra: 2203(重边的处理)
    2. kruskal(稀疏图): 1584
@@ -151,6 +151,7 @@
 8. 贪心: 11, 12, 2037, 2038, 2182
 9. 位运算: 2166
 10. 字符串: 28
+    1. 字符串哈希: 1044
 
 
 
