@@ -25,7 +25,7 @@ class SimpleSortedList(Generic[_T]):
         if key is None:
             obj = object.__new__(cls)
         else:
-            obj = object.__new__(_SimpleSortedListWithKey[_T])
+            obj = object.__new__(_SimpleSortedListWithKey)
         return obj
 
     def add(self, val: _T) -> None:
