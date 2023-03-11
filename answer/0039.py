@@ -37,12 +37,11 @@ class Solution2:
                 c2 = capa-c
                 if c2 == 0:
                     dp[capa].append([c])
-                if len(dp[c2]) == 0:
-                    continue
-                for r in dp[c2]:
-                    rc = r[:]  # res copy
-                    rc.append(c)
-                    dp[capa].append(rc)
+                if len(dp[c2]) > 0:
+                    for r in dp[c2]:
+                        rc = r[:]  # res copy
+                        rc.append(c)
+                        dp[capa].append(rc)
         return dp[target]
 
 

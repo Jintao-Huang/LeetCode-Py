@@ -89,11 +89,11 @@ class Heap(Generic[_T]):
 class Heap2(Generic[_T]):
     """增加的功能: 可以通过id, 动态的调整val; 可以通过id, 动态的删除"""
 
-    def __init__(self, key: Callable[[_T, _T], bool] = lt) -> None:
+    def __init__(self, comp: Callable[[_T, _T], bool] = lt) -> None:
         # max_heap: gt
         self.heap: List[Tuple[_T, int]] = []  # val, id
         self._id2pos: Dict[int, int] = {}  # id->pos
-        self._key_func = key
+        self._comp_func = comp
 
     def _siftup(self, i: int) -> None:
         """上滤. (命名与python的heapq库相反)"""
@@ -102,7 +102,7 @@ class Heap2(Generic[_T]):
         while i > 0:  # 即pi >= 0
             pi = (i-1) >> 1
             px = heap[pi]
-            if not self._key_func(x0[0], px[0]):
+            if not self._comp_func(x0[0], px[0]):
                 break
             heap[i], id2pos[px[1]] = px, i
             i = pi
@@ -114,10 +114,10 @@ class Heap2(Generic[_T]):
         n = len(heap)
         x0 = heap[i]
         while (ci := (i << 1)+1) < n:  # python>=3.8
-            if ci+1 < n and self._key_func(heap[ci+1][0], heap[ci][0]):
+            if ci+1 < n and self._comp_func(heap[ci+1][0], heap[ci][0]):
                 ci += 1
             cx = heap[ci]
-            if not self._key_func(cx[0], x0[0]):
+            if not self._comp_func(cx[0], x0[0]):
                 break
             heap[i], id2pos[cx[1]] = cx, i
             i = ci
@@ -136,7 +136,7 @@ class Heap2(Generic[_T]):
             pos = id2pos[x[1]]
             z = heap[pos]
             heap[pos] = x
-            if self._key_func(z[0], x[0]):
+            if self._comp_func(z[0], x[0]):
                 self._siftdown(pos)
             else:
                 self._siftup(pos)
@@ -180,7 +180,7 @@ class Heap2(Generic[_T]):
 
     def pushpop(self, x: Tuple[_T, int]) -> Tuple[_T, int]:
         heap, id2pos = self.heap, self._id2pos
-        if len(heap) == 0 or self._key_func(x[0], heap[0][0]):
+        if len(heap) == 0 or self._comp_func(x[0], heap[0][0]):
             return x
         #
         res = heap[0]

@@ -15,7 +15,7 @@
 ## 性能和功能
 1. `answer/`中**time击败**: (不使用trick)
    1. 100%: 1, 16, 18, 39, 72, 146, 167, 200, 300, 354, 416, 518, 1143, 1349, 2096, 2203
-   2. 95%: 2, 28, 40, 51, 52, 112, 113, 124, 153, 204, 207, 210, 322, 454, 704, 875, 1044, o51
+   2. 95%: 2, 28, 40, 51, 52, 112, 113, 124, 153, 204, 207, 210, 322, 454, 496, 704, 875, 1044, o51
    3. 85%: 4, 15, 19, 92, 208, 215, 307, 876, 1584, o40
    4. 60%: 
    5. 其他: 
@@ -27,10 +27,11 @@
       4. knapsack: knapsack, knapsackV, knapsack_C, knapsackV_C
       5. linkedlist: reverse_list, find_mid_node, find_last_kth_node
       6. math: is_prime, find_primes
-      7. search: lower_bound, upper_bound, n_queens
-      8. string: build_nextval, kmp
-      9. tree: find_path, find_common_ancestor
-      10. unimportant: 
+      7. monotone_stack: monotone_stack, monotone_stack2
+      8. search: lower_bound, upper_bound, n_queens
+      9. string: build_nextval, kmp
+      10. tree: find_path, find_common_ancestor
+      11. unimportant: 
           1. array: reverse, euclidean_dist, manhattan_dist, prefix_sum
           2. bisect: bisect_left, bisect_right, binary_search
           3. math: gcd, lcm, fast_pow
@@ -53,7 +54,7 @@
 3. todo
    1. 算法: 
       1. monotone_deque: next_k_max, prev_k_max, next_k_min, next_ge_k_len, prev_le_k_len
-      2. monotone_stack: next_gt, prev_gt, next_lt, prev_lt, next_ge, next_gt2, next_ge_prev_gt, next_ge_min, largest_rect
+      2. monotone_stack: next_ge_prev_gt, next_ge_min, largest_rect
       3. string_op: string_add, string_mul
       4. tree: bst_min, bst_max
    2. 数据结构: 
@@ -96,7 +97,7 @@
    1. 前向链表: 2, 19, 21, 23, 24, 25, 92, 876, 2181
    2. 双向循环链表: OrderedDict
 6. 单调栈/队列
-   1. 单调栈: 
+   1. 单调栈: 496
    2. 单调队列: 
 7. 前缀树(Trie): 208
    1. -(易混淆): 14

@@ -22,10 +22,9 @@ class Solution:
         res = 0
         for i, gr in enumerate(grid):
             for j, g in enumerate(gr):
-                if g == "0":
-                    continue
-                res += 1
-                dfs(grid, i, j)
+                if g == "1":
+                    res += 1
+                    dfs(grid, i, j)
         return res
 
 
@@ -53,10 +52,9 @@ class Solution2:
         res = 0
         for i, gr in enumerate(grid):
             for j, g in enumerate(gr):
-                if g == "0":
-                    continue
-                res += 1
-                bfs(grid, i, j)
+                if g == "1":
+                    res += 1
+                    bfs(grid, i, j)
         return res
 
 
@@ -68,14 +66,13 @@ class Solution3:
         #
         for i, gr in enumerate(grid):
             for j, g in enumerate(gr):
-                if g == "0":
-                    continue
-                res += 1
-                idx = i*m+j
-                if i > 0 and grid[i-1][j] == "1" and uf.union(idx, idx-m):
-                    res -= 1
-                if j > 0 and grid[i][j-1] == "1" and uf.union(idx, idx-1):
-                    res -= 1
+                if g == "1":
+                    res += 1
+                    idx = i*m+j
+                    if i > 0 and grid[i-1][j] == "1" and uf.union(idx, idx-m):
+                        res -= 1
+                    if j > 0 and grid[i][j-1] == "1" and uf.union(idx, idx-1):
+                        res -= 1
         return res
 
 

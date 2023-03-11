@@ -24,10 +24,9 @@ def dijkstra(graph: List[Dict[int, int]], s: int) -> List[int]:
         visited[gn] = False
         for to, d2 in graph[gn].items():
             new_d = d + d2  # 距离
-            if dist[to] <= new_d:
-                continue
-            dist[to] = new_d
-            pq.push((new_d, to))
+            if new_d < dist[to]:
+                dist[to] = new_d
+                pq.push((new_d, to))
     return dist
 
 
@@ -44,31 +43,28 @@ def dijkstra2(graph: List[Dict[int, int]], s: int) -> List[int]:
         d, gn = pq.pop()
         for to, d2 in graph[gn].items():
             new_d = d + d2
-            if dist[to] <= new_d:
-                continue
-            dist[to] = new_d
-            pq.push((new_d, to))
+            if new_d < dist[to]:
+                dist[to] = new_d
+                pq.push((new_d, to))
     return dist
 
 
 def dijkstra3(graph: List[Dict[int, int]], s: int) -> List[int]:
-    """类似于bfs实现, 优点: 在稀疏图时(|E|≈|V|)跑的很快
-    不同于标准bfs. 这里不能设计visited数组. 使用dist数组充当weak visited的功能
-    """
+    """类似于bfs实现, 优点: 在稀疏图时(|E|≈|V|)跑的很快"""
     n = len(graph)
     dist = [INF] * n
     dist[s] = 0
-    dq = Deque[int]([s])
+    dq = Deque[Tuple[int, int]]([(0, s)])
     #
     while len(dq) > 0:
-        gn = dq.popleft()
-        d = dist[gn]
+        d, gn = dq.popleft()
+        if d > dist[gn]:  # 使用dist数组充当visited的功能
+            continue
         for to, d2 in graph[gn].items():
             new_d = d + d2
-            if dist[to] <= new_d:
-                continue
-            dist[to] = new_d
-            dq.append(to)
+            if new_d < dist[to]:
+                dist[to] = new_d
+                dq.append((new_d, to))
     return dist
 
 
@@ -102,10 +98,9 @@ def prim(graph: List[Dict[int, int]]) -> int:
         cost[gn] = 0
         res += d
         for to, d2 in graph[gn].items():
-            if cost[to] <= d2:
-                continue
-            cost[to] = d2
-            pq.push((d2, to))
+            if d2 < cost[to]:
+                cost[to] = d2
+                pq.push((d2, to))
     return res
 
 
@@ -122,10 +117,9 @@ def prim2(graph: List[Dict[int, int]]) -> int:
         cost[gn] = 0
         res += d
         for to, d2 in graph[gn].items():
-            if cost[to] <= d2:
-                continue
-            cost[to] = d2
-            pq.push((d2, to))
+            if d2 < cost[to]:
+                cost[to] = d2
+                pq.push((d2, to))
     return res
 
 
@@ -188,9 +182,7 @@ class Dinic:
                 for idx in self.rg[gn]:
                     e = self.edges[idx]
                     to, val = e
-                    if val == 0:  # val一定满足>=0
-                        continue
-                    if visited[to]:
+                    if val == 0 or visited[to]:  # val一定满足>=0
                         continue
                     visited[to] = True
                     dq.append(to)
@@ -210,9 +202,7 @@ class Dinic:
             e_idx = es[i]
             idxs[s] += 1
             to, val = self.edges[e_idx]
-            if to - s == 0:  # 一定满足 >= 0
-                continue
-            if val == 0:
+            if level[to] == level[s] or val == 0:  # 一定满足 level[to]>=level[s]
                 continue
             f = self._dfs(to, t, min(val, flow), level, idxs)
             if f == 0:

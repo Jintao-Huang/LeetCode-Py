@@ -25,7 +25,6 @@ def find_primes(n: int) -> bytearray:
     is_prime[0], is_prime[1] = False, False
     #
     for x in range(2, int(sqrt(n))+1):
-        if is_prime[x] == False:
-            continue
-        is_prime[x*x:n+1:x] = bytearray([False]) * ceil((n+1-x*x)/x)
+        if is_prime[x]:
+            is_prime[x*x:n+1:x] = bytearray([False]) * ceil((n+1-x*x)/x)
     return is_prime

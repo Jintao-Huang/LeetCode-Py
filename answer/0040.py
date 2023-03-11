@@ -11,7 +11,7 @@ def dfs(candidates: List[int], idx: int, target: int,
         c = candidates[i]
         if target < c:
             break
-        if i > idx and c == candidates[i-1]:
+        if i > idx and c == candidates[i-1]:  # 去重
             continue
         path.append(c)
         dfs(candidates, i+1, target - c, path, res)

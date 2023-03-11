@@ -18,9 +18,8 @@ def knapsack_new(choices: List[int], capacity: int) -> bool:
     for c in choices:
         for capa in reversed(range(c, capacity+1)):
             c2 = capa-c
-            if dp[c2] == -1:
-                continue
-            dp[capa] = max(dp[capa], dp[c2] + 1)
+            if dp[c2] != -1:
+                dp[capa] = max(dp[capa], dp[c2] + 1)
         if dp[capacity] > 0:
             return True
     return False
