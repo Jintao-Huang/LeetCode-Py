@@ -56,6 +56,7 @@ class Solution3:
 
 if __name__ == "__main__":
     nums = [1, 5, 11, 5]
-    print(Solution().canPartition(nums))
-    print(Solution2().canPartition(nums))
-    print(Solution3().canPartition(nums))
+    assert Solution().canPartition(nums) is True
+    assert Solution2().canPartition(nums) is True
+    assert Solution3().canPartition(nums) is True
+

@@ -37,7 +37,8 @@ class Solution4:
 if __name__ == "__main__":
     coins = [1, 2, 5]
     amount = 11
-    print(Solution().coinChange(coins, amount))
-    print(Solution2().coinChange(coins, amount))
-    print(Solution3().coinChange(coins, amount))
-    print(Solution4().coinChange(coins, amount))
+    assert Solution().coinChange(coins, amount) == 3
+    assert Solution2().coinChange(coins, amount) == 3
+    assert Solution3().coinChange(coins, amount) == 3
+    assert Solution4().coinChange(coins, amount) == 3
+

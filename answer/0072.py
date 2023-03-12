@@ -29,5 +29,5 @@ class Solution2:
 if __name__ == "__main__":
     word1 = "horse"
     word2 = "ros"
-    print(Solution().minDistance(word1, word2))
-    print(Solution2().minDistance(word1, word2))
+    assert Solution().minDistance(word1, word2) == 3
+    assert Solution2().minDistance(word1, word2) == 3

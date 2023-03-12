@@ -44,5 +44,5 @@ class Solution2:
 if __name__ == "__main__":
     root = to_tree("[5,4,8,11,null,13,4,7,2,null,null,null,1]")
     targetSum = 22
-    print(Solution().hasPathSum(root, targetSum))
-    print(Solution2().hasPathSum(root, targetSum))
+    assert Solution().hasPathSum(root, targetSum) is True
+    assert Solution2().hasPathSum(root, targetSum) is True

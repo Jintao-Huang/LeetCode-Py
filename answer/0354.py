@@ -8,4 +8,4 @@ class Solution:
 
 if __name__ == "__main__":
     envelopes = [[5,4],[6,4],[6,7],[2,3]]
-    print(Solution().maxEnvelopes(envelopes))
+    assert Solution().maxEnvelopes(envelopes) == 3

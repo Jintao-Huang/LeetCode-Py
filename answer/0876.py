@@ -9,4 +9,4 @@ class Solution:
 
 if __name__ == "__main__":
     head = to_linkedlist([1, 2, 3, 4, 5])
-    print(from_linkedlist(Solution().middleNode(head)))
+    assert from_linkedlist(Solution().middleNode(head)) == [3, 4, 5]

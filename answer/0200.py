@@ -78,6 +78,7 @@ class Solution3:
 
 if __name__ == "__main__":
     grid = [["1", "1", "1"], ["1", "0", "1"], ["1", "1", "1"]]
-    print(Solution().numIslands(deepcopy(grid)))
-    print(Solution2().numIslands(deepcopy(grid)))
-    print(Solution3().numIslands(grid))
+    assert Solution().numIslands(deepcopy(grid)) == 1
+    assert Solution2().numIslands(deepcopy(grid)) == 1
+    assert Solution3().numIslands(deepcopy(grid)) == 1
+

@@ -30,6 +30,6 @@ class Solution3:
 if __name__ == "__main__":
     haystack = "mississippi"
     needle = "issip"
-    print(Solution().strStr(haystack, needle))
-    print(Solution2().strStr(haystack, needle))
-    print(Solution3().strStr(haystack, needle))
+    assert Solution().strStr(haystack, needle) == 4
+    assert Solution2().strStr(haystack, needle) == 4
+    assert Solution3().strStr(haystack, needle) == 4

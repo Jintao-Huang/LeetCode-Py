@@ -55,5 +55,5 @@ class Solution2:
 if __name__ == "__main__":
     root = to_tree("[5,4,8,11,null,13,4,7,2,null,null,5,1]")
     targetSum = 22
-    print(Solution().pathSum(root, targetSum))
-    print(Solution2().pathSum(root, targetSum))
+    assert Solution().pathSum(root, targetSum) == [[5, 4, 11, 2], [5, 8, 4, 5]]
+    assert Solution2().pathSum(root, targetSum) == [[5, 4, 11, 2], [5, 8, 4, 5]]

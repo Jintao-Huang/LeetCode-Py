@@ -57,5 +57,5 @@ class Solution2:
 
 if __name__ == "__main__":
     nums = [0, 0, 0]
-    print(Solution().threeSum(nums))
-    print(Solution2().threeSum(nums))
+    assert Solution().threeSum(nums) == [[0, 0, 0]]
+    assert Solution2().threeSum(nums) == [[0, 0, 0]]

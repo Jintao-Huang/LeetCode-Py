@@ -12,4 +12,4 @@ class Solution:
 
 if __name__ == "__main__":
     nums = [4, 5, 6, 7, 0, 1, 2]
-    print(Solution().findMin(nums))
+    assert Solution().findMin(nums) == 0

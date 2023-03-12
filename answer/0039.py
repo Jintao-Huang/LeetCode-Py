@@ -48,5 +48,5 @@ class Solution2:
 if __name__ == "__main__":
     candidates = [2, 3, 6, 7]
     target = 7
-    print(Solution().combinationSum(candidates, target))
-    print(Solution2().combinationSum(candidates, target))
+    assert Solution().combinationSum(candidates, target) == [[2, 2, 3], [7]]
+    assert Solution2().combinationSum(candidates, target) == [[2, 2, 3], [7]]

@@ -35,6 +35,6 @@ class Solution2:
 if __name__ == "__main__":
     text1 = "abcde"
     text2 = "ace"
-    print(Solution().longestCommonSubsequence(text1, text2))
-    print(Solution2().longestCommonSubsequence(text1, text2))
+    assert Solution().longestCommonSubsequence(text1, text2) == 3
+    assert Solution2().longestCommonSubsequence(text1, text2) == 3
     print(LCS2(text1, text2))

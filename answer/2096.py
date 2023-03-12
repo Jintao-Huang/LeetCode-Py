@@ -36,5 +36,5 @@ class Solution2:
 if __name__ == "__main__":
     root = "[5,1,2,3,null,6,4]"
     root = to_tree(root)
-    print(Solution().getDirections(root, 3, 6))
-    print(Solution2().getDirections(root, 3, 6))
+    assert Solution().getDirections(root, 3, 6) == "UURL"
+    assert Solution2().getDirections(root, 3, 6) == "UURL"

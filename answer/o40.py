@@ -31,8 +31,7 @@ class Solution4:
 if __name__ == "__main__":
     arr = [0,1,2,1]
     k = 1
-    print(Solution().getLeastNumbers(arr, k))
-    print(Solution2().getLeastNumbers(arr, k))
-    arr = [0,1,2,1]
-    print(Solution3().getLeastNumbers(arr, k))
-    print(Solution4().getLeastNumbers(arr, k))
+    assert Solution().getLeastNumbers(arr, k) == [0]
+    assert Solution2().getLeastNumbers(arr[:], k) == [0]
+    assert Solution3().getLeastNumbers(arr, k) == [0]
+    assert Solution4().getLeastNumbers(arr, k) == [0]

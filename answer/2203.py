@@ -81,6 +81,6 @@ if __name__ == "__main__":
     src1 = 0
     src2 = 1
     dest = 5
-    print(Solution().minimumWeight(n, edges, src1, src2, dest))
-    print(Solution2().minimumWeight(n, edges, src1, src2, dest))
-    print(Solution3().minimumWeight(n, edges, src1, src2, dest))
+    assert Solution().minimumWeight(n, edges, src1, src2, dest) == 9
+    assert Solution2().minimumWeight(n, edges, src1, src2, dest) == 9
+    assert Solution3().minimumWeight(n, edges, src1, src2, dest) == 9

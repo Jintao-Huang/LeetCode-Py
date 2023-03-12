@@ -10,4 +10,4 @@ class Solution:
 if __name__ == "__main__":
     numCourses = 4
     prerequisites = [[1,0],[2,0],[3,1],[3,2]]
-    print(Solution().canFinish(numCourses, prerequisites))
+    assert Solution().canFinish(numCourses, prerequisites) is True

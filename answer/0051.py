@@ -30,4 +30,4 @@ class Solution:
 
 if __name__ == "__main__":
     n = 4
-    print(Solution().solveNQueens(n))
+    assert Solution().solveNQueens(n) == [['.Q..', '...Q', 'Q...', '..Q.'], ['..Q.', 'Q...', '...Q', '.Q..']]

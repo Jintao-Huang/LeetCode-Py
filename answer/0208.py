@@ -21,4 +21,5 @@ class Trie:
 if __name__ == "__main__":
     callable_list = ["Trie", "insert", "search", "search", "startsWith", "insert", "search"]
     args_list = [[], ["apple"], ["apple"], ["app"], ["app"], ["app"], ["app"]]
-    print(call_callable_list(callable_list, args_list, globals()))
+    y = call_callable_list(callable_list, args_list, globals())
+    assert y[1:] == [None, True, False, True, None, True]

@@ -3,7 +3,7 @@ from leetcode_alg import *
 
 
 class StringHasher2:
-    """案例优化"""
+    """优化"""
 
     def __init__(self, s: str, min_char: int = ord("a"), base: int = 26) -> None:
         n = len(s)
@@ -109,9 +109,9 @@ class Solution3:
 if __name__ == "__main__":
     res = []
     s = "zxcvdqkfawuytt"
-    print(Solution().longestDupSubstring(s))
-    print(Solution2().longestDupSubstring(s))
-    print(Solution3().longestDupSubstring(s))
+    assert Solution().longestDupSubstring(s) == "t"
+    assert Solution2().longestDupSubstring(s) == "t"
+    assert Solution3().longestDupSubstring(s) == "t"
 
 #
 

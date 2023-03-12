@@ -74,5 +74,5 @@ if __name__ == "__main__":
     seats = [["#", ".", "#", "#", ".", "#"],
              [".", "#", "#", "#", "#", "."],
              ["#", ".", "#", "#", ".", "#"]]
-    print(Solution().maxStudents(seats))
-    print(Solution2().maxStudents(seats))
+    assert Solution().maxStudents(seats) == 4
+    assert Solution2().maxStudents(seats) == 4

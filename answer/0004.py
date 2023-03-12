@@ -53,7 +53,7 @@ class Solution2:
         nums1 += nums2
         nums1.sort()
         n = len(nums1)
-        mid = n>>1
+        mid = n >> 1
         if n % 2 == 0:
             return (nums1[mid-1]+nums1[mid])/2
         else:
@@ -63,11 +63,11 @@ class Solution2:
 if __name__ == "__main__":
     nums1 = [1, 2]
     nums2 = [3, 4]
-    print(Solution().findMedianSortedArrays(nums1, nums2))
-    print(Solution2().findMedianSortedArrays(nums1, nums2))
+    assert Solution().findMedianSortedArrays(nums1, nums2) == 2.5
+    assert Solution2().findMedianSortedArrays(nums1, nums2) == 2.5
 
 if __name__ == "__main__":
     nums1 = [2]
     nums2 = [1, 3]
-    print(Solution().findMedianSortedArrays(nums1, nums2))
-    print(Solution2().findMedianSortedArrays(nums1, nums2))
+    assert Solution().findMedianSortedArrays(nums1, nums2) == 2
+    assert Solution2().findMedianSortedArrays(nums1, nums2) == 2

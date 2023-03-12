@@ -16,4 +16,4 @@ class Solution:
 if __name__ == "__main__":
     piles = [3, 6, 7, 11]
     h = 8
-    print(Solution().minEatingSpeed(piles, h))
+    assert Solution().minEatingSpeed(piles, h) == 4

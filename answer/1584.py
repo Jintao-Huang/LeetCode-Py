@@ -44,6 +44,6 @@ class Solution3:
 
 if __name__ == "__main__":
     x = [[0, 0], [2, 2], [3, 10], [5, 2], [7, 0]]
-    print(Solution().minCostConnectPoints(x))
-    print(Solution2().minCostConnectPoints(x))
-    print(Solution3().minCostConnectPoints(x))
+    assert Solution().minCostConnectPoints(x) == 20
+    assert Solution2().minCostConnectPoints(x) == 20
+    assert Solution3().minCostConnectPoints(x) == 20

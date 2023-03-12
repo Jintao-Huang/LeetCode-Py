@@ -13,4 +13,4 @@ class Solution:
 
 if __name__ == "__main__":
     head = to_linkedlist([1, 2, 3, 4, 5])
-    print(from_linkedlist(Solution().removeNthFromEnd(head, 2)))
+    assert from_linkedlist(Solution().removeNthFromEnd(head, 2)) == [1, 2, 3, 5]

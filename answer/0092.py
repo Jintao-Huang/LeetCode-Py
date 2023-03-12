@@ -17,4 +17,4 @@ class Solution:
     
 if __name__ == "__main__":
     head = to_linkedlist([1, 2, 3, 4, 5])
-    print(from_linkedlist(Solution().reverseBetween(head, 2, 4)))
+    assert from_linkedlist(Solution().reverseBetween(head, 2, 4)) == [1,4,3,2,5]

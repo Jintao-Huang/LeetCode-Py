@@ -19,5 +19,5 @@ class Solution2:
 
 if __name__ == "__main__":
     n = 10
-    print(Solution().countPrimes(n))
-    print(Solution2().countPrimes(n))
+    assert Solution().countPrimes(n) == 4
+    assert Solution2().countPrimes(n) == 4

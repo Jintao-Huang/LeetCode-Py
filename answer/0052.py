@@ -9,4 +9,4 @@ class Solution:
 
 if __name__ == "__main__":
     n = 4
-    print(Solution().totalNQueens(n))
+    assert Solution().totalNQueens(n) == 2

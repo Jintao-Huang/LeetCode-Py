@@ -32,4 +32,5 @@ class Solution2:
 if __name__ == "__main__":
     numbers = [2, 7, 11, 15]
     target = 9
-    print(Solution().twoSum(numbers, target))
+    assert Solution().twoSum(numbers, target) == [1, 2]
+    assert Solution2().twoSum(numbers, target) == [1, 2]

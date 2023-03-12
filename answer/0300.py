@@ -14,5 +14,5 @@ class Solution2:
 
 if __name__ == "__main__":
     nums = [10, 9, 2, 5, 3, 7, 101, 18]
-    print(Solution().lengthOfLIS(nums))
-    print(Solution2().lengthOfLIS(nums))
+    assert Solution().lengthOfLIS(nums) == 4
+    assert Solution2().lengthOfLIS(nums) == 4

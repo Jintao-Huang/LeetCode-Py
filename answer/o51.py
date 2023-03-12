@@ -91,10 +91,10 @@ class Solution7:
 
 if __name__ == "__main__":
     nums = [7, 5, 6, 4]
-    print(Solution().reversePairs(nums))
-    print(Solution2().reversePairs(nums))
-    print(Solution3().reversePairs(nums))
-    print(Solution4().reversePairs(nums))
-    print(Solution5().reversePairs(nums))
-    print(Solution6().reversePairs(nums))
-    print(Solution7().reversePairs(nums))
+    assert Solution().reversePairs(nums) == 5
+    assert Solution2().reversePairs(nums) == 5
+    assert Solution3().reversePairs(nums) == 5
+    assert Solution4().reversePairs(nums) == 5
+    assert Solution5().reversePairs(nums) == 5
+    assert Solution6().reversePairs(nums) == 5
+    assert Solution7().reversePairs(nums) == 5

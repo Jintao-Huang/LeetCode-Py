@@ -14,4 +14,4 @@ class Solution:
 if __name__ == "__main__":
     amount = 5
     coins = [1, 2, 5]
-    print(Solution().change(5, coins))
+    assert Solution().change(5, coins) == 4

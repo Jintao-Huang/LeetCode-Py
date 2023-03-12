@@ -10,4 +10,4 @@ class Solution:
 if __name__ == "__main__":
     numCourses = 4
     prerequisites = [[1,0],[2,0],[3,1],[3,2]]
-    print(Solution().findOrder(numCourses, prerequisites))
+    assert Solution().findOrder(numCourses, prerequisites) == [0,1,2,3]

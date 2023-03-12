@@ -52,8 +52,9 @@ class Solution5:
 if __name__ == "__main__":
     nums = [3, 2, 1, 5, 6, 4]
     k = 2
-    print(Solution().findKthLargest(nums, k))
-    print(Solution2().findKthLargest(nums[:], k))
-    print(Solution3().findKthLargest(nums[:], k))
-    print(Solution4().findKthLargest(nums[:], k))
-    print(Solution5().findKthLargest(nums, k))
+    assert Solution().findKthLargest(nums, k) == 5
+    assert Solution2().findKthLargest(nums[:], k) == 5
+    assert Solution3().findKthLargest(nums[:], k) == 5
+    assert Solution4().findKthLargest(nums[:], k) == 5
+    assert Solution5().findKthLargest(nums, k) == 5
+

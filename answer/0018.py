@@ -36,8 +36,8 @@ class Solution:
 if __name__ == "__main__":
     nums = [1, 0, -1, 0, -2, 2]
     target = 0
-    print(Solution().fourSum(nums, target))
+    assert Solution().fourSum(nums, target) == [[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]
     #
     nums = [0, 0]
     target = 0
-    print(Solution().fourSum(nums, target))
+    assert Solution().fourSum(nums, target) == []

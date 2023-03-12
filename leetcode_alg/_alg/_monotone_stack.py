@@ -5,7 +5,7 @@
 from .._types import *
 """
 next_gt: 
-    monotone_stack(is_prev=False, mode="gt")
+    monotone_stack(is_next=True, mode="gt")
     monotone_stack2(is_next=True, mode="gt") (or)
 next_ge, next_lt, next_le, prev_gt, ... 类似
 """
@@ -18,7 +18,7 @@ _func_mapper = {
 
 
 def monotone_stack(nums: List[int],
-                   is_prev: bool,
+                   is_next: bool,
                    mode: Literal["gt", "ge", "lt", "le"]) -> List[int]:
     """弹出栈时, 修改res. faster"""
     n = len(nums)
@@ -26,7 +26,7 @@ def monotone_stack(nums: List[int],
     stack = []
     _iter = range(n)
     comp = _func_mapper[mode]
-    if is_prev:
+    if not is_next:
         _iter = reversed(_iter)
     for i in _iter:
         x = nums[i]

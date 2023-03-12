@@ -25,4 +25,4 @@ class Solution:
 if __name__ == "__main__":
     l1 = to_linkedlist([9, 9, 9, 9, 9, 9, 9])
     l2 = to_linkedlist([9, 9, 9, 9])
-    print(from_linkedlist(Solution().addTwoNumbers(l1, l2)))  # [8,9,9,9,0,0,0,1]
+    assert from_linkedlist(Solution().addTwoNumbers(l1, l2)) == [8,9,9,9,0,0,0,1]

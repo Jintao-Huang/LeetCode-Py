@@ -43,4 +43,4 @@ class Solution:
 if __name__ == "__main__":
     nums = [-1, 2, 1, -4]
     target = 1
-    print(Solution().threeSumClosest(nums, target))
+    assert Solution().threeSumClosest(nums, target) == 2

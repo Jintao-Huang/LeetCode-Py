@@ -27,4 +27,4 @@ class Solution:
 
 if __name__ == "__main__":
     root = to_tree("[-10,9,20,null,null,15,7]")
-    print(Solution().maxPathSum(root))
+    assert Solution().maxPathSum(root) == 42

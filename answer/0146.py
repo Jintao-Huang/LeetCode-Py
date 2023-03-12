@@ -51,6 +51,8 @@ class LRUCache2:
 if __name__ == "__main__":
     callable_list = ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
     args_list = [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
-    print(call_callable_list(callable_list, args_list, globals()))
+    y = call_callable_list(callable_list, args_list, globals())
     callable_list[0] = "LRUCache2"
-    print(call_callable_list(callable_list, args_list, globals()))
+    y2 = call_callable_list(callable_list, args_list, globals())
+    assert y[1:] == [None, None, 1, None, -1, None, -1, 3, 4]
+    assert y2[1:] == [None, None, 1, None, -1, None, -1, 3, 4]
