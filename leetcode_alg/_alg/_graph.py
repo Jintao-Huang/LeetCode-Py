@@ -243,7 +243,10 @@ def _match(graph: List[List[int]], gn: int, visited: bytearray, matching: List[i
 
 def hungarian(graph: List[List[int]]) -> int:
     """graph: 邻接表实现. 无向图存单边即可(部1->部2)
-    最大匹配=最小点覆盖=n-最大独立集"""
+    匹配大小的最大值=顶点覆盖大小的最小值(覆盖所有边)
+    独立集大小的最大值=边覆盖大小的最小值(覆盖所有顶点)
+    匹配大小的最大值=n-独立集大小的最大值(n为顶点数)
+    """
     n = len(graph)
     res = 0
     matching = [-1] * n  # 匹配情况. (只存部2->部1的边)

@@ -117,7 +117,7 @@ def merge2(nums: List[int], lo: int, mid: int, hi: int) -> None:
         k += 1
 
 
-def find_kth_smallest(nums: List[int], k: int) -> int:
+def quick_select(nums: List[int], k: int) -> int:
     """nums无序, 查找第k小的数(即sort后索引是k, 从0数). 平均复杂度O(n)"""
     lo, hi = 0, len(nums) - 1
     while True:

@@ -22,8 +22,6 @@ class Solution:
 
 
 class Solution2:
-    """模板"""
-
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
         ms = monotone_stack(nums2, True, "gt")
         mapper = {}

@@ -15,13 +15,13 @@
 ## 性能和功能
 1. `answer/`中**time击败**: (不使用trick)
    1. 100%: 1, 16, 18, 39, 72, 146, 167, 200, 300, 354, 416, 518, 1143, 1349, 2096, 2203
-   2. 95%: 2, 28, 40, 51, 52, 112, 113, 124, 153, 204, 207, 210, 322, 454, 496, 704, 875, 1044, o51
+   2. 95%: 2, 28, 40, 51, 52, 112, 113, 124, 153, 204, 207, 210, 322, 454, 496, 503, 704, 875, 1044, o51
    3. 85%: 4, 15, 19, 92, 208, 215, 307, 876, 1584, o40
    4. 60%: 
    5. 其他: 
 2. 已有的功能: (持续更新中)
    1. 算法: 
-      1. array: unique, partition, partition2, merge, merge2, diff, find_kth_smallest, two_sum
+      1. array: unique, partition, partition2, merge, merge2, diff, quick_select, two_sum
       2. dp: LIS, LIS2, LCS, LCS2, edit_distance, matrix_chain, matrix_chain2
       3. graph: dijkstra, dijkstra2, dijkstra3, kruskal, prim, prim2, topo_sort, Dinic, hungarian
       4. knapsack: knapsack, knapsackV, knapsack_C, knapsackV_C
@@ -97,7 +97,7 @@
    1. 前向链表: 2, 19, 21, 23, 24, 25, 92, 876, 2181
    2. 双向循环链表: OrderedDict
 6. 单调栈/队列
-   1. 单调栈: 496
+   1. 单调栈: 496, 503
    2. 单调队列: 
 7. 前缀树(Trie): 208
    1. -(易混淆): 14

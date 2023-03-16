@@ -4,7 +4,7 @@ class Solution:
     def getLeastNumbers(self, arr: List[int], k: int) -> List[int]:
         if k == 0:
             return []
-        find_kth_smallest(arr, k-1)
+        quick_select(arr, k-1)
         return arr[:k]
 
 class Solution2:

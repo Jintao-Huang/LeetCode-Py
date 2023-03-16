@@ -4,7 +4,7 @@ from leetcode_alg import *
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         n = len(nums)
-        return find_kth_smallest(nums, n-k)
+        return quick_select(nums, n-k)
 
 
 class Solution2:

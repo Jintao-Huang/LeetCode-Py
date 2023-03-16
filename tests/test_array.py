@@ -55,10 +55,10 @@ class TestArray(ut.TestCase):
         ml.test_time(lambda: merge(nums[:], 0, n-1, 2*n-1), 10, 1)
         ml.test_time(lambda: merge2(nums[:], 0, n-1, 2*n-1), 10, 1)
 
-    def test_find_kth_smallest(self):
+    def test_quick_select(self):
         x = np.random.permutation(10).tolist()
         a = randint(0, 9)
-        self.assertTrue(find_kth_smallest(x, a) == a)
+        self.assertTrue(quick_select(x, a) == a)
 
 
 if __name__ == "__main__":
