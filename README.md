@@ -15,7 +15,7 @@
 ## 性能和功能
 1. `answer/`中**time击败**: (不使用trick)
    1. 100%: 1, 16, 18, 39, 42, 72, 84, 146, 167, 200, 300, 354, 416, 518, 1143, 1349, 2096, 2203
-   2. 95%: 2, 11, 28, 40, 51, 52, 112, 113, 124, 153, 204, 207, 210, 322, 454, 496, 503, 704, 875, 1044, o51
+   2. 95%: 2, 11, 28, 40, 51, 52, 102, 107, 112, 113, 124, 153, 204, 207, 210, 322, 454, 496, 503, 704, 875, 1044, o51
    3. 85%: 4, 15, 19, 85, 92, 208, 215, 307, 876, 1584, o40
    4. 60%: 
    5. 其他: 
@@ -30,7 +30,7 @@
       7. monotone_stack: monotone_stack, monotone_stack2, monotone_stack3, largest_rect, largest_rect2
       8. search: lower_bound, upper_bound, n_queens
       9. string: build_nextval, kmp
-      10. tree: find_path, find_common_ancestor
+      10. tree: find_path, find_common_ancestor, inorder_traversal, level_order_traversal
       11. unimportant: 
           1. array: reverse, euclidean_dist, manhattan_dist, prefix_sum
           2. bisect: bisect_left, bisect_right, binary_search
@@ -133,7 +133,7 @@
       2. dfs: 112, 124
          1. 公共祖先: 2096
          2. 递归模式dfs: 112
-      3. bfs: 
+      3. bfs: 102, 107
    3. 图: 
       1. dfs: 200
       2. bfs: 200

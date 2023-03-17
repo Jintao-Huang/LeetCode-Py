@@ -39,3 +39,28 @@ def find_common_ancestor(root: Optional[TreeNode], tn_c: Set[int]) -> Optional[T
         return ca_r
     else:
         return root
+
+
+def inorder_traversal(root: TreeNode, res: List[int]) -> None:
+    if root.left:
+        inorder_traversal(root.left, res)
+    res.append(root.val)
+    if root.right:
+        inorder_traversal(root.right, res)
+
+
+def level_order_traversal(root: TreeNode) -> List[List[int]]:
+    dq = Deque[TreeNode]([root])
+    res: List[List[int]] = []
+    while len(dq) > 0:
+        dq_len = len(dq)
+        r: List[int] = []  # sub res
+        for _ in range(dq_len):
+            tn = dq.popleft()
+            r.append(tn.val)
+            if tn.left:
+                dq.append(tn.left)
+            if tn.right:
+                dq.append(tn.right)
+        res.append(r)
+    return res
