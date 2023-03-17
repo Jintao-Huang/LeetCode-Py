@@ -8,7 +8,15 @@ next_gt:
     monotone_stack(is_next=True, mode="gt")
     monotone_stack2(is_next=True, mode="gt") (or)
 next_ge, next_lt, next_le, prev_gt, ... 类似
+# 
+next_gt_prev_ge:
+    monotone_stack3(next_mode="gt")
+next_ge_prev_gt:
+    monotone_stack3(next_mode="ge")  
+next_lt_prev_le, next_le_prev_lt 类似
+prev_gt_next_ge 即 next_ge_prev_gt
 """
+
 _func_mapper = {
     "gt": gt,
     "ge": ge,
@@ -20,7 +28,7 @@ _func_mapper = {
 def monotone_stack(nums: List[int],
                    is_next: bool,
                    mode: Literal["gt", "ge", "lt", "le"]) -> List[int]:
-    """弹出栈时, 修改res. faster"""
+    """弹出栈时修改res. faster. (ge: 递减栈)"""
     n = len(nums)
     res = [-1] * n
     stack = []
@@ -39,7 +47,8 @@ def monotone_stack(nums: List[int],
 def monotone_stack2(nums: List[int],
                     is_next: bool,
                     mode: Literal["gt", "ge", "lt", "le"]) -> List[int]:
-    """实现2: 加入栈时, 修改res. (没有实用价值, slower)"""
+    """monotone_stack的实现2. 加入栈时修改res (没有实用价值, slower, 为了让monotone_stack3更易理解)
+    gt: 递减栈"""
     n = len(nums)
     res = [-1] * n
     stack = []
@@ -54,4 +63,62 @@ def monotone_stack2(nums: List[int],
         if len(stack) > 0:
             res[i] = stack[-1]
         stack.append(i)
+    return res
+
+
+def monotone_stack3(nums: List[int],
+                    next_mode: Literal["gt", "ge", "lt", "le"]) -> Tuple[List[int],  List[int]]:
+    """将monotone_stack和monotone_stack2结合, 使得一次遍历解决两次遍历的问题. 
+    note: ge(递减栈)/le (快)> gt/lt"""
+    n = len(nums)
+    res, res2 = [-1] * n, [-1] * n
+    stack = []
+    comp = _func_mapper[next_mode]
+    for i in range(n):
+        x = nums[i]
+        while len(stack) > 0 and comp(x, nums[stack[-1]]):
+            res[stack.pop()] = i
+        if len(stack) > 0:
+            res2[i] = stack[-1]
+        stack.append(i)
+    return res, res2
+
+
+def largest_rect(nums: List[int]) -> int:
+    """特例优化"""
+    res = 0
+    nums.append(0)  # 边界处理
+    stack = [-1]  # nums[-1] == 0
+    n = len(nums)
+    for i in range(n):
+        x = nums[i]
+        # lo..idx..i  # next_lt_prev_le
+        while lt(x, nums[stack[-1]]):
+            idx = stack.pop()
+            lo = stack[-1]
+            w = i - lo - 1
+            res = max(res, nums[idx]*w)
+        # 避免栈中出现重复的元素
+        if x == nums[stack[-1]]:
+            stack[-1] = i
+        else:  # >
+            stack.append(i)
+    nums.pop()
+    return res
+
+
+def largest_rect2(nums: List[int]) -> int:
+    """实现2, slower"""
+    next_le, prev_lt = monotone_stack3(nums, "le")
+    n = len(nums)
+    res = 0
+    for i in range(n):
+        j = prev_lt[i]
+        k = next_le[i]
+        if j == -1:
+            j = -1
+        if k == -1:
+            k = n
+        w = k - j - 1
+        res = max(res, nums[i] * w)
     return res
