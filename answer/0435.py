@@ -31,7 +31,24 @@ class Solution2:
         return n-dp[n-1]
 
 
+class Solution3:
+    """LIS改造"""
+
+    def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
+        intervals.sort(key=itemgetter(0))
+        n = len(intervals)
+        stack = []
+        for s, e in intervals:
+            idx = bisect_left(stack, s+1)
+            if idx >= len(stack):
+                stack.append(e)
+            elif e < stack[idx]:
+                stack[idx] = e
+        return n-len(stack)
+
+
 if __name__ == "__main__":
     intervals = [[1, 2], [2, 3], [3, 4], [1, 3]]
     assert Solution().eraseOverlapIntervals(intervals) == 1
     assert Solution2().eraseOverlapIntervals(intervals) == 1
+    assert Solution3().eraseOverlapIntervals(intervals) == 1

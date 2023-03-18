@@ -9,9 +9,10 @@ def LIS(nums: List[int]) -> int:
     """O(nlogn)"""
     stack = []
     for x in nums:
+        # 若要求最长单调非递减子序列, 则改成: idx = bisect_left(stack, x+1)
         idx = bisect_left(stack, x)
         if idx < len(stack):
-            stack[idx] = x
+            stack[idx] = x  # 下降
         else:
             stack.append(x)
     return len(stack)
