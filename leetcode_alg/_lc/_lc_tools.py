@@ -31,7 +31,7 @@ def to_tree(l_s: str) -> Optional[TreeNode]:
     root = TreeNode(tn_l[0])
     dq = Deque[TreeNode]([root])
     idx = 1
-    while len(dq) > 0:
+    while dq:
         if idx >= n:
             break
         tn_p = dq.popleft()
@@ -56,7 +56,7 @@ def from_tree(root: Optional[TreeNode]) -> List[Optional[int]]:
         return []
     dq = Deque[TreeNode]([root])
     res: List[Optional[int]] = [root.val]
-    while len(dq) > 0:
+    while dq:
         tn = dq.popleft()
         lc, rc = tn.left, tn.right
         if lc is None:

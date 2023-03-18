@@ -3,7 +3,7 @@ from leetcode_alg import *
 
 
 class Solution:
-    """recommended"""
+    """recommended. 单调栈"""
     def largestRectangleArea(self, heights: List[int]) -> int:
         return largest_rect(heights)
 

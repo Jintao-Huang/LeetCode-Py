@@ -2,7 +2,7 @@ from leetcode_alg import *
 
 
 class Solution:
-    """recommended"""
+    """recommended. 双指针"""
 
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         if len(nums) < 3:

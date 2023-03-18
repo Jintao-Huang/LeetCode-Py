@@ -1,9 +1,8 @@
 from leetcode_alg import *
-from leetcode_alg.ext import manhattan_dist
 
 
 class Solution:
-    """recommended"""
+    """recommended. 最小生成树"""
 
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
         n = len(points)
@@ -11,10 +10,10 @@ class Solution:
         for i, (x, y) in enumerate(points):
             for j in range(i+1, n):
                 x2, y2 = points[j]
-                dist = manhattan_dist(x, y, x2, y2)
+                dist = abs(x2 - x) + abs(y2 - y)
                 graph[i][j] = dist
                 graph[j][i] = dist
-        return prim(graph)
+        return prim2(graph)
 
 
 class Solution2:
@@ -24,7 +23,7 @@ class Solution2:
         for i, (x, y) in enumerate(points):
             for j in range(i+1, n):
                 x2, y2 = points[j]
-                dist = manhattan_dist(x, y, x2, y2)
+                dist = abs(x2 - x) + abs(y2 - y)
                 edges.append((i, j, dist))
         return kruskal(n, edges)
 
@@ -36,10 +35,10 @@ class Solution3:
         for i, (x, y) in enumerate(points):
             for j in range(i+1, n):
                 x2, y2 = points[j]
-                dist = manhattan_dist(x, y, x2, y2)
+                dist = abs(x2 - x) + abs(y2 - y)
                 graph[i][j] = dist
                 graph[j][i] = dist
-        return prim2(graph)
+        return prim(graph)
 
 
 if __name__ == "__main__":

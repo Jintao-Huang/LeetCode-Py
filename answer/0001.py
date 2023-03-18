@@ -3,6 +3,7 @@ from leetcode_alg import *
 
 
 class Solution:
+    """哈希表"""
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         mapper: Dict[int, int] = {}
         for i, x in enumerate(nums):

@@ -14,24 +14,26 @@
 
 ## 性能和功能
 1. `answer/`中**time击败**: (不使用trick)
-   1. 100%: 1, 16, 18, 39, 42, 72, 84, 146, 167, 200, 300, 354, 416, 518, 1143, 1349, 2096, 2203
-   2. 95%: 2, 11, 28, 40, 51, 52, 102, 107, 112, 113, 124, 153, 204, 207, 210, 322, 454, 496, 503, 704, 875, 1044, o51
-   3. 85%: 4, 15, 19, 85, 92, 208, 215, 307, 876, 1584, o40
+   1. 100%: 1, 11, 16, 18, 39, 42, 57, 72, 84, 85, 146, 167, 200, 300, 354, 416, 435, 518, 1143, 1349, 2096, 2171, 2203
+   2. 95%: 2, 28, 40, 51, 52, 56, 102, 107, 112, 113, 124, 153, 204, 207, 210, 239, 307, 322, 454, 496, 503, 704, 875, 1044, o51
+   3. 85%: 4, 15, 19, 92, 208, 215, 876, 1584, o40
    4. 60%: 
    5. 其他: 
 2. 已有的功能: (持续更新中)
    1. 算法: 
       1. array: unique, partition, partition2, merge, merge2, diff, quick_select, two_sum
-      2. dp: LIS, LIS2, LCS, LCS2, edit_distance, matrix_chain, matrix_chain2
+      2. dp: LIS, LIS2, LCS, LCS2, LCS3, edit_distance, matrix_chain, matrix_chain2
       3. graph: dijkstra, dijkstra2, dijkstra3, kruskal, prim, prim2, topo_sort, Dinic, hungarian
-      4. knapsack: knapsack, knapsackV, knapsack_C, knapsackV_C
-      5. linkedlist: reverse_list, find_mid_node, find_last_kth_node
-      6. math: is_prime, find_primes
-      7. monotone_stack: monotone_stack, monotone_stack2, monotone_stack3, largest_rect, largest_rect2
-      8. search: lower_bound, upper_bound, n_queens
-      9. string: build_nextval, kmp
-      10. tree: find_path, find_common_ancestor, inorder_traversal, level_order_traversal
-      11. unimportant: 
+      4. greed: merge_intervals, merge_intervals2
+      5. knapsack: knapsack, knapsackV, knapsack_C, knapsackV_C
+      6. linkedlist: reverse_list, find_mid_node, find_last_kth_node
+      7. math: is_prime, find_primes
+      8. monotone_deque: monotone_deque, monotone_deque2
+      9. monotone_stack: monotone_stack, monotone_stack2, monotone_stack3, largest_rect, largest_rect2
+      10. search: lower_bound, upper_bound, n_queens
+      11. string: build_nextval, kmp
+      12. tree: find_path, find_common_ancestor, inorder_traversal, level_order_traversal
+      13. unimportant: 
           1. array: reverse, euclidean_dist, manhattan_dist, prefix_sum
           2. bisect: bisect_left, bisect_right, binary_search
           3. math: gcd, lcm, fast_pow
@@ -53,7 +55,7 @@
       2. tools: to_linkedlist, from_linkedlist, to_tree, from_tree, call_callable_list
 3. todo
    1. 算法: 
-      1. monotone_deque: next_k_max, prev_k_max, next_k_min, next_ge_k_len, prev_le_k_len
+      1. monotone_deque: next_ge_k_len, prev_le_k_len
       2. monotone_stack: next_ge_min
       3. string_op: string_add, string_mul
       4. tree: bst_min, bst_max
@@ -101,15 +103,13 @@
 6. 单调栈/队列
    1. 单调栈: 496, 503
       1. 双向: 42, 84, 85
-   2. 单调队列: 
+   2. 单调队列: 239
 7. 前缀树(Trie): 208
    1. -(易混淆): 14
 8. 栈: 20
 9. 堆: 23, 215, o40
-   1. 可动态修改的堆(Heap2): 
-      1. dijkstra, prim
-10. UnionFind: 200
-    1. kruskal
+   1. 可动态修改的堆(Heap2): dijkstra, prim
+10. UnionFind: kruskal, 200
 11. OrderedDict: 146(LRU)
 
 
@@ -123,7 +123,8 @@
       1. lower_bound: 4, 153, 875
       2. upper_bound: 
    2. 直接调用bisect: 704
-   3. LIS(最长递增子串): 300, 354, 1143
+      1. LIS: 300
+         1. 含reverse语义: 354, 1143(LCS)
 3. 滑动窗口: 3
 4. 搜索:
    1. 链: 
@@ -141,19 +142,19 @@
    1. dijkstra: 2203(重边的处理)
    2. kruskal(稀疏图): 1584
    3. prim(稠密图): 1584
-   4. dinic: 1349
-   5. 匈牙利算法: 1349
-   6. 拓扑排序: 207, 210
+   4. 拓扑排序: 207, 210
+   5. dinic: 1349
+   6. 匈牙利算法: 1349
 6. DP(or memo-dfs): 
    1. nums\[i..j\]: 5
-   2. nums\[..i\]: 42, 300
+   2. nums\[..i\]: 300, 435
    3. s\[..i\], s\[..j\]: 72, 1143
-   4. 双dp: 2167
+   4. 双dp: 42, 2167
    5. 背包: 39, 322, 416, 518
 7. 双指针: 11, 42
    1. N数: 15, 16, 18, 167
 8. 贪心: 11, 12, 42, 2037, 2038, 2182
-   1. 区间贪心: 
+   1. 区间贪心: 56, 57, 435
 9. 位运算: 2166
 10. 字符串: 
     1. 字符串哈希: 28, 1044
@@ -162,16 +163,14 @@
 
 
 #### 其他 
-1. 中心法: 5, 2171, 2203
+1. 中心法: 双向单调栈, 5, 2171, 2203
 2. 去重: 
    1. N数: 15, 16, 18
-3. 排序: 
+3. 排序: 离散化, kruskal, 2171
    1. N数: 同双指针N数
    2. map有序化: 2021, 2165, 2170, 2183
    3. with贪心: 2037
       1. -(暗含): 12, 2182
-   4. 离散化, kruskal
-   5. 2171
 4. int溢出: 7, 8
 5. 分类讨论: 
    1. 次大/小: 2170, 2182
@@ -181,7 +180,7 @@
 7. 数学: 
    1. gcd: 2183
    2. 质数: 204
-8. 日期
+8. 日期: 
 
 
 

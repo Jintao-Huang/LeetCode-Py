@@ -2,6 +2,7 @@
 from leetcode_alg import *
 
 class Solution:
+    """LIS"""
     def maxEnvelopes(self, envelopes: List[List[int]]) -> int:
         envelopes.sort(key=lambda x:(x[0], -x[1]))
         return LIS([e[1] for e in envelopes])

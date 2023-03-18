@@ -19,6 +19,7 @@ def dfs(candidates: List[int], idx: int, target: int,
 
 
 class Solution:
+    """回溯"""
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
         candidates.sort()
         res = []

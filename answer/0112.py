@@ -28,7 +28,7 @@ class Solution2:
         if root is None:
             return False
         stack = [(root, targetSum)]
-        while len(stack) > 0:
+        while stack:
             tn, t = stack.pop()
             t -= tn.val
             if tn.left is None and tn.right is None and t == 0:

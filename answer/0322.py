@@ -3,7 +3,7 @@ from leetcode_alg import *
 
 
 class Solution:
-    """recommended"""
+    """recommended. 背包"""
 
     def coinChange(self, coins: List[int], amount: int) -> int:
         init_value = INF

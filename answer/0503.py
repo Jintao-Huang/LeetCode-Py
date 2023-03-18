@@ -2,22 +2,22 @@ from leetcode_alg import *
 
 
 class Solution:
-    """faster. 优化"""
+    """faster. 优化. 单调栈"""
 
     def nextGreaterElements(self, nums: List[int]) -> List[int]:
         n = len(nums)
         res = [-1] * n
         stack = []
-        for i in range(n):
-            while len(stack) > 0 and nums[i] > nums[stack[-1]]:
-                res[stack.pop()] = nums[i]
+        for i, x in enumerate(nums):
+            while stack and x > nums[stack[-1]]:
+                res[stack.pop()] = x
             stack.append(i)
 
-        for i in range(n):
+        for i, x in enumerate(nums):
             if len(stack) == 0:
                 break
-            while nums[i] > nums[stack[-1]]:
-                res[stack.pop()] = nums[i]
+            while x > nums[stack[-1]]:
+                res[stack.pop()] = x
         return res
 
 

@@ -2,6 +2,7 @@ from leetcode_alg import *
 
 
 class Solution:
+    """双指针"""
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         lo, hi = 0, len(numbers)-1
         while lo < hi:
@@ -16,7 +17,7 @@ class Solution:
 
 
 class Solution2:
-    """faster. 解法同`1.py`"""
+    """faster. 哈希表"""
 
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         mapper: Dict[int, int] = {}

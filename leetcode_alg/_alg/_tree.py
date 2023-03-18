@@ -52,7 +52,7 @@ def inorder_traversal(root: TreeNode, res: List[int]) -> None:
 def level_order_traversal(root: TreeNode) -> List[List[int]]:
     dq = Deque[TreeNode]([root])
     res: List[List[int]] = []
-    while len(dq) > 0:
+    while dq:
         dq_len = len(dq)
         r: List[int] = []  # sub res
         for _ in range(dq_len):

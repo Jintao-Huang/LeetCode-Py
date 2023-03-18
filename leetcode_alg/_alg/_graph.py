@@ -17,7 +17,7 @@ def dijkstra(graph: List[Dict[int, int]], s: int) -> List[int]:
     # 每次探索距离`s点`最近的节点
     pq = Heap[Tuple[int, int]]([])
     pq.push((0, s))
-    while len(pq.heap) > 0:
+    while pq.heap:
         d, gn = pq.pop()  # graph node
         if visited[gn]:
             continue
@@ -39,7 +39,7 @@ def dijkstra2(graph: List[Dict[int, int]], s: int) -> List[int]:
     pq = Heap2[int]()
     pq.push((0, s))
     # visited数组可以省略
-    while len(pq.heap) > 0:
+    while pq.heap:
         d, gn = pq.pop()
         for to, d2 in graph[gn].items():
             new_d = d + d2
@@ -56,7 +56,7 @@ def dijkstra3(graph: List[Dict[int, int]], s: int) -> List[int]:
     dist[s] = 0
     dq = Deque[Tuple[int, int]]([(0, s)])
     #
-    while len(dq) > 0:
+    while dq:
         d, gn = dq.popleft()
         if d > dist[gn]:  # 使用dist数组充当visited的功能
             continue
@@ -91,7 +91,7 @@ def prim(graph: List[Dict[int, int]]) -> int:
     pq = Heap[Tuple[int, int]]([])
     pq.push((0, 0))
     # visited数组可以省略, 使用cost.
-    while len(pq.heap) > 0:
+    while pq.heap:
         d, gn = pq.pop()  # graph node
         if cost[gn] == 0:
             continue
@@ -112,7 +112,7 @@ def prim2(graph: List[Dict[int, int]]) -> int:
     cost = [INF] * n
     pq = Heap2[int]()
     pq.push((0, 0))
-    while len(pq.heap) > 0:
+    while pq.heap:
         d, gn = pq.pop()
         cost[gn] = 0
         res += d
@@ -172,7 +172,7 @@ class Dinic:
         visited[s] = True
         dq = Deque[int]([s])
         dist = 0  # 距离
-        while len(dq) > 0:
+        while dq:
             dq_len = len(dq)
             for _ in range(dq_len):
                 gn = dq.popleft()

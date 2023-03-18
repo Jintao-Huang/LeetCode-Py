@@ -3,18 +3,18 @@ from leetcode_alg import *
 
 
 class Solution:
-    """recommended. 标准做法"""
+    """recommended. 标准做法. 最短路径, 中心法."""
 
     def minimumWeight(self, n: int, edges: List[List[int]], src1: int, src2: int, dest: int) -> int:
         graph: List[Dict[int, int]] = [{} for _ in range(n)]
         graph_r: List[Dict[int, int]] = [{} for _ in range(n)]
         for e in edges:
             gn, to, val = e
-            if to in graph[gn]:
-                graph[gn][to] = min(graph[gn][to], val)  # 重边
-                graph_r[to][gn] = min(graph_r[to][gn], val)
-            else:
+            if to not in graph[gn]:
                 graph[gn][to] = val
+                graph_r[to][gn] = val
+            elif val < graph[gn][to]:
+                graph[gn][to] = val  # 重边
                 graph_r[to][gn] = val
         res3 = dijkstra(graph_r, dest)
         if res3[src1] == INF or res3[src2] == INF:
@@ -22,8 +22,10 @@ class Solution:
         res1 = dijkstra(graph, src1)
         res2 = dijkstra(graph, src2)
         res = INF
-        for r123 in zip(res1, res2, res3):
-            res = min(res, sum(r123))
+        for r1, r2, r3 in zip(res1, res2, res3):
+            r = r1+r2+r3
+            if r < res:
+                res = r
         return res
 
 
@@ -35,11 +37,11 @@ class Solution2:
         graph_r: List[Dict[int, int]] = [{} for _ in range(n)]
         for e in edges:
             gn, to, val = e
-            if to in graph[gn]:
-                graph[gn][to] = min(graph[gn][to], val)  # 重边
-                graph_r[to][gn] = min(graph_r[to][gn], val)
-            else:
+            if to not in graph[gn]:
                 graph[gn][to] = val
+                graph_r[to][gn] = val
+            elif val < graph[gn][to]:
+                graph[gn][to] = val  # 重边
                 graph_r[to][gn] = val
         res3 = dijkstra3(graph_r, dest)
         if res3[src1] == INF or res3[src2] == INF:
@@ -47,8 +49,10 @@ class Solution2:
         res1 = dijkstra3(graph, src1)
         res2 = dijkstra3(graph, src2)
         res = INF
-        for r123 in zip(res1, res2, res3):
-            res = min(res, sum(r123))
+        for r1, r2, r3 in zip(res1, res2, res3):
+            r = r1+r2+r3
+            if r < res:
+                res = r
         return res
 
 
@@ -58,11 +62,11 @@ class Solution3:
         graph_r: List[Dict[int, int]] = [{} for _ in range(n)]
         for e in edges:
             gn, to, val = e
-            if to in graph[gn]:
-                graph[gn][to] = min(graph[gn][to], val)  # 重边
-                graph_r[to][gn] = min(graph_r[to][gn], val)
-            else:
+            if to not in graph[gn]:
                 graph[gn][to] = val
+                graph_r[to][gn] = val
+            elif val < graph[gn][to]:
+                graph[gn][to] = val  # 重边
                 graph_r[to][gn] = val
         res3 = dijkstra2(graph_r, dest)
         if res3[src1] == INF or res3[src2] == INF:
@@ -70,8 +74,10 @@ class Solution3:
         res1 = dijkstra2(graph, src1)
         res2 = dijkstra2(graph, src2)
         res = INF
-        for r123 in zip(res1, res2, res3):
-            res = min(res, sum(r123))
+        for r1, r2, r3 in zip(res1, res2, res3):
+            r = r1+r2+r3
+            if r < res:
+                res = r
         return res
 
 

@@ -33,12 +33,11 @@ def monotone_stack(nums: List[int],
     res = [-1] * n
     stack = []
     _iter = range(n)
-    comp = _func_mapper[mode]
+    _comp = _func_mapper[mode]
     if not is_next:
         _iter = reversed(_iter)
     for i in _iter:
-        x = nums[i]
-        while len(stack) > 0 and comp(x, nums[stack[-1]]):
+        while stack and _comp(nums[i], nums[stack[-1]]):
             res[stack.pop()] = i
         stack.append(i)
     return res
@@ -53,14 +52,13 @@ def monotone_stack2(nums: List[int],
     res = [-1] * n
     stack = []
     _iter = range(n)
-    comp = _func_mapper[mode]
+    _comp = _func_mapper[mode]
     if is_next:
         _iter = reversed(_iter)
     for i in _iter:
-        x = nums[i]
-        while len(stack) > 0 and not comp(nums[stack[-1]], x):
+        while stack and not _comp(nums[stack[-1]], nums[i]):
             stack.pop()
-        if len(stack) > 0:
+        if stack:
             res[i] = stack[-1]
         stack.append(i)
     return res
@@ -73,12 +71,11 @@ def monotone_stack3(nums: List[int],
     n = len(nums)
     res, res2 = [-1] * n, [-1] * n
     stack = []
-    comp = _func_mapper[next_mode]
-    for i in range(n):
-        x = nums[i]
-        while len(stack) > 0 and comp(x, nums[stack[-1]]):
+    _comp = _func_mapper[next_mode]
+    for i, x in enumerate(nums):
+        while stack and _comp(x, nums[stack[-1]]):
             res[stack.pop()] = i
-        if len(stack) > 0:
+        if stack:
             res2[i] = stack[-1]
         stack.append(i)
     return res, res2
@@ -89,15 +86,14 @@ def largest_rect(nums: List[int]) -> int:
     res = 0
     nums.append(0)  # 边界处理
     stack = [-1]  # nums[-1] == 0
-    n = len(nums)
-    for i in range(n):
-        x = nums[i]
-        # lo..idx..i  # next_lt_prev_le
+    for i, x in enumerate(nums):
+        # lo..idx..i
         while lt(x, nums[stack[-1]]):
             idx = stack.pop()
             lo = stack[-1]
-            w = i - lo - 1
-            res = max(res, nums[idx]*w)
+            s = nums[idx] * (i - lo-1)  # h*w
+            if s > res:
+                res = s
         # 避免栈中出现重复的元素
         if x == nums[stack[-1]]:
             stack[-1] = i
@@ -112,6 +108,7 @@ def largest_rect2(nums: List[int]) -> int:
     next_le, prev_lt = monotone_stack3(nums, "le")
     n = len(nums)
     res = 0
+    # j..i..k
     for i in range(n):
         j = prev_lt[i]
         k = next_le[i]
@@ -119,6 +116,7 @@ def largest_rect2(nums: List[int]) -> int:
             j = -1
         if k == -1:
             k = n
-        w = k - j - 1
-        res = max(res, nums[i] * w)
+        s = nums[i] * (k - j - 1)  # h*w
+        if s > res:
+            res = s
     return res

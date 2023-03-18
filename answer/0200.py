@@ -31,7 +31,7 @@ class Solution:
 def bfs(grid: List[List[str]], i: int, j: int) -> None:
     dq = Deque[Tuple[int, int]]([(i, j)])
     n, m = len(grid), len(grid[0])
-    while len(dq) > 0:
+    while dq:
         i, j = dq.popleft()
         if i > 0 and grid[i-1][j] == "1":
             grid[i-1][j] = "0"

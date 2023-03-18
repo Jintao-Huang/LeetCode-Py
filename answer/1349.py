@@ -2,7 +2,7 @@ from leetcode_alg import *
 
 
 class Solution:
-    """recommended"""
+    """recommended. 二部图"""
 
     def maxStudents(self, seats: List[List[str]]) -> int:
         n, m = len(seats), len(seats[0])

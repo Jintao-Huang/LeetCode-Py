@@ -39,7 +39,8 @@ class Solution2:
         max_right = 0
         res = 0
         for i in reversed(range(n)):
-            max_right = max(max_right, height[i])
+            if height[i] > max_right:
+                max_right = height[i]
             res += min(max_left[i], max_right) - height[i]
         return res
 
@@ -67,11 +68,9 @@ class Solution4:
         # 不需要边界处理.
         res = 0
         stack = []
-        n = len(height)
-        for i in range(n):
-            x = height[i]
+        for i, x in enumerate(height):
             # lo..idx..i
-            while len(stack) > 0 and ge(x, height[stack[-1]]):
+            while stack and ge(x, height[stack[-1]]):
                 idx = stack.pop()
                 if len(stack) == 0:
                     break

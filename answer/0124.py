@@ -4,7 +4,8 @@ from leetcode_alg import *
 
 def dfs(root: TreeNode, res: List[int]) -> int:
     if root.left is None and root.right is None:
-        res[0] = max(res[0], root.val)
+        if root.val > res[0]:
+            res[0] = root.val
         return root.val
     #
     left, right = 0, 0
@@ -12,7 +13,9 @@ def dfs(root: TreeNode, res: List[int]) -> int:
         left = max(left, dfs(root.left, res))
     if root.right:
         right = max(right, dfs(root.right, res))
-    res[0] = max(res[0], left+right+root.val)
+    r = left+right+root.val
+    if r > res[0]:
+        res[0] = r
     return max(left, right) + root.val
 
 

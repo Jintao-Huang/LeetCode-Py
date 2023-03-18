@@ -24,8 +24,8 @@ from .._types import *
 """
 
 _func_mapper = {
-    "max": max,
-    "min": min
+    "max": gt,
+    "min": lt
 }
 
 
@@ -35,7 +35,7 @@ def knapsack(choices: List[int], capacity: int,
     """value=1"""
     dp = [init_value] * (capacity+1)
     dp[0] = 0
-    _max_min_func = _func_mapper[max_min]
+    _comp = _func_mapper[max_min]
     not_fc = not fill_capacity
     #
     for c in choices:
@@ -44,8 +44,8 @@ def knapsack(choices: List[int], capacity: int,
             _iter = reversed(_iter)
         for capa in _iter:
             c2 = capa-c
-            if not_fc or dp[c2] != init_value:
-                dp[capa] = _max_min_func(dp[capa], dp[c2] + 1)
+            if not_fc or dp[c2] != init_value and _comp(dp[c2] + 1, dp[capa]):  # max: gt, min: lt
+                dp[capa] = dp[c2] + 1
     return dp[capacity]
 
 
@@ -54,7 +54,7 @@ def knapsackV(choices: List[int], capacity: int, values: List[int],
               fill_capacity: bool, init_value: int) -> int:
     dp = [init_value] * (capacity+1)
     dp[0] = 0
-    _max_min_func = _func_mapper[max_min]
+    _comp = _func_mapper[max_min]
     not_fc = not fill_capacity
     #
     for c, v in zip(choices, values):
@@ -63,8 +63,8 @@ def knapsackV(choices: List[int], capacity: int, values: List[int],
             _iter = reversed(_iter)
         for capa in _iter:
             c2 = capa-c
-            if not_fc or dp[c2] != init_value:
-                dp[capa] = _max_min_func(dp[capa], dp[c2] + v)
+            if not_fc or dp[c2] != init_value and _comp(dp[c2] + v, dp[capa]):
+                dp[capa] = dp[c2] + v
     return dp[capacity]
 
 
@@ -74,14 +74,14 @@ def knapsack_C(choices: List[int], capacity: int,
     """value=1. 完全背包的另一实现. (slower than knapsack)"""
     dp = [init_value] * (capacity+1)
     dp[0] = 0
-    _max_min_func = _func_mapper[max_min]
+    _comp = _func_mapper[max_min]
     not_fc = not fill_capacity
     #
     for capa in range(capacity+1):
         for c in choices:
             c2 = capa-c
-            if c2 >= 0 and (not_fc or dp[c2] != init_value):
-                dp[capa] = _max_min_func(dp[capa], dp[c2] + 1)
+            if c2 >= 0 and (not_fc or dp[c2] != init_value) and _comp(dp[c2]+1, dp[capa]):
+                dp[capa] = dp[c2] + 1
     return dp[capacity]
 
 
@@ -90,12 +90,12 @@ def knapsackV_C(choices: List[int], capacity: int, values: List[int],
                 fill_capacity: bool, init_value: int) -> int:
     dp = [init_value] * (capacity+1)
     dp[0] = 0
-    _max_min_func = _func_mapper[max_min]
+    _comp = _func_mapper[max_min]
     not_fc = not fill_capacity
     #
     for capa in range(capacity+1):
         for c, v in zip(choices, values):
             c2 = capa-c
-            if c2 >= 0 and (not_fc or dp[c2] != init_value):
-                dp[capa] = _max_min_func(dp[capa], dp[c2] + v)
+            if c2 >= 0 and (not_fc or dp[c2] != init_value) and _comp(dp[c2]+v, dp[capa]):
+                dp[capa] = dp[c2] + v
     return dp[capacity]

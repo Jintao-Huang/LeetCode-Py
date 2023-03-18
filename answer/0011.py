@@ -3,6 +3,8 @@ from leetcode_alg import *
 
 
 class Solution:
+    """贪心. 为什么移动短的一边?
+    贪心思想: 如果移动长的一边, 那么一定不可能产生更优解."""
     def maxArea(self, height: List[int]) -> int:
         lo, hi = 0, len(height) - 1
         res = 0
@@ -14,7 +16,8 @@ class Solution:
             else:
                 s = w * height[hi]
                 hi -= 1
-            res = max(res, s)
+            if s > res:
+                res = s
         return res
 
 
@@ -33,7 +36,8 @@ class Solution2:
             else:
                 s = w * height[hi]
                 hi -= 1
-            res = max(res, s)
+            if s > res:
+                res = s
             if res >= w * max_height:
                 break
         return res

@@ -15,6 +15,7 @@ class Solution2:
 
 
 class Solution3:
+    """字符串哈希"""
     def strStr(self, haystack: str, needle: str) -> int:
         n, m = len(haystack), len(needle)
         sh = StringHasher(needle, mod=int(1e9)+7)

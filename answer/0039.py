@@ -17,7 +17,7 @@ def dfs(candidates: List[int], idx: int, target: int,
 
 
 class Solution:
-    """recommended"""
+    """recommended. 回溯"""
 
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         res = []
@@ -37,7 +37,7 @@ class Solution2:
                 c2 = capa-c
                 if c2 == 0:
                     dp[capa].append([c])
-                if len(dp[c2]) > 0:
+                if dp[c2]:
                     for r in dp[c2]:
                         rc = r[:]  # res copy
                         rc.append(c)

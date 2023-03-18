@@ -2,6 +2,7 @@ from leetcode_alg import *
 
 
 class Solution:
+    """二分"""
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         def cond(mid: int) -> bool:
             time = 0  # 需要花费的时间

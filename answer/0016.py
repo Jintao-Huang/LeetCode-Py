@@ -2,6 +2,7 @@ from leetcode_alg import *
 
 
 class Solution:
+    """双指针"""
     def threeSumClosest(self, nums: List[int], target: int) -> int:
         res = INF
         nums.sort()

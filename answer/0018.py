@@ -2,6 +2,7 @@ from leetcode_alg import *
 
 
 class Solution:
+    """双指针"""
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         if len(nums) < 4:
             return []

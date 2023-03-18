@@ -18,15 +18,15 @@ def knapsack_new(choices: List[int], capacity: int) -> bool:
     for c in choices:
         for capa in reversed(range(c, capacity+1)):
             c2 = capa-c
-            if dp[c2] != -1:
-                dp[capa] = max(dp[capa], dp[c2] + 1)
+            if dp[c2] != -1 and (dp[c2]+1) > dp[capa]:
+                dp[capa] = dp[c2] + 1
         if dp[capacity] > 0:
             return True
     return False
 
 
 class Solution2:
-    """针对问题的优化"""
+    """针对问题的优化. 背包"""
 
     def canPartition(self, nums: List[int]) -> bool:
         s = sum(nums)
@@ -37,7 +37,7 @@ class Solution2:
 
 
 class Solution3:
-    """recommended"""
+    """recommended. 哈希表"""
 
     def canPartition(self, nums: List[int]) -> bool:
         s = sum(nums)
@@ -59,4 +59,3 @@ if __name__ == "__main__":
     assert Solution().canPartition(nums) is True
     assert Solution2().canPartition(nums) is True
     assert Solution3().canPartition(nums) is True
-

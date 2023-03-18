@@ -24,12 +24,25 @@ def LIS2(nums: List[int]) -> int:
     for i, x in enumerate(nums):
         for j in range(i):
             y = nums[j]
-            if x > y:
-                dp[i] = max(dp[i], dp[j]+1)
+            if x > y and (dp[j]+1) > dp[i]:
+                dp[i] = dp[j]+1
     return max(dp)
 
 
 def LCS(s1: str, s2: str) -> int:
+    """请保证: len(s1) <= len(s2)"""
+    m = len(s2)
+    mapper = DefaultDict[str, List[int]](list)
+    for i in reversed(range(m)):
+        mapper[s2[i]].append(i)
+    nums = []
+    for c in s1:
+        if c in mapper:
+            nums.extend(mapper[c])
+    return LIS(nums)
+
+
+def LCS2(s1: str, s2: str) -> int:
     n, m = len(s1), len(s2)
     dp = [[0] * (m+1) for _ in range(n+1)]
     for i in range(1, n+1):
@@ -43,7 +56,7 @@ def LCS(s1: str, s2: str) -> int:
     return dp[n][m]
 
 
-def _decode_LCS2(s1: str, helper: List[List[int]]) -> str:
+def _decode_LCS(s1: str, helper: List[List[int]]) -> str:
     res = bytearray()
     n, m = len(helper), len(helper[0])
     i, j = n-1, m-1
@@ -60,7 +73,7 @@ def _decode_LCS2(s1: str, helper: List[List[int]]) -> str:
     return res.decode()
 
 
-def LCS2(s1: str, s2: str) -> Tuple[int, str]:
+def LCS3(s1: str, s2: str) -> Tuple[int, str]:
     """新增功能: 输出LCS. 
     ref: 算法导论"""
     n, m = len(s1), len(s2)
@@ -78,7 +91,7 @@ def LCS2(s1: str, s2: str) -> Tuple[int, str]:
             else:
                 dp[i][j] = dp[i][jm]
                 helper[i][j] = 2
-    return dp[n][m], _decode_LCS2(s1, helper)
+    return dp[n][m], _decode_LCS(s1, helper)
 
 
 def edit_distance(s1: str, s2: str) -> int:
@@ -108,7 +121,9 @@ def matrix_chain(nums: List[int]) -> int:
             hi = lo+hml
             dp[lo][hi] = INF
             for mid in range(lo+1, hi):
-                dp[lo][hi] = min(dp[lo][hi], dp[lo][mid]+dp[mid][hi]+nums[lo]*nums[mid]*nums[hi])
+                r = dp[lo][mid]+dp[mid][hi]+nums[lo]*nums[mid]*nums[hi]
+                if r < dp[lo][hi]:
+                    dp[lo][hi] = r
     return dp[0][n-1]
 
 
@@ -142,4 +157,3 @@ def matrix_chain2(nums: List[int]) -> Tuple[int, str]:
     res = bytearray()
     _decode_matrix_chain(helper, 0, n-1, res)
     return dp[0][n-1], res.decode()
-

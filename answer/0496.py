@@ -2,16 +2,14 @@ from leetcode_alg import *
 
 
 class Solution:
-    """faster"""
+    """faster. 单调栈"""
 
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        n = len(nums2)
         stack = []
         mapper = {}
         # 存数值, 而不是索引
-        for i in range(n):
-            x = nums2[i]
-            while len(stack) > 0 and gt(x, stack[-1]):
+        for x in nums2:
+            while stack and gt(x, stack[-1]):
                 mapper[stack.pop()] = x
             stack.append(x)
         #

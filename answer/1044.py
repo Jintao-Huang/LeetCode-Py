@@ -11,8 +11,8 @@ class StringHasher2:
         self.base = base
         self.ba = bytearray(n)
         min_char -= 1
-        for i in range(n):
-            self.ba[i] = ord(s[i])-min_char
+        for i, c in enumerate(s):
+            self.ba[i] = ord(c)-min_char
 
     def check(self, length: int, mod: int = int(1e18)+3) -> int:
         """检查长度为length时, 是否有相等的子串"""
@@ -54,7 +54,7 @@ class Solution:
 
 
 class Solution2:
-    """使用template"""
+    """使用模板"""
 
     def longestDupSubstring(self, s: str) -> str:
         n = len(s)
