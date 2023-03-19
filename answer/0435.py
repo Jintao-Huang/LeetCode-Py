@@ -20,7 +20,7 @@ class Solution2:
     """DP. 超时"""
 
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
-        intervals.sort()
+        intervals.sort(key=itemgetter(0))
         n = len(intervals)
         dp = [1] * n
         for i, itv in enumerate(intervals):
