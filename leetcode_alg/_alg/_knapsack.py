@@ -14,12 +14,12 @@ from .._types import *
     最小化装满01背包: 
         knapsack(is_01=True, max_min=min, fill_capacity=True, init_value=INF)
 完全背包: 
-    普通的01背包, capacity无需装满: 
+    普通的完全背包, capacity无需装满: 
         knapsack(is_01=False, max_min=max, fill_capacity=False, init_value=0)
-    最大化装满01背包: 
+    最大化装满完全背包: 
         knapsack(is_01=False, max_min=max, fill_capacity=True, init_value=-INF)
             or init_value=-1(如果所有的choices[i]>0)
-    最小化装满01背包: 
+    最小化装满完全背包: 
         knapsack(is_01=False, max_min=min, fill_capacity=True, init_value=INF)
 """
 

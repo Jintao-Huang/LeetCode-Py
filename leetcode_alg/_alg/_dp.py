@@ -6,7 +6,7 @@ from .._types import *
 
 
 def LIS(nums: List[int]) -> int:
-    """O(nlogn)"""
+    """O(nlogn). faster"""
     stack = []
     for x in nums:
         # 若要求最长单调非递减子序列, 则改成: idx = bisect_left(stack, x+1)
@@ -31,7 +31,7 @@ def LIS2(nums: List[int]) -> int:
 
 
 def LCS(s1: str, s2: str) -> int:
-    """请保证: len(s1) <= len(s2)"""
+    """请保证: len(s1) <= len(s2). faster"""
     m = len(s2)
     mapper = DefaultDict[str, List[int]](list)
     for i in reversed(range(m)):
