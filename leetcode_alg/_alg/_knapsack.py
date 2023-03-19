@@ -68,7 +68,7 @@ def knapsackV(choices: List[int], capacity: int, values: List[int],
     return dp[capacity]
 
 
-def knapsack_C(choices: List[int], capacity: int,
+def knapsackC(choices: List[int], capacity: int,
                max_min: Literal["max", "min"],
                fill_capacity: bool, init_value: int) -> int:
     """value=1. 完全背包的另一实现. (slower than knapsack)"""
@@ -85,7 +85,7 @@ def knapsack_C(choices: List[int], capacity: int,
     return dp[capacity]
 
 
-def knapsackV_C(choices: List[int], capacity: int, values: List[int],
+def knapsackCV(choices: List[int], capacity: int, values: List[int],
                 max_min: Literal["max", "min"],
                 fill_capacity: bool, init_value: int) -> int:
     dp = [init_value] * (capacity+1)

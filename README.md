@@ -9,7 +9,7 @@
    1. 包含大量leetcode(python)题目的解答(将会收集**1k题**以上, 目前处于开发中). 
    2. 算法库: `leetcode-alg`. 
 2. `LeetCode-Py`的**习题解答的风格**是在最优复杂度的前提下, 写出最简洁的代码(**不做过多细节的优化**: 因为不同于c/c++, python容易反向优化). 旨在将**最优雅**的python代码放入`answer/`文件夹内. 
-3. `leetcode-alg`是针对leetcode解题的数据结构和算法库, 其**设计准则**是: 以通用性为核心, 并以最大可能进行性能优化. 
+3. `leetcode-alg`是针对leetcode解题的数据结构和算法库, 其**设计哲学**是: 以通用性为核心, 并以最大可能进行性能优化. 
 
 
 ## 性能和功能
@@ -25,7 +25,7 @@
       2. dp: LIS, LIS2, LCS, LCS2, LCS3, edit_distance, matrix_chain, matrix_chain2
       3. graph: dijkstra, dijkstra2, dijkstra3, kruskal, prim, prim2, topo_sort, Dinic, hungarian
       4. greed: merge_intervals, merge_intervals2
-      5. knapsack: knapsack, knapsackV, knapsack_C, knapsackV_C
+      5. knapsack: knapsack, knapsackV, knapsackC, knapsackCV
       6. linkedlist: reverse_list, find_mid_node, find_last_kth_node
       7. math: is_prime, find_primes
       8. monotone_deque: monotone_deque, monotone_deque2

@@ -14,7 +14,7 @@ class Solution:
 class Solution2:
     def coinChange(self, coins: List[int], amount: int) -> int:
         init_value = INF
-        res = knapsack_C(coins, amount, "min", True, init_value)
+        res = knapsackC(coins, amount, "min", True, init_value)
         return res if res != init_value else -1
 
 
@@ -30,7 +30,7 @@ class Solution4:
     def coinChange(self, coins: List[int], amount: int) -> int:
         init_value = INF
         n = len(coins)
-        res = knapsackV_C(coins, amount, [1] * n, "min", True, init_value)
+        res = knapsackCV(coins, amount, [1] * n, "min", True, init_value)
         return res if res != init_value else -1
 
 
