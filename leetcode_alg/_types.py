@@ -6,11 +6,13 @@ from heapq import (
 from bisect import bisect_left, bisect_right, insort_left, insort_right  # C
 from math import (  # C
     sqrt, log2, floor, trunc, ceil, gcd, lcm, factorial, comb, perm, prod,
-    isclose, dist as dist_math, hypot, 
+    isclose, dist as dist_math, hypot,
 )
 from random import randint
 from functools import partial, cache, lru_cache, cmp_to_key, reduce  # C
-from itertools import accumulate, chain  # C
+from itertools import (  # C
+    accumulate, chain, product, permutations, combinations, combinations_with_replacement
+)
 # from collections import deque, namedtuple, defaultdict, Counter  # use typing
 from copy import copy, deepcopy  # C
 from typing import (
