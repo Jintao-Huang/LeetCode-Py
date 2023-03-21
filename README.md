@@ -13,7 +13,7 @@
 
 
 ## 性能和功能
-1. `answer/`中**time击败**: (不使用trick)
+1. 性能: `answer/`中**time击败**: 
    1. 100%: 1, 11, 16, 18, 39, 42, 57, 72, 84, 85, 146, 167, 200, 300, 354, 416, 435, 518, 1143, 1349, 2096, 2171, 2203
    2. 95%: 2, 28, 40, 51, 52, 56, 102, 107, 112, 113, 124, 153, 204, 207, 210, 239, 307, 322, 454, 496, 503, 704, 875, 1044, o51
    3. 85%: 4, 15, 19, 92, 208, 215, 876, 1584, o40
@@ -45,7 +45,7 @@
       3. linkedlist: LinkedListNode, LinkedList
       4. segment_tree: SegmentTree, SegmentTree2
       5. sorted_list: SimpleSortedList
-      6. string_hasher: StringHasher, StringHasher2
+      6. string_hasher: StringHasher
       7. trie: TrieTreeNode, Trie
       8. union_find: UnionFind
       9. unimportant: 
@@ -132,7 +132,7 @@
       1. 回溯: 113
       2. dfs: 112, 124
          1. 公共祖先: 2096
-         2. 递归模式dfs: 112
+         2. 迭代式dfs: 112
       3. bfs: 102, 107
    3. 图: 
       1. dfs: 200
