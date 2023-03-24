@@ -39,10 +39,8 @@ class Solution5:
     """完全使用小根堆的做法. """
 
     def findKthLargest(self, nums: List[int], k: int) -> int:
-        n = len(nums)
         heap = Heap(nums[:k])
-        for i in range(k, n):
-            x = nums[i]
+        for x in nums[k:]:
             if x > heap.heap[0]:
                 heap.replace(x)
         heap.heap.sort(reverse=True)

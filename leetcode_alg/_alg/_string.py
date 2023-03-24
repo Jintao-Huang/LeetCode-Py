@@ -12,8 +12,7 @@ def build_nextval(p: str) -> List[int]:
         return []
     nextval = [0]  # 省略-1
     j = 0
-    for i in range(1, n):
-        c = p[i]
+    for c in p[1:]:
         # nextval
         nv = nextval[-1]
         if nv > 0 and c == p[nv]:

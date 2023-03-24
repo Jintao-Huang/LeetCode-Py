@@ -40,8 +40,7 @@ class Solution2:
             if cnt[x] >= 3 and x == 0:
                 res.append([x, x, x])
             #
-            for j in range(i+1, n):
-                y = nums[j]
+            for y in nums[i+1:]:
                 if cnt[x] >= 2 and 2*x+y == 0:
                     res.append([x, x, y])
                     continue

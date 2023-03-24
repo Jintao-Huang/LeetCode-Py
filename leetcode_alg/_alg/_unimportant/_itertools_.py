@@ -60,7 +60,7 @@ def permutations_(nums: List[int], r: Optional[int] = None) -> List[List[int]]:
     return res
 
 
-def _dfs_p(nums: List[int], r: int, visited: bytearray,
+def _dfs_p(nums: List[int], r: int, visited: List[bool],
            path: List[int], res: List[List[int]]) -> None:
     if len(path) == r:
         res.append(path[:])
@@ -69,7 +69,7 @@ def _dfs_p(nums: List[int], r: int, visited: bytearray,
     for i, x in enumerate(nums):
         if visited[i]:
             continue
-        # 
+        #
         path.append(x)
         visited[i] = True
         _dfs_p(nums, r, visited, path, res)
@@ -78,9 +78,10 @@ def _dfs_p(nums: List[int], r: int, visited: bytearray,
 
 
 def permutations2(nums: List[int], r: Optional[int] = None) -> List[List[int]]:
+    n = len(nums)
     if r is None:
-        r = len(nums)
-    visited = bytearray(len(nums))
+        r = n
+    visited = [False] * n
     res = []
     _dfs_p(nums, r, visited, [], res)
     return res

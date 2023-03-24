@@ -25,7 +25,7 @@ def upper_bound(lo: int, hi: int, cond: Callable[[int], bool]) -> int:
 
 
 def _n_queens(path: List[int], res: List[List[int]],
-              v: bytearray, v2: bytearray, v3: bytearray) -> None:
+              v:  List[bool], v2:  List[bool], v3: List[bool]) -> None:
     """
     v: visited数组, 竖线. v2: 斜向下线, v3: 斜向上线
     """
@@ -45,9 +45,9 @@ def _n_queens(path: List[int], res: List[List[int]],
 
 
 def n_queens(n: int) -> List[List[int]]:
-    v = bytearray(n)
-    v2 = bytearray((n << 1)-1)
-    v3 = bytearray((n << 1)-1)
+    v = [False] * n
+    v2 = [False] * ((n << 1)-1)
+    v3 = [False] * ((n << 1)-1)
     res: List[List[int]] = []
     _n_queens([], res, v, v2, v3)
     return res

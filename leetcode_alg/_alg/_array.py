@@ -38,9 +38,9 @@ def diff(nums: List[int], initial: Optional[int] = None) -> List[int]:
         res.append(nums[i] - nums[i-1])
     return res
 
-
-def find_prefix(it1: Iterable, it2: Iterable) -> int:
-    """it1: str, bytes, bytearray, list. 返回相同前缀的索引"""
+_T = TypeVar("_T")
+def find_prefix(it1: Iterable[_T], it2: Iterable[_T]) -> int:
+    """返回相同前缀的索引"""
     res = 0
     for c, c2 in zip(it1, it2):
         if c != c2:
@@ -150,7 +150,7 @@ def two_sum(nums: List[int], lo: int, hi: int, target: int, res: List[List[int]]
             hi -= 1
 
 
-def reverse(nums: Union[List[int], bytearray], lo: int, hi: int) -> None:
+def reverse(nums: List[int], lo: int, hi: int) -> None:
     # [lo..hi]
     while lo < hi:
         nums[lo], nums[hi] = nums[hi], nums[lo]

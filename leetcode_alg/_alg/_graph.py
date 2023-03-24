@@ -13,7 +13,7 @@ def dijkstra(graph: List[Dict[int, int]], s: int) -> List[int]:
     n = len(graph)
     dist = [INF] * n
     dist[s] = 0
-    visited = bytearray(n)
+    visited = [False] * n
     # 每次探索距离`s点`最近的节点
     pq = Heap[Tuple[int, int]]([])
     pq.push((0, s))
@@ -168,7 +168,7 @@ class Dinic:
         # start, target
         n = len(self.rg)
         level = [-1] * n
-        visited = bytearray(n)
+        visited = [False] * n
         visited[s] = True
         dq = Deque[int]([s])
         dist = 0  # 距离
@@ -228,7 +228,7 @@ class Dinic:
         return res
 
 
-def _match(graph: List[List[int]], gn: int, visited: bytearray, matching: List[int]) -> bool:
+def _match(graph: List[List[int]], gn: int, visited: List[bool], matching: List[int]) -> bool:
     """匹配gn节点"""
     if visited[gn]:
         return False
@@ -251,7 +251,7 @@ def hungarian(graph: List[List[int]]) -> int:
     res = 0
     matching = [-1] * n  # 匹配情况. (只存部2->部1的边)
     for gn in range(n):
-        visited = bytearray(n)  # (部1的visited)
+        visited = [False] * n  # (部1的visited)
         if _match(graph, gn, visited, matching):
             res += 1
     return res
