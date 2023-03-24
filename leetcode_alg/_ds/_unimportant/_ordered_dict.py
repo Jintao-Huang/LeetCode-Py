@@ -59,11 +59,22 @@ class OrderedDict(Generic[_K, _V]):
             self.ll.replace_between(tail.prev, lln, tail)
             self.dict[k] = lln
 
+    def __iter__(self) -> Generator[Tuple[_K, _V], Any, None]:
+        for lln in self.ll:
+            yield lln.val
+
+    def tolist(self):
+        res: List[Tuple[_K, _V]] = []
+        for kv in self:
+            res.append(kv)
+        return res
+
+    def clear(self):
+        self.ll.clear()
+        self.dict.clear()
+
     def __repr__(self) -> str:
-        res = []
-        lln = self.ll.head.next
-        tail = self.ll.tail
-        while lln is not tail:
-            res.append(lln.val)
-            lln = lln.next
-        return f"{self.__class__.__name__}({res!r})"
+        return f"{self.__class__.__name__}({self.tolist()!r})"
+
+    def __len__(self):
+        return len(self.dict)

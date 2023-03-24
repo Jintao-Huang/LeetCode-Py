@@ -26,7 +26,7 @@ class LinkedList(Generic[_T]):
 
     @staticmethod
     def replace_between(node: LinkedListNode[_T], new_node: LinkedListNode[_T],
-                       node2: LinkedListNode[_T]) -> None:
+                        node2: LinkedListNode[_T]) -> None:
         """node <-...-> node2"""
         node.next, new_node.next = new_node, node2
         node2.prev, new_node.prev = new_node, node
@@ -36,14 +36,22 @@ class LinkedList(Generic[_T]):
         node_prev, node_next = node.prev, node.next
         node_prev.next, node_next.prev = node_next, node_prev
 
-    def tolist(self) -> List[_T]:
-        res = []
+    def __iter__(self) -> Generator[LinkedListNode, Any, None]:
         lln = self.head.next
         tail = self.tail
         while lln is not tail:
-            res.append(lln.val)
+            yield lln
             lln = lln.next
+
+    def tolist(self) -> List[_T]:
+        res = []
+        for lln in self:
+            res.append(lln.val)
         return res
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.tolist()!r})"
+
+    def clear(self) -> None:
+        self.head.prev, self.head.next = self.tail, self.tail
+        self.tail.prev, self.tail.next = self.head, self.head
