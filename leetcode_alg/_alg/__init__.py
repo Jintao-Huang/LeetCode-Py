@@ -5,7 +5,7 @@ from ._graph import *
 from ._greed import *
 from ._knapsack import *
 from ._linked_list import *
-from ._math import *
+from ._math_ import *
 from ._monotone_deque import *
 from ._monotone_stack import *
 from ._search import *

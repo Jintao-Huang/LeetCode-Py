@@ -1,15 +1,18 @@
-from leetcode_alg.ext import *
+from leetcode_alg.ext import (
+    bisect_left_, bisect_right_, binary_search, merge_sort, quick_sort,
+    heap_sort, accumulate_, heap_sort2, gcd_, lcm_
+)
 import unittest as ut
 import numpy as np
 import mini_lightning as ml
-import math
+from leetcode_alg import *
 
 
 class TestUnimp(ut.TestCase):
     def test_bs(self):
         x = [1, 2, 2, 2, 3]
-        self.assertTrue(bisect_left(x, 2), 1)
-        self.assertTrue(bisect_right(x, 2), 4)
+        self.assertTrue(bisect_left_(x, 2), 1)
+        self.assertTrue(bisect_right_(x, 2), 4)
         self.assertTrue(binary_search(x, 4), -1)
         self.assertTrue(binary_search(x, 2), 2)
         self.assertTrue(binary_search(x, 0), -1)
@@ -26,16 +29,16 @@ class TestUnimp(ut.TestCase):
 
     def test_prefix_sum(self):
         nums = [1, 2, 3, 4, 5, 6]
-        res = list(accumulate(nums))
-        res2 = prefix_sum(nums)
+        res = list(accumulate_(nums))
+        res2 = list(accumulate(nums))
         self.assertTrue(res == res2)
-        res = list(accumulate(nums, initial=1))
-        res2 = prefix_sum(nums, initial=1)
+        res = list(accumulate_(nums, initial=1))
+        res2 = list(accumulate(nums, initial=1))
         self.assertTrue(res == res2)
         n = 10000
         x = np.random.permutation(n).tolist()
         print("prefix_sum")
-        y2 = ml.test_time(lambda: prefix_sum(x, 1), 10)
+        y2 = ml.test_time(lambda: list(accumulate_(x, initial=1)), 10)
         y = ml.test_time(lambda: list(accumulate(x, initial=1)), 10)
         self.assertTrue(y == y2)
 
@@ -53,8 +56,8 @@ class TestUnimp(ut.TestCase):
     def test_gcd_lcm(self):
         x, y = 20, 25
 
-        self.assertTrue(gcd(x, y) == math.gcd(x, y))
-        self.assertTrue(lcm(x, y) == math.lcm(x, y))
+        self.assertTrue(gcd_(x, y) == gcd(x, y))
+        self.assertTrue(lcm_(x, y) == lcm(x, y))
 
 
 if __name__ == "__main__":

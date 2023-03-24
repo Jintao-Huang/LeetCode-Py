@@ -1,4 +1,4 @@
-from leetcode_alg.ext import *
+from leetcode_alg.ext import fast_pow
 import unittest as ut
 
 

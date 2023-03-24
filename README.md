@@ -14,14 +14,14 @@
 
 ## 性能和功能
 1. 性能: `answer/`中**time击败**: 
-   1. 100%: 1, 11, 16, 18, 39, 42, 57, 72, 84, 85, 146, 167, 200, 300, 354, 416, 435, 518, 1143, 1349, 2096, 2171, 2203
-   2. 95%: 2, 28, 40, 51, 52, 56, 102, 107, 112, 113, 124, 153, 204, 207, 210, 239, 307, 322, 454, 496, 503, 704, 875, 1044, o51
+   1. 100%: 1, 11, 16, 18, 39, 42, 46, 57, 72, 77, 78, 84, 85, 146, 167, 200, 300, 354, 416, 435, 518, 1143, 1349, 2096, 2171, 2203
+   2. 95%: 2, 22, 28, 31, 40, 51, 52, 56, 90, 102, 107, 112, 113, 124, 153, 204, 207, 210, 239, 307, 322, 454, 496, 503, 704, 875, 1044, o51
    3. 85%: 4, 15, 19, 92, 208, 215, 876, 1584, o40
    4. 60%: 
    5. 其他: 
 2. 已有的功能: (持续更新中)
    1. 算法: 
-      1. array: unique, partition, partition2, merge, merge2, diff, quick_select, two_sum
+      1. array: unique, partition, partition2, merge, merge2, diff, quick_select, two_sum, reverse, next_permutation, subsets
       2. dp: LIS, LIS2, LCS, LCS2, LCS3, edit_distance, matrix_chain, matrix_chain2
       3. graph: dijkstra, dijkstra2, dijkstra3, kruskal, prim, prim2, topo_sort, Dinic, hungarian
       4. greed: merge_intervals, merge_intervals2
@@ -34,11 +34,12 @@
       11. string: build_nextval, kmp
       12. tree: find_path, find_common_ancestor, inorder_traversal, level_order_traversal
       13. unimportant: 
-          1. array: reverse, euclidean_dist, manhattan_dist, prefix_sum
-          2. bisect: bisect_left, bisect_right, binary_search
-          3. math: gcd, lcm, fast_pow
-          4. random: randperm
-          5. sort: quick_sort, merge_sort, heap_sort, heap_sort2
+          1. array: euclidean_dist, manhattan_dist
+          2. bisect: bisect_left_, bisect_right_, binary_search
+          3. itertools: accumulate_, product_, permutations_, permutations2, combinations_, combinations2, combinations_with_replacement_
+          4. math: gcd_, lcm_, fast_pow
+          5. random: randperm
+          6. sort: quick_sort, merge_sort, heap_sort, heap_sort2
    2. 数据结构:
       1. binary_indexed_tree: BinaryIndexedTree, BinaryIndexedTree2
       2. heap: Heap, Heap2
@@ -79,8 +80,6 @@
 2. 使用: 例子可以查看`answer/`
    ```python
    from leetcode_alg import *
-   # if you want to import additional features
-   from leetcode_alg.ext import *
    ```
 
 
@@ -127,7 +126,10 @@
 3. 滑动窗口: 3
 4. 搜索:
    1. 链: 
-      1. 回溯: 17, 22, 39, 40, 51, 52
+      1. 回溯: 17, 22, 37, 51, 52
+         1. 子集: 39, 40, 78, 90
+         2. 组合: 77
+         3. 排列: 31(相关题), 46, 47, 679
    2. 树: 
       1. 回溯: 113
       2. dfs: 112, 124
@@ -163,12 +165,11 @@
 
 #### 其他 
 1. 中心法: 双向单调栈, 5, 2171, 2203
-2. 去重: 
+2. 去重: 40, 47
    1. N数: 15, 16, 18
-3. 排序: 离散化, kruskal, 2171
-   1. N数: 同双指针N数
-   2. map有序化: 2021, 2165, 2170, 2183
-   3. with贪心: 区间贪心, 2037
+3. 排序: 去重, 离散化, kruskal, 2171
+   1. map有序化: 2021, 2165, 2170, 2183
+   2. with贪心: 区间贪心, 2037
       1. -(非显式的sort): 12, 2182
 4. int溢出: 7, 8
 5. 分类讨论: 

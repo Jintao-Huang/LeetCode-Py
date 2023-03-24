@@ -15,7 +15,7 @@ class StringHasher:
         ba = bytearray(self.n)
         for i in range(self.n):
             ba[i] = ord(s[i])-min_char
-        self.ps = list(accumulate(ba, lambda x, y: (x * base + y) % mod))
+        self.ps = list(accumulate(ba, lambda x, y: (x * base + y) % mod))  # prefix sum
         self.base = list(accumulate(range(self.n - 1), lambda b, _: ((b * base) % mod), initial=1))
 
     def get_hash(self, lo: int, hi: int) -> int:

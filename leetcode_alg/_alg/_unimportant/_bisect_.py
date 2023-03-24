@@ -6,14 +6,14 @@ from ..._types import *
 from .._search import lower_bound
 
 
-def bisect_left(nums: List[int], x: int, lo: int = 0, hi: Optional[int] = None) -> int:
+def bisect_left_(nums: List[int], x: int, lo: int = 0, hi: Optional[int] = None) -> int:
     """[lo..hi)"""
     if hi is None:
         hi = len(nums)
     return lower_bound(lo, hi, lambda mid: nums[mid] >= x)
 
 
-def bisect_right(nums: List[int], x: int, lo: int = 0, hi: Optional[int] = None) -> int:
+def bisect_right_(nums: List[int], x: int, lo: int = 0, hi: Optional[int] = None) -> int:
     """[lo..hi)"""
     if hi is None:
         hi = len(nums)

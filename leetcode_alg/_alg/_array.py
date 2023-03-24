@@ -148,3 +148,33 @@ def two_sum(nums: List[int], lo: int, hi: int, target: int, res: List[List[int]]
             lo += 1
         else:
             hi -= 1
+
+
+def reverse(nums: Union[List[int], bytearray], lo: int, hi: int) -> None:
+    # [lo..hi]
+    while lo < hi:
+        nums[lo], nums[hi] = nums[hi], nums[lo]
+        lo += 1
+        hi -= 1
+
+
+def next_permutation(nums: List[int]) -> None:
+    """inplace"""
+    n = len(nums)
+    i = n-2
+    # 找升序: nums[i] < nums[i+1]
+    while i >= 0 and nums[i] >= nums[i+1]:
+        i -= 1
+    #
+    reverse(nums, i+1, n-1)  # 使升序
+    if i >= 0:
+        j = bisect_right(nums, nums[i], i+1, n)
+        nums[i], nums[j] = nums[j], nums[i]
+
+
+def subsets(nums: List[int]) -> List[List[int]]:
+    """nums: const"""
+    res = [[]]
+    for x in nums:
+        res += [r + [x] for r in res]
+    return res

@@ -10,10 +10,10 @@ def _find_path(root: TreeNode, dst: int, path: bytearray) -> bool:
     if root.val == dst:
         return True
     if root.left and _find_path(root.left, dst, path):
-        path.append(ord("L"))
+        path.append(76)  # ord("L")
         return True
     if root.right and _find_path(root.right, dst, path):
-        path.append(ord("R"))
+        path.append(82)  # ord("R")
         return True
     return False
 

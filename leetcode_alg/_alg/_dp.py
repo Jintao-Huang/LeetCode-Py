@@ -133,11 +133,11 @@ def _decode_matrix_chain(helper: List[List[int]], lo: int, hi: int, res: bytearr
         res += f"A{lo}".encode()
         return
     #
-    res.append(ord("("))
+    res.append(40)  # ord("(")
     mid = helper[lo][hi]
     _decode_matrix_chain(helper, lo, mid, res)
     _decode_matrix_chain(helper, mid, hi, res)
-    res.append(ord(")"))
+    res.append(41)  # ord(")")
 
 
 def matrix_chain2(nums: List[int]) -> Tuple[int, str]:

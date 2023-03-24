@@ -11,14 +11,14 @@ from math import (  # C
 from random import randint
 from functools import partial, cache, lru_cache, cmp_to_key, reduce  # C
 from itertools import (  # C
-    accumulate, chain, product, permutations, combinations, combinations_with_replacement
+    accumulate, chain, product, permutations, combinations, combinations_with_replacement,
 )
 # from collections import deque, namedtuple, defaultdict, Counter  # use typing
 from copy import copy, deepcopy  # C
 from typing import (
     Literal, List, Tuple, Dict, Set, Callable, Optional, Union, Any,
     Deque, NamedTuple, DefaultDict, Counter, OrderedDict,   # C
-    Sequence, Mapping, Iterable, Iterator, TypeVar, Generic
+    Sequence, Mapping, Iterable, Iterator, TypeVar, Generic, Generator
 )
 from enum import Enum
 from sortedcontainers import SortedList, SortedDict, SortedSet, SortedKeyList  # py
