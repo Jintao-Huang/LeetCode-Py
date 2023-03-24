@@ -1,6 +1,7 @@
 from operator import add, mul, lt, gt, le, ge, neg, itemgetter
 from heapq import (
     heapify, heappop, heappush, heappushpop, heapreplace,  # C
+    # *_max从`_ds._heap.py`导入
     merge as merge_heapq, nlargest, nsmallest  # py
 )
 from bisect import bisect_left, bisect_right, insort_left, insort_right  # C

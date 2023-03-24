@@ -2,9 +2,6 @@
 # Email: huangjintao@mail.ustc.edu.cn
 # Date:
 
-# 这里是itertools库中的等价实现. 实践中请使用itertools库.
-# note: 接口略微不同(方便leetcode使用)
-
 from ..._types import *
 from .._array import reverse
 

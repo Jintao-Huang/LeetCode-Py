@@ -14,26 +14,27 @@
 
 ## 性能和功能
 1. 性能: `answer/`中**time击败**: 
-   1. 100%: 1, 11, 16, 18, 39, 42, 46, 57, 72, 77, 78, 84, 85, 146, 167, 200, 300, 354, 416, 435, 518, 1143, 1349, 2096, 2171, 2203
+   1. 100%: 1, 11, 16, 18, 39, 42, 46, 57, 72, 77, 78, 84, 85, 146, 167, 200, 215, 300, 354, 416, 435, 518, 1143, 1349, 2096, 2171, 2203
    2. 95%: 2, 22, 28, 31, 40, 47, 51, 52, 56, 90, 102, 107, 112, 113, 124, 153, 204, 207, 210, 239, 307, 322, 454, 496, 503, 704, 875, 1044, o51
-   3. 85%: 4, 15, 19, 92, 208, 215, 876, 1584, o40
+   3. 85%: 4, 15, 19, 92, 208, 876, 1584, o40
    4. 60%: 
    5. 其他: 
 2. 已有的功能: (持续更新中)
    1. 算法: 
       1. array: unique, partition, partition2, merge, merge2, diff, quick_select, two_sum, reverse, next_permutation, subsets
       2. dp: LIS, LIS2, LCS, LCS2, LCS3, edit_distance, matrix_chain, matrix_chain2
-      3. graph: dijkstra, dijkstra2, dijkstra3, kruskal, prim, prim2, topo_sort, Dinic, hungarian
-      4. greed: merge_intervals, merge_intervals2
-      5. knapsack: knapsack, knapsackV, knapsackC, knapsackCV
-      6. linkedlist: reverse_list, find_mid_node, find_last_kth_node
-      7. math: is_prime, find_primes
-      8. monotone_deque: monotone_deque, monotone_deque2
-      9. monotone_stack: monotone_stack, monotone_stack2, monotone_stack3, largest_rect, largest_rect2
-      10. search: lower_bound, upper_bound, n_queens
-      11. string: build_nextval, kmp
-      12. tree: find_path, find_common_ancestor, inorder_traversal, level_order_traversal
-      13. unimportant: 
+      3. heapq: nlargest_, nsmallest_, merge_heapq_
+      4. graph: dijkstra, dijkstra2, dijkstra3, kruskal, prim, prim2, topo_sort, Dinic, hungarian
+      5. greed: merge_intervals, merge_intervals2
+      6. knapsack: knapsack, knapsackV, knapsackC, knapsackCV
+      7. linkedlist: reverse_list, find_mid_node, find_last_kth_node
+      8. math: is_prime, find_primes
+      9. monotone_deque: monotone_deque, monotone_deque2
+      10. monotone_stack: monotone_stack, monotone_stack2, monotone_stack3, largest_rect, largest_rect2
+      11. search: lower_bound, upper_bound, n_queens
+      12. string: build_nextval, kmp
+      13. tree: find_path, find_common_ancestor, inorder_traversal, level_order_traversal
+      14. unimportant: 
           1. array: euclidean_dist, manhattan_dist
           2. bisect: bisect_left_, bisect_right_, binary_search
           3. itertools: accumulate_, product_, permutations_, permutations2, combinations_, combinations2, combinations_with_replacement_
@@ -98,7 +99,7 @@
    1. N数: 1, 15, 454
 5. 链表: 
    1. 前向链表: 2, 19, 21, 23, 24, 25, 92, 876, 2181
-   2. 双向循环链表: OrderedDict
+   2. 双向循环链表: OrderedDict, 146(LRU)
 6. 单调栈/队列
    1. 单调栈: 496, 503
       1. 双向: 42, 84, 85
@@ -109,14 +110,13 @@
 9. 堆: 23, 215, o40
    1. 可动态修改的堆(Heap2): dijkstra, prim
 10. UnionFind: kruskal, 200
-11. OrderedDict: 146(LRU)
 
 
 
 
 ### 算法
 1. 分治法: 
-   1. 2路: 常见2路递归(merge sort, quick_sort, 树的dfs等), 23
+   1. 2路: 常见2路递归(merge sort, quick_sort, 树的dfs等), 23(n路归并)
 2. 二分查找: 
    1. 自己设计cond: 
       1. lower_bound: 4, 153, 875
@@ -171,6 +171,7 @@
    1. map有序化: 2021, 2165, 2170, 2183
    2. with贪心: 区间贪心, 2037
       1. -(非显式的sort): 12, 2182
+   3. 桶排序: 215
 4. int溢出: 7, 8
 5. 分类讨论: 
    1. 次大/小: 2170, 2182
