@@ -1,6 +1,7 @@
 from leetcode_alg.ext import (
     bisect_left_, bisect_right_, binary_search, merge_sort, quick_sort,
-    heap_sort, accumulate_, heap_sort2, gcd_, lcm_
+    heap_sort, accumulate_, heap_sort2, gcd_, lcm_,
+    combinations_with_replacement2, combinations_with_replacement_
 )
 import unittest as ut
 import numpy as np
@@ -58,6 +59,12 @@ class TestUnimp(ut.TestCase):
 
         self.assertTrue(gcd_(x, y) == gcd(x, y))
         self.assertTrue(lcm_(x, y) == lcm(x, y))
+
+    def test_cwr(self):
+        nums = [1, 2, 3, 4]
+        self.assertTrue(combinations_with_replacement_(nums, 2) == combinations_with_replacement2(nums, 2))
+        self.assertTrue(combinations_with_replacement_(nums, 2) == [
+                        list(c) for c in combinations_with_replacement(nums, 2)])
 
 
 if __name__ == "__main__":

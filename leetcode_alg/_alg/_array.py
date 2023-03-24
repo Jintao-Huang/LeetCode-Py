@@ -38,7 +38,10 @@ def diff(nums: List[int], initial: Optional[int] = None) -> List[int]:
         res.append(nums[i] - nums[i-1])
     return res
 
+
 _T = TypeVar("_T")
+
+
 def find_prefix(it1: Iterable[_T], it2: Iterable[_T]) -> int:
     """返回相同前缀的索引"""
     res = 0
@@ -177,4 +180,19 @@ def subsets(nums: List[int]) -> List[List[int]]:
     res = [[]]
     for x in nums:
         res += [r + [x] for r in res]
+    return res
+
+
+def _dfs_s(nums: List[int], idx: int, path: List[int], res: List[List[int]]) -> None:
+    res.append(path[:])
+    n = len(nums)
+    for i in range(idx, n):
+        path.append(nums[i])
+        _dfs_s(nums, i+1, path, res)
+        path.pop()
+
+
+def subsets2(nums: List[int]) -> List[List[int]]:
+    res = []
+    _dfs_s(nums, 0, [], res)
     return res

@@ -62,7 +62,14 @@ def permutations_(nums: List[int], r: Optional[int] = None) -> List[List[int]]:
 
 def _dfs_p(nums: List[int], r: int, visited: List[bool],
            path: List[int], res: List[List[int]]) -> None:
-    if len(path) == r:
+    """perm, comb, comb_wr, subset区别:  
+    perm: visited, 没有idx
+    comb: break优化, i+1
+    comb_wr: i
+    subset: 无需要判断条件(res.append), i+1
+    相同点: for循环
+    """
+    if r == 0:
         res.append(path[:])
         return
 
@@ -72,7 +79,7 @@ def _dfs_p(nums: List[int], r: int, visited: List[bool],
         #
         path.append(x)
         visited[i] = True
-        _dfs_p(nums, r, visited, path, res)
+        _dfs_p(nums, r-1, visited, path, res)
         path.pop()
         visited[i] = False
 
@@ -110,24 +117,24 @@ def combinations_(nums: List[int], r: int) -> List[List[int]]:
     return res
 
 
-def _dfs_c(nums: List[int], k: int, idx: int, path: List[int], res: List[List[int]]) -> None:
-    if k == 0:
+def _dfs_c(nums: List[int], r: int, idx: int, path: List[int], res: List[List[int]]) -> None:
+    if r == 0:
         res.append([nums[i] for i in path])
         return
     n = len(nums)
     #
     for i in range(idx, n):
-        if n - i < k:
+        if n - i < r:
             break
         path.append(i)
-        _dfs_c(nums, k-1, i+1, path, res)
+        _dfs_c(nums, r-1, i+1, path, res)
         path.pop()
 
 
-def combinations2(nums: List[int], k: int) -> List[List[int]]:
+def combinations2(nums: List[int], r: int) -> List[List[int]]:
     """nums: const"""
     res = []
-    _dfs_c(nums, k, 0, [], res)
+    _dfs_c(nums, r, 0, [], res)
     return res
 
 
@@ -138,7 +145,7 @@ def combinations_with_replacement_(nums: List[int], r: int) -> List[List[int]]:
     if r > n:
         return res
     #
-    idxs = list(range(r))
+    idxs = [0] * r
     res.append([nums[i] for i in idxs])
     while True:
         # 从后往前找未到达最大的数. e.g. idxs=[0,2,3], n=4, 则i=1处为非最大数
@@ -150,4 +157,23 @@ def combinations_with_replacement_(nums: List[int], r: int) -> List[List[int]]:
         # 修改的后面的数. e.g. [1,2,6,7]. 该idx[1]+=1, 则->[1,3,3,3]
         idxs[i:] = [idxs[i]+1] * (r-i)
         res.append([nums[i] for i in idxs])
+    return res
+
+
+def _dfs_cwr(nums: List[int], r: int, idx: int, path: List[int], res: List[List[int]]) -> None:
+    if r == 0:
+        res.append([nums[i] for i in path])
+        return
+    n = len(nums)
+    #
+    for i in range(idx, n):
+        path.append(i)
+        _dfs_cwr(nums, r-1, i, path, res)
+        path.pop()
+
+
+def combinations_with_replacement2(nums: List[int], r: int) -> List[List[int]]:
+    """nums: const"""
+    res = []
+    _dfs_cwr(nums, r, 0, [], res)
     return res
