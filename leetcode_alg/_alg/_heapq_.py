@@ -7,6 +7,7 @@ from .._ds._heap import heapify_max, heapreplace_max, heappop_max
 
 
 def _nlargest_smallest(nums: List[int], n: int, mode: Literal["nlargest", "nsmallest"]) -> List[int]:
+    """nums: const"""
     if mode == "nlargest":
         _heapify = heapify
         _heapreplace = heapreplace
@@ -25,13 +26,38 @@ def _nlargest_smallest(nums: List[int], n: int, mode: Literal["nlargest", "nsmal
 
 
 def nlargest_(nums: List[int], n: int) -> List[int]:
-    """不稳定(heap.nlargest是稳定的). 使用小根堆"""
+    """不稳定(heap.nlargest是稳定的). 使用小根堆. nums: const"""
     return _nlargest_smallest(nums, n, "nlargest")
 
 
 def nsmallest_(nums: List[int], n: int) -> List[int]:
-    """不稳定(heap.nsmallest是稳定的). 使用大根堆"""
+    """不稳定(heap.nsmallest是稳定的). 使用大根堆. nums: const"""
     return _nlargest_smallest(nums, n, "nsmallest")
+
+
+def _nlargest_smallest2(nums: List[int], n: int, mode: Literal["nlargest", "nsmallest"]) -> List[int]:
+    """nums: not const"""
+    if mode == "nsmallest":
+        _heapify = heapify
+        _heappop = heappop
+    else:
+        _heapify = heapify_max
+        _heappop = heappop_max
+    _heapify(nums)
+    res = []
+    for _ in range(n):
+        res.append(_heappop(nums))
+    return res
+
+
+def nlargest2(nums: List[int], n: int) -> List[int]:
+    """nums: not const"""
+    return _nlargest_smallest2(nums, n, "nlargest")
+
+
+def nsmallest2(nums: List[int], n: int) -> List[int]:
+    """nums: not const"""
+    return _nlargest_smallest2(nums, n, "nsmallest")
 
 
 def merge_heapq_(*nums_list: List[int], max_heap: bool = False) -> List[int]:

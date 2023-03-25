@@ -21,15 +21,15 @@
    5. 其他: 
 2. 已有的功能: (持续更新中)
    1. 算法: 
-      1. array: unique, partition, partition2, merge, merge2, diff, quick_select, two_sum, reverse, next_permutation, subsets
+      1. array: unique, partition, partition2, merge, merge2, diff, quick_select, two_sum, reverse, next_permutation, subsets, subsets2
       2. dp: LIS, LIS2, LCS, LCS2, LCS3, edit_distance, matrix_chain, matrix_chain2
-      3. heapq: nlargest_, nsmallest_, merge_heapq_
+      3. heapq: nlargest_, nsmallest_, nlargest2, nsmallest2, merge_heapq_
       4. graph: dijkstra, dijkstra2, dijkstra3, kruskal, prim, prim2, topo_sort, Dinic, hungarian
       5. greed: merge_intervals, merge_intervals2
       6. knapsack: knapsack, knapsackV, knapsackC, knapsackCV
       7. linkedlist: reverse_list, find_mid_node, find_last_kth_node
       8. math: is_prime, find_primes
-      9. monotone_deque: monotone_deque, monotone_deque2
+      9. monotone_deque: monotone_deque
       10. monotone_stack: monotone_stack, monotone_stack2, monotone_stack3, largest_rect, largest_rect2
       11. search: lower_bound, upper_bound, n_queens
       12. string: build_nextval, kmp
@@ -37,7 +37,7 @@
       14. unimportant: 
           1. array: euclidean_dist, manhattan_dist
           2. bisect: bisect_left_, bisect_right_, binary_search
-          3. itertools: accumulate_, product_, permutations_, permutations2, combinations_, combinations2, combinations_with_replacement_
+          3. itertools: accumulate_, product_, permutations_, permutations2, combinations_, combinations2, combinations_with_replacement_, combinations_with_replacement2
           4. math: gcd_, lcm_, fast_pow
           5. random: randperm
           6. sort: quick_sort, merge_sort, heap_sort, heap_sort2
@@ -116,7 +116,7 @@
 
 ### 算法
 1. 分治法: 
-   1. 2路: 常见2路递归(merge sort, quick_sort, 树的dfs等), 23(n路归并)
+   1. 2路: 常见2路递归(merge sort, quick_sort, 树的dfs等), 23(相关题: n路归并)
 2. 二分查找: 
    1. 自己设计cond: 
       1. lower_bound: 4, 153, 875

@@ -11,14 +11,10 @@ class Solution2:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         n = len(nums)
         if n-k+1 <= k:
-            heap = Heap(nums)
-            for _ in range(n-k+1):
-                res = heap.pop()
+            res = nsmallest2(nums, n-k+1)
         else:
-            heap = Heap(nums, max_heap=True)
-            for _ in range(k):
-                res = heap.pop()
-        return res
+            res = nlargest2(nums, k)
+        return res[-1]
 
 
 class Solution3:
