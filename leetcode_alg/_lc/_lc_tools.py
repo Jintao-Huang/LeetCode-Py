@@ -22,12 +22,16 @@ def from_linkedlist(ll: Optional[ListNode]) -> List[int]:
     return res
 
 
-def to_tree(l_s: str) -> Optional[TreeNode]:
-    tn_l: List[Optional[int]] = json.loads(l_s)
+def to_tree(l_s: Union[str, List[Optional[int]]]) -> Optional[TreeNode]:
+    if isinstance(l_s, str):
+        tn_l: List[Optional[int]] = json.loads(l_s)
+    else:
+        tn_l = l_s
     n = len(tn_l)
     if n == 0:
         return None
     #
+    assert tn_l[0]
     root = TreeNode(tn_l[0])
     dq = Deque[TreeNode]([root])
     idx = 1

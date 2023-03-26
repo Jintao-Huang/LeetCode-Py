@@ -33,7 +33,7 @@
       10. monotone_stack: monotone_stack, monotone_stack2, monotone_stack3, largest_rect, largest_rect2
       11. search: lower_bound, upper_bound, n_queens
       12. string: build_nextval, kmp
-      13. tree: find_path, find_common_ancestor, inorder_traversal, level_order_traversal
+      13. tree: find_path, find_common_ancestor, preorder_traversal, preorder_traversal2, inorder_traversal, inorder_traversal2, postorder_traversal, postorder_traversal2, level_order_traversal
       14. unimportant: 
           1. array: euclidean_dist, manhattan_dist
           2. bisect: bisect_left_, bisect_right_, binary_search
@@ -51,7 +51,7 @@
       7. trie: TrieTreeNode, Trie
       8. union_find: UnionFind
       9. unimportant: 
-         1. ordered_dict: OrderedDict
+         1. ordered_dict: OrderedDict_
    3. LeetCode Tools:
       1. 数据结构: ListNode, TreeNode
       2. tools: to_linkedlist, from_linkedlist, to_tree, from_tree, call_callable_list

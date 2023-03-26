@@ -1,6 +1,5 @@
 from leetcode_alg import *
-from leetcode_alg.ext import OrderedDict as _OrderedDict
-
+from leetcode_alg.ext import OrderedDict_
 
 class LRUCache:
     """recommended"""
@@ -29,7 +28,7 @@ class LRUCache:
 class LRUCache2:
     def __init__(self, capacity: int):
         self.capacity = capacity
-        self.od = _OrderedDict[int, int]()
+        self.od = OrderedDict_[int, int]()
 
     def get(self, key: int) -> int:
         if key in self.od.dict:

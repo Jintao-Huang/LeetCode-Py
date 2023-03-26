@@ -24,6 +24,7 @@ class Solution:
 
 
 class Solution2:
+    """迭代法"""
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
         if root is None:
             return False

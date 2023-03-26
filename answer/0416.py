@@ -21,7 +21,7 @@ def knapsack_new(choices: List[int], capacity: int) -> bool:
             if dp[c2] != -1 and (dp[c2]+1) > dp[capa]:
                 dp[capa] = dp[c2] + 1
         if dp[capacity] > 0:
-            return True
+            return True  # 及时返回
     return False
 
 

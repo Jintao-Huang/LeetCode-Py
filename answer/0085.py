@@ -2,6 +2,7 @@ from leetcode_alg import *
 
 
 class Solution:
+    """recommended"""
     def maximalRectangle(self, matrix: List[List[str]]) -> int:
         hs = [0] * len(matrix[0])
         res = 0
@@ -18,7 +19,6 @@ class Solution:
 
 
 class Solution2:
-    """单调栈"""
     def maximalRectangle(self, matrix: List[List[str]]) -> int:
         hs = [0] * len(matrix[0])
         res = 0

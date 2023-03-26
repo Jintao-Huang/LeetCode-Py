@@ -7,7 +7,7 @@ from .._linked_list import LinkedListNode, LinkedList
 _K, _V = TypeVar("_K"), TypeVar("_V")
 
 
-class OrderedDict(Generic[_K, _V]):
+class OrderedDict_(Generic[_K, _V]):
     """已由collections.OrderedDict(C)实现. 生产情况下请勿使用此类, 仅用于学习"""
 
     def __init__(self, _dict: Optional[Dict[_K, _V]] = None) -> None:
