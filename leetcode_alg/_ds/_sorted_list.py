@@ -9,7 +9,9 @@ _T = TypeVar("_T")
 
 
 class SimpleSortedList(Generic[_T]):
-    """由于使用的python, 自己设计的BBST, RBT不一定有较好的性能"""
+    """由于使用的python, 自己设计的BBST, RBT不一定有较好的性能
+    __getitem__等直接使用self.ssl, 这里不再封装(for speed)
+    """
 
     def __init__(self, nums: Optional[List[_T]] = None,
                  key: Optional[Callable[[_T], _T]] = None, need_sort: bool = True) -> None:

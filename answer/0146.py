@@ -33,17 +33,17 @@ class LRUCache2:
 
     def get(self, key: int) -> int:
         if key in self.od.dict:
-            v = self.od.getitem(key)
+            v = self.od[key]
             self.od.move_to_end(key)
             return v
         return -1
 
     def put(self, key: int, value: int) -> None:
         if key in self.od.dict:
-            self.od.setitem(key, value)
+            self.od[key] = value
             self.od.move_to_end(key)
             return
-        self.od.setitem(key, value)
+        self.od[key] = value
         if len(self.od.dict) > self.capacity:
             self.od.popitem(last=False)
 

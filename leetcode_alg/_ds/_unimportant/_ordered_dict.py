@@ -17,7 +17,7 @@ class OrderedDict(Generic[_K, _V]):
         self.dict: Dict[_K, LinkedListNode[Tuple[_K, _V]]] = {}
         if _dict is not None:
             for k, v in _dict.items():
-                self.setitem(k, v)
+                self[k] = v
 
     def pop(self, k: _K) -> _V:
         lln = self.dict.pop(k)
@@ -45,11 +45,11 @@ class OrderedDict(Generic[_K, _V]):
         self.dict.pop(k)
         return k, v
 
-    def getitem(self, k: _K) -> _V:
+    def __getitem__(self, k: _K) -> _V:
         lln = self.dict[k]
         return lln.val[1]
 
-    def setitem(self, k: _K, v: _V) -> None:
+    def __setitem__(self, k: _K, v: _V) -> None:
         if k in self.dict:
             lln = self.dict[k]
             lln.val = (k, v)
@@ -58,6 +58,9 @@ class OrderedDict(Generic[_K, _V]):
             tail = self.ll.tail
             self.ll.replace_between(tail.prev, lln, tail)
             self.dict[k] = lln
+
+    def __delitem__(self, k: _K) -> None:
+        self.pop(k)
 
     def __iter__(self) -> Generator[Tuple[_K, _V], Any, None]:
         for lln in self.ll:
