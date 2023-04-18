@@ -1,7 +1,7 @@
 # LeetCode-Py
-[![Python Version](https://img.shields.io/pypi/pyversions/leetcode-alg)](https://pypi.org/project/leetcode-alg/)
-[![PyPI Status](https://badge.fury.io/py/leetcode-alg.svg)](https://badge.fury.io/py/leetcode-alg)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Jintao-Huang/LeetCode-Py/blob/main/LICENSE)
+![Python Version](https://img.shields.io/badge/python-%E2%89%A53.8-5be.svg)
+[![PyPI Status](https://badge.fury.io/py/leetcode-alg.svg)](https://pypi.org/project/leetcode-alg/)
+[![License](https://img.shields.io/badge/License-MIT-yellowgreen.svg)](https://github.com/Jintao-Huang/LeetCode-Py/blob/main/LICENSE)
 
 
 ## 介绍
@@ -64,7 +64,8 @@
       5. unimportant: 
          1. math: int2str, prime_factor, BigInteger
    2. 数据结构: 
-      1. extension: BBST, HuffmanTree, RBTree
+      1. sorted_list: SortedList
+      2. extension: BBST, HuffmanTree, RBTree, SkipList
 
 
 
